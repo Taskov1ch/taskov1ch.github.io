@@ -1,0 +1,99 @@
+@font-face {
+	font-family: "SfnsDisplayBold";
+	src: url("assets/font/sfns-display-bold.ttf") format("opentype")
+}
+
+body {
+	margin: 0;
+	font-family: "SfnsDisplayBold", Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+#main {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: -1;
+}
+
+.avatar {
+	width: 25vh;
+}
+
+.title {
+	color: #fff;
+	font-size: 3vh;
+}
+
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.link {
+	border: 1px solid #545454;
+	border-radius: 10px;
+	display: inline-block;
+	margin: 1vh 1vw;
+	padding: 3vh;
+	box-sizing: border-box;
+	background-color: rgba(45, 35, 51, 0.5);
+	transition: all 0.3s ease-in-out;
+	color: #a6a6a6;
+	font-size: 130%;
+}
+
+.username {
+	font-size: 80%;
+}
+
+.link:hover {
+	border-color: #fff;
+	color: #fff;
+	box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+	background-color: transparent;
+	text-shadow: 0 0 10px #fff;
+}
+
+.link:hover .username {
+	color: #edb6fc;
+}
+
+.double {
+	width: 22vw;
+}
+
+.solo {
+	width: 47vw;
+}
+
+@media (max-width: 680px) {
+	.link {
+		width: 90vw;
+		font-size: 95%;
+	}
+
+	.avatar {
+		width: 13vh;
+	}
+
+	.title {
+		font-size: 2vh;
+	}
+}
