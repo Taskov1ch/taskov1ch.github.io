@@ -62,9 +62,9 @@ a {
 .link:hover {
 	border-color: #fff;
 	color: #fff;
-	box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+	box-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
 	background-color: transparent;
-	text-shadow: 0 0 10px #fff;
+	text-shadow: 0 0 5px #fff;
 }
 
 .double {
