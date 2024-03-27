@@ -56,7 +56,6 @@ a {
 	background-color: rgba(45, 35, 51, 0.5);
 	transition: all 0.3s ease-in-out;
 	color: #a6a6a6;
-	font-size: 130%;
 }
 
 .link:hover {
@@ -78,7 +77,6 @@ a {
 @media (max-width: 680px) {
 	.link {
 		width: 90vw;
-		font-size: 95%;
 	}
 
 	.avatar {
