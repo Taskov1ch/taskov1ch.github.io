@@ -3,27 +3,51 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" type="text/css" href="index.css?2"> <!-- Честно говоря, я ни*** не знал что можно было вставить цифры после ".css?" -->
 	<link rel="shortcut icon" type="image/png" href="assets/medias/avatar.png">
-	<title>Taskovich</title>
+	<title>Taskovich (DinnerBone)</title>
 </head>
+<script type="text/javascript" src="script.js"></script>
 <body>
 <div id="main">
+	<div class="preloader">
+		<div class="loading-text">
+			<img src="assets/medias/sheep.gif">
+			<h1>Загрузка...</h1>
+			<p>Пожалуйста, наберитесь терпения</p>
+		</div>
+	</div>
 	<video class="background" autoplay muted loop>
-		<source src="assets/medias/background.mp4" type="video/mp4">
+		<source src="" type="video/mp4">
 		<p>Видео не поддерживается вашим браузером¯\_(ツ)_/¯</p>
 	</video>
 	<div class="container">
-		<img src="assets/medias/avatar.png" class="avatar" alt="Аватарка">
-		<h1 class="title">Если нужно связаться со мной</h1>
-		<div>
-			<a href="https://vk.com/tynaev_vk" class="vk link double"><b>VK</b></a>
-			<a href="https://t.me/tynaev_tg" class="tg link double"><b>TELEGRAM</b></a>
-			<br>
-			<a href="https://github.com/Taskov1ch" class="gh link solo"><b>GITHUB</b></a>
-			<br>
-			<a href="https://talk.24serv.pro/u/dinner_bone" class="1 link double"><b>TALK 24SERV</b> - ОСНОВ.</a>
-			<a href="https://talk.24serv.pro/u/dinnerbone" class="2 link double"><b>TALK 24SERV</b> - ДОП.</a>
+		<h1 class="title">Все мои ссылки тут</h1>
+		<div class="row">
+			<a href="https://vk.com/tynaev_vk" class="vk link short" link-name="VK" target="_blank">
+				<img src="assets/medias/vk.png" alt="VK">
+			</a>
+			<a href="https://t.me/tynaev_tg" class="tg link short" link-name="Telegram" target="_blank">
+				<img src="assets/medias/tg.png" alt="Telegram">
+			</a>
+		</div>
+		<div class="row">
+			<a href="https://github.com/Taskov1ch" class="gh link short" link-name="GitHub" target="_blank">
+				<img src="assets/medias/gh.png" alt="GitHub">
+			</a>
+		</div>
+		<div class="row">
+			<a href="https://talk.24serv.pro/u/dinner_bone" class="forum link long" link-name="Talk 24serv - ОСН." target="_blank">
+				<img src="assets/medias/f1.png" alt="Talk 24serv">
+			</a>
+			<a href="https://talk.24serv.pro/u/dinnerbone" class="forum link long" link-name="Talk 24serv - ДОП."target="_blank">
+				<img src="assets/medias/f2.png" alt="Talk 24serv">
+			</a>
+		</div>
+		<div class="row">
+			<a href="https://www.donationalerts.com/r/npobepka_02" class="da link short" link-name="DonationAlerts" target="_blank">
+				<img src="assets/medias/da.png" alt="DonationAlerts">
+			</a>
 		</div>
 	</div>
 </div>
