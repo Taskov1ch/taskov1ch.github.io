@@ -1,11 +1,11 @@
 @font-face {
 	font-family: "Hero";
-	src: url("assets/fonts/Hero.ttf") format("opentype")
+	src: url("../assets/fonts/Hero.ttf") format("opentype")
 }
 
 @font-face {
 	font-family: "MontserratAlternates";
-	src: url("assets/fonts/MontserratAlternates.ttf") format("opentype")
+	src: url("../assets/fonts/MontserratAlternates.ttf") format("opentype")
 }
 
 body {
@@ -206,9 +206,5 @@ a {
 
 	.link:hover:before {
 		opacity: 0;
-	}
-
-	.preloader img {
-		width: 20vh;
 	}
 }

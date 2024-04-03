@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	];
 
 	function getRandomVideo(videosArray) {
-		var video = "assets/medias/" + videosArray[Math.floor(Math.random() * videosArray.length)] + ".mp4";
+		var video = "../assets/videos/" + videosArray[Math.floor(Math.random() * videosArray.length)] + ".mp4";
 		return video;
 	}
 
