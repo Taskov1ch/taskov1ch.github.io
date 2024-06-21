@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta http-equiv="refresh" content="0;URL=/links" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<link rel="shortcut icon" type="image/png" href="assets/medias/avatar.png">
-	<title>Taskovich (DinnerBone)</title>
+	<title>Taskovich (Dinner_Bone)</title>
+	<link rel="stylesheet" href="style.css">
 </head>
-<script type="text/javascript" src="script.js"></script>
 <body>
-<div id="main">
-
-	<div class="popup-container" id="popup">
-		<div class="popup-content">
-			<p>На данный момент сайт не готов. Перейдите по <a href="links">этой ссылке</a> чтобы вернуться на старую версию сайта.</p>
-		</div>
+	<div id="preloader">
+		<img src="images/preloader.svg" alt="Loading...">
 	</div>
-
-	<div class="block-container">
-		<div id="0" class="block active zero">
-			
-		</div>
-		<div id="1" class="block hidden-top one">
-			
-		</div>
-		<div id="2" class="block hidden-top two">
-			
-		</div>
-		<div id="3" class="block hidden-top three">
-			
-		</div>
-
-		<div id="4" class="block hidden-top four">
-			
-		</div>
-	</div>
-
-</div>
+	<header>
+		<nav class="menu">
+			<ul>
+				<li><p id="about-me-link" class="active"></p></li>
+				<li><p id="links-link"></p></li>
+				<li><p id="wallpaper-link"></p></li>
+				<li><p id="change_lang"></p></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="background"></div>
+	<main>
+		<section id="about-me" class="page active"></section>
+		<section id="links" class="page"></section>
+		<section id="wallpaper" class="page">
+			<div class="download-wallpaper">
+				<div class="download-link download-upscale download">
+					<a href="images/landscape_background_original.png" download id="download-wallpaper-upscale"></a>
+				</div>
+				<div class="download-icon download">
+					<img src="images/download.svg" alt="Download Icon">
+				</div>
+				<div class="download-link download-original download">
+					<a href="images/landscape_background_upscale.png" download id="download-wallpaper-original"></a>
+				</div>
+			</div>
+		</section>		
+	</main>
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+	<script src="script.js"></script>
 </body>
 </html>

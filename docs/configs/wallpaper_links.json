@@ -1,0 +1,10 @@
+{
+	"landscape": {
+		"upscale": "images/landscape_background_upscale.png",
+		"original": "images/landscape_background_original.png"
+	},
+	"portrait": {
+		"upscale": "images/portrait_background_upscale.png",
+		"original": "images/portrait_background_original.png"
+	}
+}

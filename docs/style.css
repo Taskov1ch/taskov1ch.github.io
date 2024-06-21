@@ -1,0 +1,245 @@
+@font-face {
+	font-family: "Nunito";
+	src: url("fonts/Nunito.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+a {
+	color: #fff;
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+	font-family: "Nunito", sans-serif;
+}
+
+#preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000;
+}
+
+#preloader img {
+	width: 10rem;
+}
+
+.background {
+	position: fixed;
+	top: -10%;
+	left: -10%;
+	width: 120%;
+	height: 120%;
+	background-color: #000000;
+	background: url("images/portrait_background_upscale.png") no-repeat center center/cover;
+	z-index: -1000;
+	filter: blur(5px);
+	transition: all 0.5s ease;
+}
+
+.background::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	transition: background 0.5s ease;
+}
+
+.background.no-blur {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	filter: none;
+}
+
+.background.no-blur::before {
+	background: rgba(0, 0, 0, 0);
+}
+
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	color: white;
+	text-align: center;
+	padding: 1rem 0;
+	z-index: 100;
+	box-sizing: border-box;
+}
+
+.menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu li {
+	margin: 0 1rem;
+}
+
+.menu p {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	position: relative;
+	margin: 0;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.menu p::after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 2px;
+	display: block;
+	margin-top: 5px;
+	right: 0;
+	background: #fff;
+	transition: width 0.3s ease-in-out;
+	cursor: none;
+	border-radius: 1px;
+}
+
+.menu p.active::after {
+	width: 100%;
+	left: 0;
+}
+
+main {
+	display: flex;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	height: 100vh;
+}
+
+.page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-width: 100vw;
+	height: 100vh;
+	color: #fff;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 1rem;
+	overflow-wrap: break-word;
+	font-size: 1.2rem;
+}
+
+.page .logo {
+	width: 1rem;
+	vertical-align: -0.2rem;
+}
+
+.pmmp {
+	width: 8rem;
+	vertical-align: -0.05rem;
+	margin: 0;
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-width: 100vw;
+	height: 100vh;
+	color: #fff;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 1rem;
+	overflow-wrap: break-word;
+	font-size: 1.2rem;
+}
+
+#wallpaper {
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-direction: column;
+}
+
+#wallpaper::before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 15rem;
+	background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+	transform: translateY(50rem);
+	transition: all 0.5s ease;
+	pointer-events: none;
+}
+
+#wallpaper.active::before {
+	transform: translate(0);
+}
+
+.download-wallpaper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.download-link {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
+
+.download-link a {
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.2rem;
+	text-decoration: none;
+	margin: 0;
+	padding: 1rem;
+}
+
+.download-icon {
+	flex: 0;
+	text-align: center;
+}
+
+.download-icon img {
+	width: 2rem;
+	margin: 0 0.5rem;
+}
+
+.download {
+	transition: all 0.8s ease;
+	z-index: 100;
+	transform: translateY(50rem);
+}
+
+.download.active {
+	transform: translateY(0);
+}
+
+@media only screen and (min-width: 768px) {
+	.background {
+		background: url("images/landscape_background_upscale.png") no-repeat center center/cover;
+	}
+}
