@@ -121,27 +121,6 @@ $(document).ready(function () {
 		}
 	}
 
-	let startX = 0;
-	let endX = 0;
-
-	function handleTouchStart(event) {
-		startX = event.touches[0].clientX;
-	}
-
-	function handleTouchMove(event) {
-		endX = event.touches[0].clientX;
-	}
-
-	function handleTouchEnd() {
-		const $navLinks = $(".menu p");
-		const currentIndex = $navLinks.index($(".menu p.active"));
-		if (startX > endX + 50 && currentIndex < $navLinks.length - 1) {
-			navigateToSlide(currentIndex + 1);
-		} else if (startX < endX - 50 && currentIndex > 0) {
-			navigateToSlide(currentIndex - 1);
-		}
-	}
-
 	function handleWindowResize() {
 		updateWallpaperLinks();
 	}
@@ -154,9 +133,6 @@ $(document).ready(function () {
 	$(".menu p").on("click", handleNavLinkClick);
 	$("#change_lang").on("click", handleChangeLangClick);
 	$(document).on("keydown", handleKeyDown);
-	$("main").on("touchstart", handleTouchStart);
-	$("main").on("touchmove", handleTouchMove);
-	$("main").on("touchend", handleTouchEnd);
 });
 
 $(window).on("load", function () {
