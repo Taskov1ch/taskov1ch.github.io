@@ -10,7 +10,7 @@
 
 body {
 	margin: 0;
-	background: url("https://i.ibb.co/z6YHbhD/17-20240920221807.png") no-repeat center center/cover;
+	background: url("https://i.ibb.co/Bysx70c/18-20240920222219.png") no-repeat center center/cover;
 }
 
 a {
@@ -162,7 +162,7 @@ a {
 
 @media (max-width: 680px) {
 	body {
-		background: url("../images/portrait_background_upscale.png") no-repeat center center/cover;
+		background: url("https://i.ibb.co/z6YHbhD/17-20240920221807.png") no-repeat center center/cover;
 	}
 
 	.title {
