@@ -40,6 +40,7 @@ $(document).ready(function () {
 	}
 
 	function updateWallpaperLinks() {
+		/*
 		const isLargeScreen = window.matchMedia("(min-width: 768px)").matches;
 		const { landscape, portrait } = wallpaperLinks;
 		const upscaleLink = isLargeScreen ? landscape.upscale : portrait.upscale;
@@ -47,16 +48,17 @@ $(document).ready(function () {
 
 		$("#download-wallpaper-upscale").attr("href", upscaleLink);
 		$("#download-wallpaper-original").attr("href", originalLink);
+		*/
 	}
 
 	function switchLanguage(lang) {
 		const {
-			aboutMe, links, language,
+			aboutMe, links, wallpaper, language,
 			aboutMeContent, linksContent
 		} = translations[lang];
 		$("#about-me-link").text(aboutMe);
 		$("#links-link").text(links);
-		// $("#wallpaper-link").text(wallpaper);
+		$("#wallpaper-link").text(wallpaper);
 		$("#change_lang").text(language);
 		$("#about-me").html(aboutMeContent);
 		$("#links").html(linksContent);
