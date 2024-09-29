@@ -51,18 +51,17 @@ $(document).ready(function () {
 
 	function switchLanguage(lang) {
 		const {
-			aboutMe, links, wallpaper, language,
-			aboutMeContent, linksContent,
-			downloadUpscale, downloadOriginal
+			aboutMe, links, language,
+			aboutMeContent, linksContent
 		} = translations[lang];
 		$("#about-me-link").text(aboutMe);
 		$("#links-link").text(links);
-		$("#wallpaper-link").text(wallpaper);
+		// $("#wallpaper-link").text(wallpaper);
 		$("#change_lang").text(language);
 		$("#about-me").html(aboutMeContent);
 		$("#links").html(linksContent);
-		$("#download-wallpaper-upscale").text(downloadUpscale);
-		$("#download-wallpaper-original").text(downloadOriginal);
+		// $("#download-wallpaper-upscale").text(downloadUpscale);
+		// $("#download-wallpaper-original").text(downloadOriginal);
 		currentLang = lang;
 	}
 
