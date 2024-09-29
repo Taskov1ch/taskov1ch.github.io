@@ -1,10 +1,10 @@
 {
 	"landscape": {
-		"upscale": "images/landscape_background_upscale.png",
-		"original": "images/landscape_background_original.png"
+		"upscale": "https://i.ibb.co/znc1gDK/18-20240920222221.png",
+		"original": "https://i.ibb.co/znc1gDK/18-20240920222221.png"
 	},
 	"portrait": {
-		"upscale": "images/portrait_background_upscale.png",
-		"original": "images/portrait_background_original.png"
+		"upscale": "https://i.ibb.co/t2jLg2w/17-20240920221755.png",
+		"original": "https://i.ibb.co/t2jLg2w/17-20240920221755.png"
 	}
 }
