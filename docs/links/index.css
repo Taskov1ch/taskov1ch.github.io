@@ -114,6 +114,11 @@ a {
 	text-shadow: 0 0 15px #fff;
 }
 
+.anix:hover {
+	border-color: #e83146;
+	text-shadow: 0 0 15px #e83146;
+}
+
 .forum:hover {
 	border-color: #00ff00;
 	text-shadow: 0 0 15px #00ff00;
