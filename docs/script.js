@@ -80,6 +80,11 @@ $(document).ready(function () {
 			return;
 		}
 
+		if (targetSectionId === "links-link") {
+			window.location.href = "/links";
+		        return;
+		}
+
 		const targetIndex = $(".menu p").index(this);
 		navigateToSlide(targetIndex);
 	}
