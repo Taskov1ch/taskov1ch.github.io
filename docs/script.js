@@ -80,7 +80,7 @@ $(document).ready(function () {
 			return;
 		}
 
-		if (targetSectionId === "links-link") {
+		if (targetSectionId === "links") {
 			window.location.href = "/links";
 		        return;
 		}
