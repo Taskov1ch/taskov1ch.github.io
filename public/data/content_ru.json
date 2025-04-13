@@ -1,0 +1,159 @@
+{
+	"projects": [
+		{
+			"title": "GmInventories",
+			"description": "Отдельные инвентари для каждого игрового режима.",
+			"icon": "🎒",
+			"link": "https://github.com/Taskov1ch/GmInventories",
+			"technologies": ["PHP (PocketMine-MP 5)"],
+			"tags": ["stable"]
+		},
+		{
+			"title": "DonateExecute",
+			"description": "Любой каприз за ваши деньги (на сервере PMMP конечно же).",
+			"icon": "💸",
+			"link": "https://github.com/Taskov1ch/DonateExecute",
+			"technologies": ["PHP (PocketMine-MP 5)"],
+			"tags": ["beta", "not_tested"]
+		},
+		{
+			"title": "LimboCrates",
+			"description": "Ключи Лимбо + Азартные донат кейсы (Игрокам GD привет).",
+			"icon": "🔑",
+			"link": "https://github.com/Taskov1ch/LimboCrates",
+			"technologies": ["PHP (PocketMine-MP 5)"],
+			"tags": ["stable", "planned"]
+		},
+		{
+			"title": "BadAppleInMaps",
+			"description": "BadApple!! на картах Minecraft.",
+			"icon": "🖤",
+			"link": "https://github.com/Taskov1ch/BadAppleInMaps",
+			"technologies": ["PHP (PocketMine-MP 5)"],
+			"tags": ["unsupported"]
+		},
+		{
+			"title": "EpicDeath",
+			"description": "Эффектный уход с поля боя.",
+			"icon": "💫",
+			"link": "https://github.com/Taskov1ch/EpicDeath",
+			"technologies": ["PHP (PocketMine-MP 5)"],
+			"tags": ["stable"]
+		},
+		{
+			"title": "RCON-CrossBots",
+			"description": "Чат-боты RCON на нескольких платформах одновременно.",
+			"icon": "🤖",
+			"link": "https://github.com/Taskov1ch/RCON-CrossBots",
+			"technologies": ["Python (aiogram, vkbottle, discord.py)"],
+			"tags": ["stable", "paused", "planned"]
+		},
+		{
+			"title": "TelegramMCBE",
+			"description": "Telegram x Minecraft BE.",
+			"icon": "🛩",
+			"link": "https://github.com/Taskov1ch/TelegramMCBE",
+			"technologies": ["Python (aiogram)", "PHP (PocketMine-MP 5)"],
+			"tags": ["unsupported", "planned"]
+		},
+		{
+			"title": "BANedetta",
+			"description": "Запреты с доказательствами - это справедливо, прозрачно, безопасно.",
+			"icon": "💔",
+			"link": "https://github.com/BANedetta",
+			"technologies": ["Python (vkbottle, aiogram)", "PHP (PocketMine-MP 5)"],
+			"tags": ["planned", "beta"]
+		},
+		{
+			"title": "TGSB",
+			"description": "Требую Готовый Сервер Б****.",
+			"icon": "📥",
+			"link": "https://github.com/TrebuyuGotovyiServerBlyat/TGSB",
+			"technologies": ["Bash"],
+			"tags": ["stable"]
+		}
+	],
+	"links": [
+		{
+			"platform": "Telegram",
+			"icon": "🛫",
+			"link": "https://t.me/taskov1ch",
+			"username": "t.me/taskov1ch",
+			"tags": ["active"]
+		},
+		{
+			"platform": "GitHub",
+			"icon": "🐱‍👤",
+			"link": "https://github.com/taskov1ch",
+			"username": "github.com/taskov1ch"
+		},
+		{
+			"platform": "ВКонтакте",
+			"icon": "📮",
+			"link": "https://vk.com/taskov1ch",
+			"username": "vk.com/taskov1ch",
+			"tags": ["active"]
+		},
+		{
+			"platform": "Мой никнейм",
+			"icon": "🏷",
+			"link": "https://mynickname.com/taskov1ch",
+			"username": "mynickname.com/taskov1ch"
+		},
+		{
+			"platform": "YouTube",
+			"icon": "📺",
+			"link": "https://youtube.com/@taskov1ch",
+			"username": "youtube.com/@taskov1ch",
+			"tags": ["rarely"]
+		},
+		{
+			"platform": "Steam",
+			"icon": "🎮",
+			"link": "https://steamcommunity.com/id/taskov1ch",
+			"username": "steamcommunity.com/id/taskov1ch",
+			"tags": ["passive"]
+		},
+		{
+			"platform": "Pinterest",
+			"icon": "🖼",
+			"link": "https://www.pinterest.com/taskov1ch",
+			"username": "pinterest.com/taskov1ch",
+			"tags": ["rarely"]
+		}
+	],
+	"donate": [
+		{
+			"method": "KO-FI",
+			"description": "Скинешь на кофеёк?",
+			"icon": "☕",
+			"link": "https://ko-fi.com/taskov1ch"
+		},
+		{
+			"method": "Криптовалюта",
+			"description": "Прелесть... 🤩",
+			"icon": "💲",
+			"type": "crypto",
+			"wallets": [
+				{
+					"currency": "Tether",
+					"name": "USDT",
+					"network": "Через сеть TRON",
+					"address": "TNcajtmiNmKe5c5euggux6ooFqokAtuRYj"
+				},
+				{
+					"currency": "Bitcoin",
+					"name": "BTC",
+					"network": "Через сеть Bitcoin",
+					"address": "bc1q6cxp4d78yrs4sfhmffrfxl73nm37tczz0u5sxe"
+				},
+				{
+					"currency": "Ethereum",
+					"name": "ETH",
+					"network": "Через сеть Ethereum",
+					"address": "0x18AfF09D6e896345bcF9685daDe4888168572CaD"
+				}
+			]
+		}
+	]
+}
