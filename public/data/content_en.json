@@ -83,13 +83,20 @@
 		},
 		{
 			"platform": "GitHub",
-			"icon": "🐱‍👤",
+			"icon": "🐱",
 			"link": "https://github.com/taskov1ch",
 			"username": "github.com/taskov1ch"
 		},
 		{
 			"platform": "VK",
 			"icon": "📮",
+			"link": "https://vk.com/taskov1ch",
+			"username": "vk.com/taskov1ch",
+			"tags": ["active"]
+		},
+		{
+			"platform": "Talk 24serv",
+			"icon": "👥",
 			"link": "https://vk.com/taskov1ch",
 			"username": "vk.com/taskov1ch",
 			"tags": ["active"]
