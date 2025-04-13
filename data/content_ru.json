@@ -95,10 +95,17 @@
 			"tags": ["active"]
 		},
 		{
-			"platform": "Talk 24serv",
+			"platform": "Talk 24serv #1",
 			"icon": "👥",
-			"link": "https://vk.com/taskov1ch",
-			"username": "vk.com/taskov1ch",
+			"link": "https://talk.24serv.pro/u/dinner_bone",
+			"username": "talk.24serv.pro/u/dinner_bone",
+			"tags": ["active"]
+		},
+		{
+			"platform": "Talk 24serv #2",
+			"icon": "👥",
+			"link": "https://talk.24serv.pro/u/dinnerbone",
+			"username": "talk.24serv.pro/u/dinnerbone",
 			"tags": ["active"]
 		},
 		{

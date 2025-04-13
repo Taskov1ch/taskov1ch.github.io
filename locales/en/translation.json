@@ -28,5 +28,17 @@
 		"success": "Address copied!",
 		"error": "Failed to copy address.",
 		"unavailable": "Clipboard API is unavailable or the address is missing."
+	},
+	"tags": {
+		"stable": "Stable",
+		"beta": "Beta",
+		"dev": "In Dev",
+		"unsupported": "Unsupported",
+		"not_tested": "Not Tested",
+		"planned": "Planned",
+		"paused": "Paused",
+		"active": "Active",
+		"passive": "Passive",
+		"rarely": "Rarely"
 	}
 }
