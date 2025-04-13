@@ -1,0 +1,32 @@
+{
+	"baseTitle": "Taskov1ch",
+	"defaultTitle": "Taskov1ch | ...",
+	"nav": {
+		"projects": "Projects",
+		"links": "Contacts",
+		"donate": "Donate"
+	},
+	"name": "Taskov1ch 🇰🇬",
+	"description": "Python Junior, as well as a PMMP plugin developer.",
+	"sections": {
+		"projects": "My Projects",
+		"links": "Contacts and Other Links",
+		"donate": "Donate to Me :)"
+	},
+	"loading": {
+		"text": "Loading..."
+	},
+	"modal": {
+		"cryptoTitle": "Crypto Wallets",
+		"copyAlt": "Copy {{currency}} address",
+		"copied": "Copied!",
+		"noWallets": "No wallets configured.",
+		"close": "Close Window"
+	},
+	"clipboard": {
+		"copy": "Copy",
+		"success": "Address copied!",
+		"error": "Failed to copy address.",
+		"unavailable": "Clipboard API is unavailable or the address is missing."
+	}
+}
