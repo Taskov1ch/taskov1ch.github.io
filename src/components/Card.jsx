@@ -1,6 +1,7 @@
 import React from "react";
 import { getLanguageIconInfo } from "../utils/getLanguageIconInfo";
 import { getTagStyle } from "../utils/getTagStyle";
+import { useTranslation } from "react-i18next";
 
 function Card({ item, openCryptoModal }) {
 	const title = item.title || item.platform || item.method || "Unnamed Item";
@@ -11,6 +12,7 @@ function Card({ item, openCryptoModal }) {
 	const technologies = item.technologies;
 	const tags = item.tags;
 	const type = item.type || "link";
+	const { t } = useTranslation();
 
 	const handleClick = event => {
 		if (type === "crypto") {
@@ -52,9 +54,13 @@ function Card({ item, openCryptoModal }) {
 								return tagStyle ? (
 									<span
 										key={tag}
-										className={`inline-block px-1.5 py-0.5 rounded-full text-xs font-medium whitespace-nowrap ${tagStyle.bgClass} ${tagStyle.textClass}`}
+										className={
+											`inline-block px-1.5 py-0.5 rounded-full text-xs font-medium whitespace-nowrap ` +
+											`${tagStyle.bgClass} ${tagStyle.textClass}`
+										}
+										title={tag}
 									>
-										{tagStyle.text}
+										{t(tagStyle.tKey, tag)}
 									</span>
 								) : null;
 							})}
