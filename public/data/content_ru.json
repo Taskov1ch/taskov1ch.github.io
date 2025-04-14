@@ -71,6 +71,14 @@
 			"link": "https://github.com/TrebuyuGotovyiServerBlyat/TGSB",
 			"technologies": ["Bash"],
 			"tags": ["stable"]
+		},
+		{
+			"title": "py-limbo",
+			"description": "windows ключи limbo (Игрокам GD снова привет).",
+			"icon": "🗝",
+			"link": "https://github.com/Taskov1ch/py-limbo",
+			"technologies": ["Python (PyQt6, pygame, pywin32)"],
+			"tags": ["stable", "idk"]
 		}
 	],
 	"links": [

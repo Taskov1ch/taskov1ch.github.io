@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "LimboCrates",
-			"description": "Limbo Keys + Gambling donation crates (Greetings to GD players).",
+			"description": "Limbo Keys + Gambling donation crates (Hello GD players).",
 			"icon": "🔑",
 			"link": "https://github.com/Taskov1ch/LimboCrates",
 			"technologies": ["PHP (PocketMine-MP 5)"],
@@ -71,6 +71,14 @@
 			"link": "https://github.com/TrebuyuGotovyiServerBlyat/TGSB",
 			"technologies": ["Bash"],
 			"tags": ["stable"]
+		},
+		{
+			"title": "py-limbo",
+			"description": "windows limbo keys (Hello again GD players).",
+			"icon": "🗝",
+			"link": "https://github.com/Taskov1ch/py-limbo",
+			"technologies": ["Python (PyQt6, pygame, pywin32)"],
+			"tags": ["stable", "idk"]
 		}
 	],
 	"links": [
