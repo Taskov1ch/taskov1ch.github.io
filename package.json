@@ -10,7 +10,8 @@
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
 		"format": "prettier --write .",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d dist"
+		"deploy": "gh-pages -d dist",
+		"gh-deploy": "gh-pages -d dist -u \"github-actions-bot <actions@github.com>\" -r https://x-access-token:${GITHUB_TOKEN}@github.com/taskov1ch/taskov1ch.github.io.git"
 	},
 	"dependencies": {
 		"@heroicons/react": "^2.2.0",
