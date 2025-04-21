@@ -79,6 +79,15 @@
 			"link": "https://github.com/Taskov1ch/py-limbo",
 			"technologies": ["Python (PyQt6, pygame, pywin32)"],
 			"tags": ["stable", "idk"]
+		},
+		{
+			"title": "Anixart Desktop",
+			"description": "This is the same Anixart App, but ported to Windows.",
+			"icon": "🐈",
+			"link": "#",
+			"technologies": ["Python (Flet)"],
+			"tags": ["soon", "dev"],
+			"disabled": true
 		}
 	],
 	"links": [
