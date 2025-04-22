@@ -16,8 +16,6 @@ const iconMap = {
 	bash: "devicon-bash-plain"
 };
 
-const fallbackSvgPath = "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4";
-
 export function getLanguageIconInfo(languageString) {
 	if (!languageString) {
 		return null;
@@ -36,6 +34,6 @@ export function getLanguageIconInfo(languageString) {
 	if (foundIconClass) {
 		return { type: "devicon", class: foundIconClass };
 	} else {
-		return { type: "svg", path: fallbackSvgPath };
+		return null;
 	}
 }

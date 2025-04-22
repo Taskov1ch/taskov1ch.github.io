@@ -59,8 +59,10 @@ function Card({ item, openCryptoModal }) {
 					<div className="mt-2 flex items-center flex-wrap gap-x-1.5 gap-y-1 text-xs text-lighter-blue">
 						{technologies.map((tech, index) => {
 							const iconInfo = getLanguageIconInfo(tech);
-							const cryptoIcon = tech.length <= 4 ? <CryptoIcon ticker={tech} currencyName={tech} className="w-4 h-4" /> : null;
-							const iconToRender = cryptoIcon || (iconInfo ? (iconInfo.type === 'devicon' ? (<i className={`${iconInfo.class} text-sm leading-none`} title={tech}></i>) : iconInfo.type === 'emoji' ? (<span className="text-sm leading-none" title={tech}>{iconInfo.content}</span>) : null) : null);
+								const iconToRender = iconInfo?.type === 'devicon'
+								? <i className={`${iconInfo.class} text-sm leading-none`} title={tech}></i>
+								: null;
+
 							return (
 								<React.Fragment key={tech}>
 									{index > 0 && <span className="mx-1 font-semibold text-accent-blue">+</span>}
