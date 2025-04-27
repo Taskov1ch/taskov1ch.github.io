@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Card from "./Card";
+import CopyCard from './CopyCard';
 
 function ContentArea({ currentSection, data, openCryptoModal }) {
 	const { t } = useTranslation();
@@ -11,7 +12,6 @@ function ContentArea({ currentSection, data, openCryptoModal }) {
 
 	let itemsToDisplay = [];
 	let sectionTitleKey = "";
-	let CardComponent = Card;
 
 	switch (currentSection) {
 		case "projects":
@@ -39,13 +39,16 @@ function ContentArea({ currentSection, data, openCryptoModal }) {
 			)}
 			<div className="grid grid-cols-1 gap-4 sm:gap-6">
 				{itemsToDisplay.length > 0 ? (
-					itemsToDisplay.map((item, index) => (
-						<CardComponent
-							key={`${currentSection}-${index}`}
-							item={item}
-							openCryptoModal={openCryptoModal}
-						/>
-					))
+					itemsToDisplay.map((item, index) => {
+						const key = `${currentSection}-${index}-${item.platform || item.title || item.method}`;
+
+						if (item.type === 'copy') {
+							return <CopyCard key={key} item={item} />;
+						} else {
+							// Для всех остальных типов (link, crypto или неопределен) используем Card
+							return <Card key={key} item={item} openCryptoModal={openCryptoModal} />;
+						}
+					})
 				) : (
 					<p className="text-lighter-blue col-span-full text-center">
 						No items to display in this section yet.

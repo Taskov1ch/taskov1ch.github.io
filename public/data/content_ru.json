@@ -95,34 +95,34 @@
 			"platform": "Telegram",
 			"icon": "🛫",
 			"link": "https://t.me/taskov1ch",
-			"username": "t.me/taskov1ch",
+			"username": "@taskov1ch",
 			"tags": ["active"]
 		},
 		{
 			"platform": "GitHub",
 			"icon": "🐱",
 			"link": "https://github.com/taskov1ch",
-			"username": "github.com/taskov1ch"
+			"username": "taskov1ch"
 		},
 		{
 			"platform": "ВКонтакте",
 			"icon": "📮",
 			"link": "https://vk.com/taskov1ch",
-			"username": "vk.com/taskov1ch",
+			"username": "@taskov1ch",
 			"tags": ["active"]
 		},
 		{
 			"platform": "Talk 24serv #1",
 			"icon": "👥",
 			"link": "https://talk.24serv.pro/u/dinner_bone",
-			"username": "talk.24serv.pro/u/dinner_bone",
+			"username": "Dinner_Bone",
 			"tags": ["active"]
 		},
 		{
 			"platform": "Talk 24serv #2",
 			"icon": "👥",
 			"link": "https://talk.24serv.pro/u/dinnerbone",
-			"username": "talk.24serv.pro/u/dinnerbone",
+			"username": "DinnerBone",
 			"tags": ["active"]
 		},
 		{
@@ -135,22 +135,51 @@
 			"platform": "YouTube",
 			"icon": "📺",
 			"link": "https://youtube.com/@taskov1ch",
-			"username": "youtube.com/@taskov1ch",
+			"username": "@taskov1ch",
 			"tags": ["rarely"]
 		},
 		{
 			"platform": "Steam",
 			"icon": "🎮",
 			"link": "https://steamcommunity.com/id/taskov1ch",
-			"username": "steamcommunity.com/id/taskov1ch",
+			"username": "taskov1ch",
 			"tags": ["passive"]
 		},
 		{
 			"platform": "Pinterest",
 			"icon": "🖼",
 			"link": "https://www.pinterest.com/taskov1ch",
-			"username": "pinterest.com/taskov1ch",
+			"username": "taskov1ch",
 			"tags": ["rarely"]
+		},
+		{
+			"platform": "Anixart (Anime)",
+			"icon": "📖",
+			"link": "https://anixart.tv/profile/1932711",
+			"username": "Яндекс Клавиатура",
+			"tags": ["active"]
+		},
+		{
+			"platform": "Mobile Legends: Bang Bang",
+			"icon": "⚔️",
+			"type": "copy",
+			"displayValue": "Яндекс Маг (ID: 1666670976 | ID сервера: 6816)",
+			"value": "1666670976 (6816)",
+			"tags": ["active"]
+		},
+		{
+			"platform": "Honkai: Star Rail",
+			"icon": "🌌",
+			"link": "https://act.hoyolab.com/app/community-game-records-sea/rpg/index.html?bbs_presentation_style=fullscreen&gid=6&user_id=438428489&utm_source=share&utm_medium=link&bbs_theme=dark&bbs_theme_device=1&utm_campaign=web#/hsr",
+			"username": "YandexTrain (Сервер: Europe | UID: 720570977)",
+			"tags": ["passive"],
+			"actions": [
+				{
+					"type": "copy",
+					"value": "720570977",
+					"label": "Скопировать UID"
+				}
+			]
 		}
 	],
 	"donate": [
