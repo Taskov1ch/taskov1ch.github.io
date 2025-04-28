@@ -3,7 +3,7 @@
 	"defaultTitle": "Taskov1ch | ...",
 	"nav": {
 		"projects": "Projects",
-		"links": "Contacts",
+		"links": "Links",
 		"donate": "Donate"
 	},
 	"name": "Taskov1ch 🇰🇬",
@@ -41,6 +41,7 @@
 		"active": "Active",
 		"passive": "Passive",
 		"rarely": "Rarely",
-		"soon": "Soon..."
+		"soon": "Soon...",
+		"not_playing": "Not playing"
 	}
 }

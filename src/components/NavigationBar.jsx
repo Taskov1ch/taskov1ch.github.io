@@ -10,7 +10,7 @@ function NavigationBar({ currentSection, setCurrentSection }) {
 			case "projects":
 				return "💼";
 			case "links":
-				return "📞";
+				return "🔗";
 			case "donate":
 				return "💖";
 			default:
@@ -27,10 +27,9 @@ function NavigationBar({ currentSection, setCurrentSection }) {
 						onClick={() => setCurrentSection(section)}
 						className={`
               flex flex-col items-center justify-center px-3 py-1 rounded-md transition-all duration-200 ease-in-out focus:outline-none
-              ${
-								currentSection === section
-									? "text-accent-blue scale-110"
-									: "text-lighter-blue hover:text-light-blue"
+              ${currentSection === section
+								? "text-accent-blue scale-110"
+								: "text-lighter-blue hover:text-light-blue"
 							}
             `}
 						aria-current={currentSection === section ? "page" : undefined}

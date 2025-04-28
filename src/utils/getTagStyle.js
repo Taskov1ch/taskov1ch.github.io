@@ -17,6 +17,8 @@ export function getTagStyle(tag) {
 		active: { bgClass: "bg-sky-600", textClass: "text-sky-100" },
 		passive: { bgClass: "bg-slate-500", textClass: "text-slate-100" },
 		rarely: { bgClass: "bg-gray-700", textClass: "text-gray-300" },
+
+		not_playing: { bgClass: "bg-gray-700", textClass: "text-gray-300" },
 	};
 
 	const style = tagStyles[lowerTag];

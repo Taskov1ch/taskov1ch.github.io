@@ -102,7 +102,7 @@
 			"platform": "GitHub",
 			"icon": "🐱",
 			"link": "https://github.com/taskov1ch",
-			"username": "taskov1ch"
+			"username": "Taskov1ch"
 		},
 		{
 			"platform": "ВКонтакте",
@@ -142,21 +142,21 @@
 			"platform": "Steam",
 			"icon": "🎮",
 			"link": "https://steamcommunity.com/id/taskov1ch",
-			"username": "taskov1ch",
+			"username": "Taskov1ch",
 			"tags": ["passive"]
 		},
 		{
 			"platform": "Pinterest",
 			"icon": "🖼",
 			"link": "https://www.pinterest.com/taskov1ch",
-			"username": "taskov1ch",
+			"username": "Taskov1ch",
 			"tags": ["rarely"]
 		},
 		{
 			"platform": "Anixart (Anime)",
 			"icon": "📖",
 			"link": "https://anixart.tv/profile/1932711",
-			"username": "Яндекс Клавиатура",
+			"username": "Яндекс Клавиатура (ID: 1932711)",
 			"tags": ["active"]
 		},
 		{
@@ -180,6 +180,22 @@
 					"label": "Скопировать UID"
 				}
 			]
+		},
+		{
+			"platform": "Guardian Tales",
+			"icon": "🛡️",
+			"type": "copy",
+			"displayValue": "F2P_Cyka (Хэштег: #T3CAB)",
+			"value": "T3CAB",
+			"tags": ["passive"]
+		},
+		{
+			"platform": "Mobile Legends: Adventure",
+			"icon": "💳",
+			"type": "copy",
+			"displayValue": "npoBepka (ID: 46091404 | ID сервера: 70546)",
+			"value": "46091404 (70546)",
+			"tags": ["not_playing"]
 		}
 	],
 	"donate": [
