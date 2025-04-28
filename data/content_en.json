@@ -102,7 +102,7 @@
 			"platform": "GitHub",
 			"icon": "🐱",
 			"link": "https://github.com/taskov1ch",
-			"username": "taskov1ch"
+			"username": "Taskov1ch"
 		},
 		{
 			"platform": "VK",
@@ -129,7 +129,7 @@
 			"platform": "MyNickname",
 			"icon": "🏷",
 			"link": "https://mynickname.com/taskov1ch",
-			"username": "taskov1ch"
+			"username": "mynickname.com/taskov1ch"
 		},
 		{
 			"platform": "YouTube",
@@ -142,22 +142,15 @@
 			"platform": "Steam",
 			"icon": "🎮",
 			"link": "https://steamcommunity.com/id/taskov1ch",
-			"username": "taskov1ch",
+			"username": "Taskov1ch",
 			"tags": ["passive"]
 		},
 		{
 			"platform": "Pinterest",
 			"icon": "🖼",
 			"link": "https://www.pinterest.com/taskov1ch",
-			"username": "taskov1ch",
+			"username": "Taskov1ch",
 			"tags": ["rarely"]
-		},
-		{
-			"platform": "Anixart (Anime)",
-			"icon": "📖",
-			"link": "https://anixart.tv/profile/1932711",
-			"username": "Яндекс Клавиатура",
-			"tags": ["active"]
 		},
 		{
 			"platform": "Mobile Legends: Bang Bang",
@@ -180,6 +173,22 @@
 					"label": "Copy UID"
 				}
 			]
+		},
+		{
+			"platform": "Guardian Tales",
+			"icon": "🛡️",
+			"type": "copy",
+			"displayValue": "F2P_Cyka (Hashtag: #T3CAB)",
+			"value": "T3CAB",
+			"tags": ["passive"]
+		},
+		{
+			"platform": "Mobile Legends: Adventure",
+			"icon": "💳",
+			"type": "copy",
+			"displayValue": "npoBepka (ID: 46091404 | Server ID: 70546)",
+			"value": "46091404 (70546)",
+			"tags": ["not_playing"]
 		}
 	],
 	"donate": [
