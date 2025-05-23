@@ -86,8 +86,16 @@
 			"icon": "🐈",
 			"link": "#",
 			"technologies": ["Python (Flet)"],
-			"tags": ["soon", "dev"],
+			"tags": ["soon", "paused"],
 			"disabled": true
+		},
+		{
+			"title": "Aurion",
+			"description": "PvP сервер для Minecraft BE.",
+			"icon": "⚔",
+			"link": "https://taskov1ch.github.io/Aurion/",
+			"technologies": [""],
+			"tags": ["soon", "dev"]
 		}
 	],
 	"links": [
