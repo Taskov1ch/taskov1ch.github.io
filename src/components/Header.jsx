@@ -48,7 +48,7 @@ function Header() {
           {/* --- НОВЫЕ ССЫЛКИ --- */}
           <NavLink to="/links" className="nav-link" onClick={closeMenu}>Ссылки</NavLink>
           <NavLink to="/contacts" className="nav-link" onClick={closeMenu}>Контакты</NavLink>
-          <NavLink to="/contacts" className="nav-link" onClick={closeMenu}>Контакты</NavLink>
+          <NavLink to="/donate" className="nav-link" onClick={closeMenu}>Задонатить</NavLink>
           {/* <NavLink to="/donate" className="nav-link" onClick={closeMenu}>Задонатить</NavLink> <-- Новая ссылка */}
           {/* ------------------- */}
         </div>
