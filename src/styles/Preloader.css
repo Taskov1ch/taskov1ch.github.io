@@ -1,0 +1,93 @@
+.preloader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+  /* Уменьшаем время перехода самого оверлея */
+  transition: opacity 0.7s ease-in-out, visibility 0s linear 0.7s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.preloader-overlay.closing {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease-in-out, visibility 0s linear 0.7s;
+}
+
+.heart-container {
+  /* Ускоряем переход для сердца */
+  transition: opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- Более динамичный переход сердца --- */
+.heart-container.exiting {
+  opacity: 0;
+  transform: scale(0.3) rotate(45deg); /* Уменьшается и поворачивается */
+}
+
+.heart-icon {
+  width: 80px;
+  height: 80px;
+  color: var(--primary-blue);
+}
+
+/* --- Устанавливаем 90 BPM (60 / 90 = 0.667s) --- */
+.heart-container.pulsing .heart-icon {
+  animation: pulse 0.667s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); } /* Чуть сильнее пульсация */
+  100% { transform: scale(1); }
+}
+
+/* --- Текст --- */
+.continue-text {
+  margin-top: 30px;
+  font-size: 1.6rem; /* Чуть крупнее */
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translateY(15px); /* Начнет чуть ниже */
+  /* Ускоряем появление и добавляем filter */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out;
+  letter-spacing: 1px;
+  font-weight: 300;
+  filter: blur(5px); /* Начнет размытым */
+}
+
+/* --- Видимый текст с мерцанием --- */
+.continue-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  /* Добавляем анимацию мерцания, начинающуюся после появления */
+  animation: text-flicker 1.8s infinite ease-in-out 0.5s;
+}
+
+/* --- Анимация "манящего" мерцания --- */
+@keyframes text-flicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px rgba(0, 123, 255, 0.2),
+      0 0 10px rgba(0, 123, 255, 0.2);
+  }
+  50% {
+    opacity: 0.85;
+    text-shadow:
+      0 0 8px rgba(0, 123, 255, 0.5),
+      0 0 20px rgba(0, 123, 255, 0.4);
+  }
+}

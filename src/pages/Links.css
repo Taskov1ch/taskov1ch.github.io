@@ -1,0 +1,33 @@
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.links-list li a {
+  display: block;
+  padding: 1.5rem;
+  background-color: var(--bg-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2em;
+  color: var(--link-color);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.links-list li a:hover {
+  transform: scale(1.05);
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.links-list li a i { /* Стили для иконок */
+  margin-right: 10px;
+  display: block; /* Иконка над текстом */
+  font-size: 2em; /* Увеличить иконку */
+  margin-bottom: 0.5rem; /* Отступ под иконкой */
+}

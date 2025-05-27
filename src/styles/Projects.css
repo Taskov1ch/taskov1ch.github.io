@@ -1,0 +1,161 @@
+.projects-container {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.projects-container h2 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+  text-align: center;
+  border-bottom: 2px solid var(--primary-blue);
+  display: inline-block;
+  padding-bottom: 10px;
+  width: 100%;
+  text-align: left;
+  border-bottom-color: var(--border-color); /* Сделать линию менее яркой */
+}
+
+.projects-container h2:first-of-type {
+    border-bottom-color: var(--primary-blue); /* Выделить первую */
+    color: var(--primary-blue);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* Стили карточки */
+.project-card {
+  background-color: var(--light-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Занять всю высоту ячейки грида */
+  text-decoration: none; /* Убрать подчеркивание у ссылки */
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  position: relative; /* Для бэйджа */
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 123, 255, 0.2);
+  border-color: var(--primary-blue);
+}
+
+.card-image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .card-cover {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 123, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.view-project-btn {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+
+.card-content {
+  padding: 20px;
+  flex-grow: 1; /* Позволить контенту расти */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  flex-grow: 1; /* Занять доступное пространство */
+}
+
+.card-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto; /* Прижать теги к низу */
+}
+
+.lang-tag {
+  background-color: var(--primary-blue);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Главный проект */
+.main-project {
+  border: 2px solid var(--primary-blue);
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.15);
+}
+
+.main-project-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-blue);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 5;
+}
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+    }
+    .projects-container h2 {
+        font-size: 2rem;
+    }
+}

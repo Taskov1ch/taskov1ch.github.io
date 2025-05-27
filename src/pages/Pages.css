@@ -1,0 +1,135 @@
+/* Общие стили для страниц */
+.page-container {
+    padding: 1rem;
+}
+
+.page-container h1 {
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+/* Стили для страницы 'Обо мне' */
+.about-hero {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.about-hero h1 {
+    border: none;
+    margin-bottom: 0.5rem;
+}
+
+.about-hero h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-list li {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.experience-item {
+    margin-bottom: 1.5rem;
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
+}
+
+.experience-item .date {
+    font-style: italic;
+    color: #7f8c8d; /* Сероватый */
+    margin-bottom: 0.5rem;
+}
+
+.experience-item ul {
+    list-style-position: inside;
+    margin-left: 10px;
+}
+
+
+/* Стили для страницы 'Проекты' */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card img {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    margin-bottom: 1rem;
+}
+
+.project-card h3 {
+    margin-top: 1rem;
+}
+
+.project-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+}
+
+.project-links .secondary {
+    background-color: var(--secondary-color);
+}
+.project-links .secondary:hover {
+    background-color: #34495e;
+}
+
+
+/* Стили для страницы 'Контакты' */
+.contact-info h2 {
+    margin-bottom: 0.5rem;
+}
+
+.social-links-list {
+    list-style: none;
+}
+
+.social-links-list li {
+    margin-bottom: 0.5rem;
+}
+
+.social-links-list a {
+    font-size: 1.1rem;
+}
+
+/* Стили для страницы 'Ссылки' */
+.links-list {
+     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.link-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.link-card a {
+    margin-top: 1rem;
+    align-self: flex-start; /* Кнопка будет внизу слева */
+}
+
+/* Адаптивность для страниц */
+@media (max-width: 768px) {
+    .projects-grid, .links-list {
+        grid-template-columns: 1fr; /* Один столбец на мобильных */
+    }
+}

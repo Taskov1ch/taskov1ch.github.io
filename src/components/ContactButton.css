@@ -1,0 +1,36 @@
+.contact-button {
+  background-color: var(--card-background);
+  color: var(--primary-text);
+  border: 1px solid var(--border-color);
+  padding: 15px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-size: 1.1em;
+  margin: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contact-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-name {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.contact-value {
+  color: var(--highlight-color);
+}
+
+.contact-button:hover .contact-value {
+    color: var(--primary-text);
+}

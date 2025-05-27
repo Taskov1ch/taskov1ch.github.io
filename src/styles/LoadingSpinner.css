@@ -1,0 +1,22 @@
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Занимает место обложки */
+  height: 100%; /* Занимает место обложки */
+}
+
+.spinner-circle {
+  width: 25px; /* Размер кружка */
+  height: 25px;
+  border: 3px solid rgba(0, 123, 255, 0.3); /* Цвет фона кружка - полупрозрачный синий */
+  border-top-color: var(--primary-blue); /* Цвет активной части - яркий синий */
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,53 @@
+/* src/assets/ButtonsPage.css */
+.buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact-button {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-bg); /* Станет transparent */
+  border: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.contact-button:hover {
+  /* transform: translateY(-3px); УДАЛЕНО */
+  /* box-shadow: 0 6px 12px rgba(88, 166, 255, 0.15); УБРАНО */
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background-color: rgba(88, 166, 255, 0.05); /* Легкая подсветка при наведении */
+}
+
+.button-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.button-username {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.link-button .button-name {
+    font-size: 1.2rem;
+}

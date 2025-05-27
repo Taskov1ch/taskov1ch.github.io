@@ -1,0 +1,27 @@
+.site-footer {
+  background-color: #0a0a0a; /* Еще темнее, чем основной фон (#121212) */
+  padding: 30px 20px; /* Увеличим отступы */
+  margin-top: 80px; /* Отступ сверху, чтобы отделить от контента */
+  border-top: 1px solid #222; /* Тонкая верхняя граница */
+  text-align: center;
+  color: #666; /* Более тусклый цвет для текста */
+  font-size: 0.85rem; /* Маленький шрифт */
+  line-height: 1.5;
+  width: 100%;
+}
+
+.site-footer p {
+  margin: 0;
+  font-style: italic; /* Можно добавить курсив для юмора */
+}
+
+/* Можно добавить стили для ссылок, если они появятся */
+.site-footer a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--primary-blue);
+}

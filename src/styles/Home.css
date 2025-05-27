@@ -1,0 +1,92 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  min-height: calc(100vh - 190px); /* 100vh - header - padding */
+  justify-content: center;
+}
+
+.home-container h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.highlight {
+  color: var(--primary-blue);
+}
+
+.highlight-python {
+    color: #ffd343; /* Цвет Python */
+    font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.about-text {
+  max-width: 700px;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--primary-blue);
+  color: #fff;
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: 2px solid var(--primary-blue);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-blue);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .home-container h1 {
+    font-size: 2.8rem;
+  }
+  .subtitle {
+    font-size: 1.3rem;
+  }
+  .about-text {
+      font-size: 1rem;
+      text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container h1 {
+    font-size: 2.2rem;
+  }
+   .subtitle {
+    font-size: 1.1rem;
+  }
+  .cta-button {
+      padding: 12px 25px;
+      font-size: 1rem;
+  }
+}

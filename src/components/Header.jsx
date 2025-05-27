@@ -1,30 +1,66 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import '../styles/Header.css';
 
-const avatarUrl = "/images/avatar.webp";
-
+const getPageTitle = (pathname) => {
+  switch (pathname) {
+    case '/': return 'Обо мне';
+    case '/projects': return 'Мои Проекты';
+    case '/links': return 'Ссылки';
+    case '/contacts': return 'Контакты';
+    case '/donate': return 'Задонатить'; // <-- Новая страница
+    default: return 'Taskov1ch';
+  }
+};
 function Header() {
-	const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const pageTitle = getPageTitle(location.pathname);
 
-	return (
-		<header className="fixed top-0 left-0 right-0 z-30 h-[180px] flex flex-col items-center bg-dark-blue">
-			<div className="absolute inset-x-0 top-0 h-[140px] bg-header-banner bg-cover bg-center opacity-30 z-0">
-				<div className="absolute inset-0 bg-gradient-to-b from-dark-blue via-transparent to-dark-blue"></div>
-			</div>
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
-			<div className="relative mt-[-50px] z-10">
-				<img
-					src={avatarUrl}
-					alt="Developer Avatar"
-					className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-dark-blue shadow-lg bg-navy-blue object-cover"
-				/>
-			</div>
-			<div className="relative z-10 text-center mt-1">
-				<h1 className="text-lg sm:text-xl font-bold text-light-blue">{t("name")}</h1>
-				<p className="text-xs text-lighter-blue">{t("description")}</p>
-			</div>
-		</header>
-	);
+  useEffect(() => {
+    // Если меню открыто, запрещаем скролл body
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Иначе разрешаем
+      document.body.style.overflow = 'auto';
+    }
+
+    // Функция очистки: убедимся, что скролл восстановится,
+    // если компонент будет размонтирован
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
+  return (
+    <header className="header">
+      <nav className="navbar container">
+        <div className="nav-logo-placeholder"></div>
+        <div className="page-title-mobile">{pageTitle}</div>
+
+        <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
+          <NavLink to="/" className="nav-link" onClick={closeMenu}>Обо мне</NavLink>
+          <NavLink to="/projects" className="nav-link" onClick={closeMenu}>Проекты</NavLink>
+          {/* --- НОВЫЕ ССЫЛКИ --- */}
+          <NavLink to="/links" className="nav-link" onClick={closeMenu}>Ссылки</NavLink>
+          <NavLink to="/contacts" className="nav-link" onClick={closeMenu}>Контакты</NavLink>
+          <NavLink to="/contacts" className="nav-link" onClick={closeMenu}>Контакты</NavLink>
+          {/* <NavLink to="/donate" className="nav-link" onClick={closeMenu}>Задонатить</NavLink> <-- Новая ссылка */}
+          {/* ------------------- */}
+        </div>
+
+        <div className={`hamburger ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </div>
+      </nav>
+    </header>
+  );
 }
 
 export default Header;

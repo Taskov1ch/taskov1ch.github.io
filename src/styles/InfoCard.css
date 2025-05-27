@@ -1,0 +1,131 @@
+.info-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Нужно для позиционирования фидбека */
+  overflow: hidden;
+}
+
+.info-card:hover {
+  border-color: var(--primary-blue);
+  background-color: #2a2a3a;
+}
+
+.info-card-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 25px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover .info-card-icon {
+    transform: scale(1.1);
+}
+
+.info-card-content {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.info-card-content h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+}
+
+.info-card-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* Убираем стили .copy-value и .copy-button */
+
+/* Стили для иконки действия (стрелка или копирование) */
+.info-card-action-icon {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+  margin-left: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  opacity: 0.6;
+}
+.info-card-action-icon.copy-icon {
+    font-size: 1.5rem; /* Иконка копирования может быть меньше */
+}
+
+.info-card:hover .info-card-action-icon.arrow-icon {
+    transform: translateX(5px);
+    color: var(--primary-blue);
+    opacity: 1;
+}
+.info-card:hover .info-card-action-icon.copy-icon {
+    transform: scale(1.1);
+    color: var(--primary-blue);
+    opacity: 1;
+}
+
+/* Стили для карточки с копированием */
+.info-card.copyable {
+    cursor: copy; /* Курсор для копирования */
+}
+
+/* Индикатор "Скопировано!" */
+.copied-feedback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1DB954; /* Зеленый */
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  z-index: 5;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  /* Анимация появления и исчезновения */
+  animation: feedback-fade 2s forwards ease-in-out;
+}
+
+@keyframes feedback-fade {
+  0% { opacity: 0; transform: translate(-50%, -30%); } /* Начинаем чуть выше и невидимо */
+  15% { opacity: 1; transform: translate(-50%, -50%); } /* Появляемся */
+  85% { opacity: 1; transform: translate(-50%, -50%); } /* Держимся */
+  100% { opacity: 0; transform: translate(-50%, -70%); } /* Исчезаем вверх */
+}
+
+/* Стили для контейнеров страниц */
+.page-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-container h2 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 20px; /* Уменьшим отступ, т.к. добавили p */
+    text-align: center;
+    border-bottom: 2px solid var(--primary-blue);
+    display: inline-block;
+    padding-bottom: 10px;
+    width: 100%;
+}
+/* ... (Адаптивные стили @media как раньше) ... */
+@media (max-width: 768px) {
+    .page-container h2 { font-size: 2rem; }
+    .info-card { padding: 15px 20px; }
+    .info-card-icon { width: 35px; height: 35px; margin-right: 15px; }
+    .info-card-content h3 { font-size: 1.1rem; }
+    .info-card-content p { font-size: 0.85rem; }
+    .info-card-action-icon { font-size: 1.5rem; margin-left: 10px; }
+    .copied-feedback { font-size: 0.8rem; padding: 6px 12px; }
+}

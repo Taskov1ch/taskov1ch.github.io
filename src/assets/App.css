@@ -1,0 +1,23 @@
+/* src/assets/App.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1; /* Занимает все доступное пространство */
+  padding: var(--content-padding);
+  padding-top: calc(var(--navbar-height) + var(--content-padding));
+  max-width: 1200px; /* Ограничиваем ширину контента */
+  margin: 0 auto; /* Центрируем */
+  width: 100%;
+}
+
+/* Медиа-запрос для мобильных */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
+  }
+}

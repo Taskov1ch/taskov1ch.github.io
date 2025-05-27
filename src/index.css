@@ -1,49 +1,68 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --primary-blue: #007bff;
+  --secondary-blue: #0056b3;
+  --dark-bg: #121212;
+  --light-bg: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b3b3b3;
+  --border-color: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-	@apply bg-dark-blue text-light-blue font-sans;
-
-	margin-top: 240px;
-	margin-bottom: 50px;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden; /* Предотвратить горизонтальную прокрутку */
 }
 
-.particle-effect-container {
-	z-inxed: 999;
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-header {
-	padding: 130px;
+a:hover {
+  color: var(--secondary-blue);
 }
 
-::-webkit-scrollbar {
-	width: 8px;
-}
-::-webkit-scrollbar-track {
-	background: #0a192f;
-}
-::-webkit-scrollbar-thumb {
-	background-color: #112240;
-	border-radius: 10px;
-	border: 2px solid #0a192f;
-}
-::-webkit-scrollbar-thumb:hover {
-	background-color: #233554;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-.preloader-spinner {
-	width: 48px;
-	height: 48px;
-	border-width: 5px;
-	border-style: solid;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-	border-color: theme("colors.lighter-blue");
+/* Анимация "дышащего" градиента */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #0a192f 0%, #172a45 50%, #003366 100%);
+  background-size: 400% 400%;
+  animation: breathingGradient 15s ease infinite;
+  z-index: -1; /* Поместить под контент */
+  opacity: 0.6; /* Сделать его не слишком ярким */
+}
 
-	border-bottom-color: theme("colors.accent-blue");
-	border-radius: 50%;
-	display: inline-block;
-	box-sizing: border-box;
-
-	animation: preloader-rotation 1s linear infinite;
+@keyframes breathingGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
