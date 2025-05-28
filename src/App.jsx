@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-// ... (другие импорты)
+
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import Contacts from "./pages/Contacts"; // <-- Импорт Контактов
-import Links from "./pages/Links"; // <-- Импорт Ссылок
+import Contacts from "./pages/Contacts";
+import Links from "./pages/Links";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -72,7 +72,7 @@ function App() {
                 </motion.div>
               }
             />
-            {/* --- НОВЫЕ РОУТЫ --- */}
+
             <Route
               path='/links'
               element={
@@ -115,7 +115,6 @@ function App() {
                 </motion.div>
               }
             />
-            {/* ------------------- */}
           </Routes>
         </AnimatePresence>
       </main>

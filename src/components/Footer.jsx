@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Footer.css"; // Импортируем стили
+import "../styles/Footer.css";
 
 function Footer() {
   return (
@@ -8,7 +8,6 @@ function Footer() {
         <p>
           Сделано с помощью Gemini, т.к Taskov1ch полный ноль в фронтенде :)
         </p>
-        {/* Можно добавить ссылки на соцсети или GitHub, если захотите */}
       </div>
     </footer>
   );

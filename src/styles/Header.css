@@ -3,9 +3,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(18, 18, 18, 0.8); /* Полупрозрачный фон */
-  backdrop-filter: blur(10px); /* Эффект размытия */
-  z-index: 1000; /* Хедер всегда сверху */
+  background-color: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
   border-bottom: 1px solid var(--border-color);
   transition: background-color 0.3s ease;
 }
@@ -18,7 +18,6 @@
 }
 
 .nav-logo-placeholder {
-  /* Оставляем его, чтобы бургер был справа */
 }
 
 .nav-menu {
@@ -33,15 +32,15 @@
   position: relative;
   transition:
     color 0.3s ease,
-    transform 0.3s ease; /* Добавляем transform */
-  text-transform: uppercase; /* Можно сделать буквы заглавными */
+    transform 0.3s ease;
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .nav-link::after {
   content: "";
   position: absolute;
-  bottom: -5px; /* Немного опустить линию */
+  bottom: -5px;
   left: 0;
   width: 0;
   height: 2px;
@@ -52,7 +51,7 @@
 .nav-link:hover,
 .nav-link.active {
   color: var(--text-primary);
-  transform: translateY(-2px); /* Легкий подъем при наведении */
+  transform: translateY(-2px);
 }
 
 .nav-link.active::after,
@@ -63,7 +62,7 @@
 .hamburger {
   display: none;
   cursor: pointer;
-  z-index: 1002; /* Гамбургер должен быть НАД меню */
+  z-index: 1002;
   transition: transform 0.3s ease;
 }
 
@@ -73,24 +72,23 @@
 
 .bar {
   display: block;
-  width: 28px; /* Чуть шире */
+  width: 28px;
   height: 3px;
-  margin: 6px auto; /* Чуть больше отступ */
-  transition: all 0.4s ease-in-out; /* Увеличим время анимации */
+  margin: 6px auto;
+  transition: all 0.4s ease-in-out;
   background-color: var(--text-primary);
-  border-radius: 2px; /* Слегка скруглим */
+  border-radius: 2px;
 }
-/* === Стили для мобильного меню (бургер) === */
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
-    position: fixed; /* Фиксируем, чтобы оставался на месте */
-    top: 22px; /* Подбираем позицию */
-    right: 20px; /* Подбираем позицию */
-    z-index: 1002; /* Гамбургер должен быть НАД меню */
+    position: fixed;
+    top: 22px;
+    right: 20px;
+    z-index: 1002;
   }
 
-  /* Анимация превращения в крестик */
   .hamburger.active .bar:nth-child(2) {
     opacity: 0;
     transform: translateX(20px);
@@ -104,18 +102,16 @@
     transform: translateY(-9px) rotate(-45deg);
   }
 
-  /* Стили самого меню */
   .nav-menu {
     position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(1, 4, 10); /* Темно-синий полупрозрачный фон */
+    background-color: rgb(1, 4, 10);
 
-    /* --- Эффект размытия с префиксом --- */
-    -webkit-backdrop-filter: blur(15px); /* Для Saыыfari */
-    backdrop-filter: blur(15px); /* Стандартный */
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
 
     z-index: 1001;
 
@@ -124,14 +120,12 @@
     justify-content: center;
     align-items: center;
 
-    /* --- ИЗМЕНЕНИЯ ДЛЯ FADE-IN --- */
-    opacity: 0; /* Изначально полностью прозрачно */
-    visibility: hidden; /* Изначально скрыто и неактивно */
-    /* Плавный переход для opacity и мгновенный для visibility (с задержкой) */
+    opacity: 0;
+    visibility: hidden;
+
     transition:
       opacity 0.4s ease-in-out,
       visibility 0s linear 0.4s;
-    /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
 
     border-top: none;
     padding-bottom: 0;
@@ -139,49 +133,43 @@
   }
 
   .nav-menu.active {
-    /* --- ИЗМЕНЕНИЯ ДЛЯ FADE-IN --- */
-    opacity: 1; /* Делаем видимым */
-    visibility: visible; /* Делаем активным */
-    /* Плавный переход для opacity и мгновенный для visibility */
+    opacity: 1;
+    visibility: visible;
+
     transition:
       opacity 0.4s ease-in-out,
       visibility 0s linear 0s;
-    /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
   }
 
-  /* Стили ссылок в мобильном меню */
   .nav-link {
     margin: 25px 0;
     font-size: 2.2rem;
     color: var(--text-primary);
     opacity: 0;
-    transform: translateY(15px); /* Небольшой сдвиг снизу */
-    /* --- Обновленный transition --- */
+    transform: translateY(15px);
+
     transition:
       color 0.3s ease,
       opacity 0.4s ease,
       transform 0.4s ease;
   }
 
-  /* Анимация появления ссылок при активном меню */
   .nav-menu.active .nav-link {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Убираем подчеркивание и подъем */
   .nav-link::after {
     display: none;
   }
   .nav-link:hover {
-    transform: translateY(0) scale(1.1); /* Увеличиваем при наведении */
+    transform: translateY(0) scale(1.1);
     color: var(--primary-blue);
   }
   .nav-link.active {
     color: var(--primary-blue);
   }
 
-  /* --- Задержка анимации для каждой ссылки (оставляем, как было, но подстраиваем под fade) --- */
   .nav-menu.active .nav-link:nth-child(1) {
     transition-delay: 0.3s;
   }
@@ -195,48 +183,42 @@
     transition-delay: 0.6s;
   }
 
-  /* Прячем placeholder на мобильных, т.к. бургер фиксирован */
   .nav-logo-placeholder {
     display: none;
   }
 
-  /* Убедимся, что navbar не мешает */
   .navbar {
-    justify-content: flex-end; /* Все к правому краю */
+    justify-content: flex-end;
   }
 }
-/* Добавьте это в src/styles/Header.css */
 
 .player-desktop-container {
   position: relative;
-  flex-grow: 1; /* Чтобы меню осталось справа */
+  flex-grow: 1;
 }
 
-/* Скрываем десктопный плеер на мобильных */
 @media (max-width: 768px) {
   .player-desktop-container .mini-player {
     display: none;
   }
   .player-desktop-container {
-    flex-grow: 0; /* Убираем растягивание */
-    display: none; /* Полностью скрываем контейнер */
+    flex-grow: 0;
+    display: none;
   }
 }
 
-/* Показываем десктопный плеер на десктопе (убираем дублирование из MiniPlayer.css) */
 @media (min-width: 769px) {
   .player-desktop-container .mini-player {
-    display: flex; /* Показываем */
-    position: static; /* Убираем абсолютное позиционирование */
-    transform: none; /* Сбрасываем transform */
+    display: flex;
+    position: static;
+    transform: none;
     width: auto;
-    max-width: 300px; /* Ограничиваем ширину */
-    left: auto; /* Сбрасываем */
-    top: auto; /* Сбрасываем */
+    max-width: 300px;
+    left: auto;
+    top: auto;
   }
 }
 
-/* Убедитесь, что navbar остается space-between */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -244,27 +226,22 @@
   height: 70px;
 }
 
-/* Убедитесь, что меню на десктопе не уезжает */
 @media (min-width: 769px) {
   .nav-menu {
-    margin-left: auto; /* Прижимает к правому краю */
+    margin-left: auto;
   }
 }
 
-/* ... (Ваши существующие стили для .header, .navbar, .nav-menu и т.д.) ... */
-
-/* --- Стили для заголовка страницы (по умолчанию скрыт) --- */
 .page-title-mobile {
-  display: none; /* Скрыт на десктопе */
-  font-size: 1.6rem; /* Размер как у заголовка */
+  display: none;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--text-primary);
-  /* Добавляем немного анимации при смене */
+
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
 }
 
-/* === Стили для мобильного меню (бургер) === */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -274,27 +251,20 @@
     z-index: 1002;
   }
 
-  /* ... (Стили для .hamburger.active, .nav-menu, .nav-link как раньше) ... */
-
-  /* --- Показываем заголовок на мобильных --- */
   .page-title-mobile {
     display: block;
-    position: absolute; /* Позиционируем относительно .navbar */
-    left: 20px; /* Отступ слева */
-    top: 50%; /* Выравниваем по центру */
-    transform: translateY(-50%); /* Точное выравнивание */
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  /* --- Скрываем placeholder на мобильных --- */
   .nav-logo-placeholder {
     display: none;
   }
 
-  /* --- Изменяем .navbar для мобильных --- */
   .navbar {
-    justify-content: center; /* Центрируем (т.к. заголовок и бургер позиционированы) */
-    position: relative; /* Чтобы .page-title-mobile позиционировался относительно него */
+    justify-content: center;
+    position: relative;
   }
-
-  /* ... (Остальные стили @media) ... */
 }

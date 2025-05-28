@@ -13,22 +13,20 @@ function Preloader({ onComplete }) {
   const [closing, setClosing] = useState(false);
 
   useEffect(() => {
-    // Уменьшаем время "загрузки" до 2 секунд
     const timer = setTimeout(() => {
       setLoading(false);
-      // Показываем текст быстрее, через 0.4 секунды после начала затухания сердца
+
       setTimeout(() => setShowText(true), 400);
-    }, 2000); // <-- Уменьшено с 2500 до 2000
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleClick = () => {
     if (showText && !closing) {
-      // <-- Добавим !closing, чтобы избежать повторных кликов
       setClosing(true);
-      // Уменьшаем время задержки перед полным исчезновением до 0.7 секунд
-      setTimeout(onComplete, 700); // <-- Уменьшено с 1000 до 700
+
+      setTimeout(onComplete, 700);
     }
   };
 
@@ -37,7 +35,6 @@ function Preloader({ onComplete }) {
       className={`preloader-overlay ${closing ? "closing" : ""}`}
       onClick={handleClick}
     >
-      {/* Добавляем класс 'exiting' для более динамичного перехода сердца */}
       <div className={`heart-container ${loading ? "pulsing" : "exiting"}`}>
         <HeartIcon />
       </div>

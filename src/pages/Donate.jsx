@@ -1,7 +1,7 @@
 import React from "react";
 import donationsData from "../data/donations.js";
 import InfoCard from "../components/InfoCard";
-import "../styles/InfoCard.css"; // Используем общие стили
+import "../styles/InfoCard.css";
 
 function Donate() {
   return (

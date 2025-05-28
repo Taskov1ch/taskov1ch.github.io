@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import LoadingSpinner from "./LoadingSpinner";
 import "../styles/MiniPlayer.css";
 
-// ... (Иконки остаются такими же) ...
 const PlayIcon = () => (
   <svg viewBox='0 0 24 24'>
     <path d='M8 5v14l11-7z'></path>
@@ -26,7 +25,6 @@ const NextIcon = () => (
   </svg>
 );
 
-// Принимаем spotifyLink вместо onOpenModal
 function MiniPlayer({ spotifyLink }) {
   const {
     currentTrack,
@@ -37,7 +35,7 @@ function MiniPlayer({ spotifyLink }) {
     nextTrack,
   } = useContext(AudioContext);
   const [isNearFooter, setIsNearFooter] = useState(false);
-  const playerRef = useRef(null); // <-- Ref для самого плеера
+  const playerRef = useRef(null);
 
   useEffect(() => {
     const triggerElement = document.getElementById(
@@ -45,13 +43,10 @@ function MiniPlayer({ spotifyLink }) {
     );
     if (!triggerElement) return;
 
-    // Сделаем отступ немного больше, чтобы плеер успел скрыться
-    // Например, 150px - это примерно высота футера + высота плеера
     const observerMargin = `-150px`;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Если триггер ВИДЕН, значит мы у футера -> СКРЫВАЕМ плеер
         setIsNearFooter(entry.isIntersecting);
       },
       {
@@ -66,11 +61,10 @@ function MiniPlayer({ spotifyLink }) {
   }, []);
 
   const handleControlClick = (e, action) => {
-    e.stopPropagation(); // <-- Важно: предотвращаем открытие ссылки при клике на кнопку
+    e.stopPropagation();
     action();
   };
 
-  // Функция для открытия ссылки Spotify
   const handleOpenSpotify = () => {
     if (spotifyLink) {
       window.open(spotifyLink, "_blank", "noopener,noreferrer");
@@ -93,7 +87,6 @@ function MiniPlayer({ spotifyLink }) {
       ref={playerRef}
       className={`mini-player ${isLoading ? "loading" : ""} ${isNearFooter ? "hidden" : ""}`}
     >
-      {/* --- Кликабельная область теперь вызывает handleOpenSpotify --- */}
       <div className='player-clickable-area' onClick={handleOpenSpotify}>
         <div className='player-cover-container'>
           <AnimatePresence mode='wait'>
@@ -130,7 +123,6 @@ function MiniPlayer({ spotifyLink }) {
           </AnimatePresence>
         </div>
       </div>
-      {/* ----------------------------------------------------------- */}
 
       <div className='player-controls'>
         <button

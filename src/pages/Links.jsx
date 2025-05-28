@@ -1,7 +1,7 @@
 import React from "react";
 import linksData from "../data/links.js";
 import InfoCard from "../components/InfoCard";
-import "../styles/InfoCard.css"; // Используем общие стили
+import "../styles/InfoCard.css";
 
 function Links() {
   return (

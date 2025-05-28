@@ -14,7 +14,6 @@
   margin-right: 10px;
 }
 
-/* Стили для формы (если решите добавить) */
 .contact-form {
   margin-top: 2rem;
   display: flex;
@@ -43,5 +42,5 @@
 }
 
 .contact-form button {
-  align-self: flex-start; /* Кнопка не растягивается */
+  align-self: flex-start;
 }

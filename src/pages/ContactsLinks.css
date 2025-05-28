@@ -19,7 +19,7 @@
 
 .buttons-grid {
   display: flex;
-  flex-wrap: wrap; /* Переносить кнопки на новую строку */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; /* Отступы между кнопками */
+  gap: 20px;
 }

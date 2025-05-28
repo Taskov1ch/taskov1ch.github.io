@@ -23,7 +23,6 @@ function ProjectCard({ project, isMain }) {
       </div>
 
       {isMain && <div className='main-project-badge'>⭐ Главный</div>}
-      {/* Блок "view-project-overlay" УДАЛЕН отсюда */}
     </a>
   );
 }

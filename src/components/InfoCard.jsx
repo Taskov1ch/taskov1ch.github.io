@@ -5,9 +5,7 @@ import "../styles/InfoCard.css";
 function InfoCard({ item }) {
   const [copied, setCopied] = useState(false);
 
-
   const handleCopy = (e) => {
-
     if (item.type !== "copy" || copied) return;
 
     e.preventDefault();
@@ -34,17 +32,16 @@ function InfoCard({ item }) {
       />
       <div className='info-card-content'>
         <h3>{item.title}</h3>
-        {/* Всегда показываем описание */}
+
         <p>{item.description}</p>
       </div>
-      {/* Показываем либо стрелку, либо иконку копирования */}
 
       <span
         className={`info-card-action-icon ${item.type === "copy" ? "copy-icon" : "arrow-icon"}`}
       >
         {item.type === "link" ? "→" : "📋"}
       </span>
-      {/* Сообщение "Скопировано" */}
+
       {copied && <span className='copied-feedback'>✓ Скопировано!</span>}
     </>
   );

@@ -6,14 +6,14 @@
 
 main {
   flex: 1;
-  /* --- ВОТ КЛЮЧЕВОЕ СВОЙСТВО --- */
-  padding-top: 90px; /* Увеличим до 90px (70px хедер + 20px отступ) */
-  /* ---------------------------- */
+
+  padding-top: 90px;
+
   padding-bottom: 40px;
-  padding-left: 20px; /* Добавим общие отступы по бокам */
-  padding-right: 20px; /* Добавим общие отступы по бокам */
-  position: relative; /* Для анимаций */
-  width: 100%; /* Убедимся, что main занимает всю ширину */
-  max-width: 1200px; /* Ограничим максимальную ширину как у .container */
-  margin: 0 auto; /* Центрируем main */
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }

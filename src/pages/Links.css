@@ -28,9 +28,8 @@
 }
 
 .links-list li a i {
-  /* Стили для иконок */
   margin-right: 10px;
-  display: block; /* Иконка над текстом */
-  font-size: 2em; /* Увеличить иконку */
-  margin-bottom: 0.5rem; /* Отступ под иконкой */
+  display: block;
+  font-size: 2em;
+  margin-bottom: 0.5rem;
 }

@@ -13,7 +13,7 @@ const getPageTitle = (pathname) => {
     case "/contacts":
       return "Контакты";
     case "/donate":
-      return "Задонатить"; // <-- Новая страница
+      return "Задонатить";
     default:
       return "Taskov1ch";
   }
@@ -27,16 +27,12 @@ function Header() {
   const closeMenu = () => setIsOpen(false);
 
   useEffect(() => {
-    // Если меню открыто, запрещаем скролл body
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      // Иначе разрешаем
       document.body.style.overflow = "auto";
     }
 
-    // Функция очистки: убедимся, что скролл восстановится,
-    // если компонент будет размонтирован
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -55,7 +51,7 @@ function Header() {
           <NavLink to='/projects' className='nav-link' onClick={closeMenu}>
             Проекты
           </NavLink>
-          {/* --- НОВЫЕ ССЫЛКИ --- */}
+
           <NavLink to='/links' className='nav-link' onClick={closeMenu}>
             Ссылки
           </NavLink>
@@ -65,8 +61,6 @@ function Header() {
           <NavLink to='/donate' className='nav-link' onClick={closeMenu}>
             Задонатить
           </NavLink>
-          {/* <NavLink to="/donate" className="nav-link" onClick={closeMenu}>Задонатить</NavLink> <-- Новая ссылка */}
-          {/* ------------------- */}
         </div>
 
         <div

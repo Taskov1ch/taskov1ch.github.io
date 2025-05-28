@@ -16,7 +16,7 @@
 }
 
 .about-me h1 {
-  border-bottom: none; /* Убираем глобальную черту, если нужно */
+  border-bottom: none;
   margin-bottom: 0.5rem;
 }
 

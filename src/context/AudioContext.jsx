@@ -15,11 +15,10 @@ export const AudioProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef(new Audio());
-  const justEndedRef = useRef(false); // <-- Флаг, чтобы отследить конец трека
+  const justEndedRef = useRef(false);
 
   const currentTrack = tracks[currentTrackIndex] || null;
 
-  // --- MEDIA SESSION ---
   const updateMediaSession = useCallback(() => {
     if (!currentTrack || !("mediaSession" in navigator)) return;
     navigator.mediaSession.metadata = new MediaMetadata({
@@ -33,7 +32,6 @@ export const AudioProvider = ({ children }) => {
     navigator.mediaSession.playbackState = isPlaying ? "playing" : "paused";
   }, [currentTrack, isPlaying]);
 
-  // --- УПРАВЛЕНИЕ ---
   const play = useCallback(() => setIsPlaying(true), []);
   const pause = useCallback(() => setIsPlaying(false), []);
   const togglePlayPause = useCallback(() => setIsPlaying((prev) => !prev), []);
@@ -65,9 +63,6 @@ export const AudioProvider = ({ children }) => {
     setCurrentTrackIndex(randomIndex);
   }, [tracks.length]);
 
-  // --- ЭФФЕКТЫ ---
-
-  // Эффект 1: Загрузка трека
   useEffect(() => {
     if (currentTrackIndex !== null) {
       const audio = audioRef.current;
@@ -76,7 +71,6 @@ export const AudioProvider = ({ children }) => {
     }
   }, [currentTrackIndex, tracks]);
 
-  // Эффект 2: Управление аудио и событиями
   useEffect(() => {
     const audio = audioRef.current;
 
@@ -95,25 +89,19 @@ export const AudioProvider = ({ children }) => {
     const handleLoadStart = () => setIsLoading(true);
     const handleError = () => setIsLoading(false);
 
-    // --- ИСПРАВЛЕНА ЛОГИКА ПАУЗЫ ---
     const handlePauseEvent = () => {
-      // Устанавливаем паузу, ТОЛЬКО если это не произошло сразу после 'ended'
       if (!justEndedRef.current) {
         setIsPlaying(false);
       }
-      justEndedRef.current = false; // Сбрасываем флаг
+      justEndedRef.current = false;
     };
-    // ---------------------------------
 
-    // --- ИСПРАВЛЕНА ЛОГИКА ENDED ---
     const handleEnded = () => {
-      justEndedRef.current = true; // Ставим флаг, что трек закончился
-      nextTrack(); // Переключаем на следующий
-      setIsPlaying(true); // <-- ГЛАВНОЕ: Говорим, что следующий трек ДОЛЖЕН играть
+      justEndedRef.current = true;
+      nextTrack();
+      setIsPlaying(true);
     };
-    // ---------------------------------
 
-    // Добавляем слушатели
     audio.addEventListener("loadstart", handleLoadStart);
     audio.addEventListener("canplay", handleCanPlay);
     audio.addEventListener("waiting", handleWaiting);
@@ -122,7 +110,6 @@ export const AudioProvider = ({ children }) => {
     audio.addEventListener("pause", handlePauseEvent);
     audio.addEventListener("ended", handleEnded);
 
-    // Логика Play/Pause на основе isPlaying
     if (!isLoading) {
       if (isPlaying && audio.paused) {
         audio.play().catch((e) => console.error("Play failed:", e));
@@ -132,7 +119,6 @@ export const AudioProvider = ({ children }) => {
     }
 
     return () => {
-      // Очистка
       audio.removeEventListener("loadstart", handleLoadStart);
       audio.removeEventListener("canplay", handleCanPlay);
       audio.removeEventListener("waiting", handleWaiting);
@@ -141,14 +127,12 @@ export const AudioProvider = ({ children }) => {
       audio.removeEventListener("pause", handlePauseEvent);
       audio.removeEventListener("ended", handleEnded);
     };
-  }, [isPlaying, isLoading, nextTrack]); // <-- Зависим от isPlaying, isLoading и nextTrack
+  }, [isPlaying, isLoading, nextTrack]);
 
-  // Эффект 3: Обновление MediaSession
   useEffect(() => {
     updateMediaSession();
   }, [currentTrack, isPlaying, updateMediaSession]);
 
-  // Эффект 4: MediaSession Action Handlers
   useEffect(() => {
     if (!("mediaSession" in navigator)) return;
     navigator.mediaSession.setActionHandler("play", play);

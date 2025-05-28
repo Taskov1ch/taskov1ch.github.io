@@ -4,7 +4,7 @@
       .line {
         stroke: #ffffff;
         stroke-width: 3;
-        stroke-linecap: round; /* Скругленные концы важны для видимости коротких линий */
+        stroke-linecap: round;
       }
       .node {
         fill: transparent;

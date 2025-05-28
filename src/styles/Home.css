@@ -4,7 +4,7 @@
   align-items: center;
   text-align: center;
   padding: 80px 20px;
-  min-height: calc(100vh - 190px); /* 100vh - header - padding */
+  min-height: calc(100vh - 190px);
   justify-content: center;
 }
 
@@ -20,11 +20,11 @@
 }
 
 .highlight-python {
-  color: #ffd343; /* Цвет Python */
+  color: #ffd343;
   font-weight: bold;
 }
 .highlight-pmmp {
-  color: #07d100; /* Цвет Python */
+  color: #07d100;
   font-weight: bold;
 }
 
@@ -70,7 +70,6 @@
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .home-container h1 {
     font-size: 2.8rem;

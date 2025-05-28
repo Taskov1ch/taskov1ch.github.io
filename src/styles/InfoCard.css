@@ -12,7 +12,7 @@
     border-color 0.3s ease,
     background-color 0.3s ease,
     box-shadow 0.3s ease;
-  position: relative; /* Нужно для позиционирования фидбека */
+  position: relative;
   overflow: hidden;
 }
 
@@ -50,9 +50,6 @@
   color: var(--text-secondary);
 }
 
-/* Убираем стили .copy-value и .copy-button */
-
-/* Стили для иконки действия (стрелка или копирование) */
 .info-card-action-icon {
   font-size: 1.8rem;
   color: var(--text-secondary);
@@ -63,7 +60,7 @@
   opacity: 0.6;
 }
 .info-card-action-icon.copy-icon {
-  font-size: 1.5rem; /* Иконка копирования может быть меньше */
+  font-size: 1.5rem;
 }
 
 .info-card:hover .info-card-action-icon.arrow-icon {
@@ -77,18 +74,16 @@
   opacity: 1;
 }
 
-/* Стили для карточки с копированием */
 .info-card.copyable {
-  cursor: copy; /* Курсор для копирования */
+  cursor: copy;
 }
 
-/* Индикатор "Скопировано!" */
 .copied-feedback {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #1db954; /* Зеленый */
+  background-color: #1db954;
   color: #fff;
   padding: 8px 15px;
   border-radius: 20px;
@@ -96,7 +91,7 @@
   font-weight: bold;
   z-index: 5;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  /* Анимация появления и исчезновения */
+
   animation: feedback-fade 2s forwards ease-in-out;
 }
 
@@ -104,22 +99,21 @@
   0% {
     opacity: 0;
     transform: translate(-50%, -30%);
-  } /* Начинаем чуть выше и невидимо */
+  }
   15% {
     opacity: 1;
     transform: translate(-50%, -50%);
-  } /* Появляемся */
+  }
   85% {
     opacity: 1;
     transform: translate(-50%, -50%);
-  } /* Держимся */
+  }
   100% {
     opacity: 0;
     transform: translate(-50%, -70%);
-  } /* Исчезаем вверх */
+  }
 }
 
-/* Стили для контейнеров страниц */
 .page-container {
   max-width: 800px;
   margin: 40px auto;
@@ -129,14 +123,14 @@
 .page-container h2 {
   font-size: 2.5rem;
   color: var(--text-primary);
-  margin-bottom: 20px; /* Уменьшим отступ, т.к. добавили p */
+  margin-bottom: 20px;
   text-align: center;
   border-bottom: 2px solid var(--primary-blue);
   display: inline-block;
   padding-bottom: 10px;
   width: 100%;
 }
-/* ... (Адаптивные стили @media как раньше) ... */
+
 @media (max-width: 768px) {
   .page-container h2 {
     font-size: 2rem;

@@ -19,7 +19,7 @@ body {
   background-color: var(--dark-bg);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden; /* Предотвратить горизонтальную прокрутку */
+  overflow-x: hidden;
 }
 
 a {
@@ -44,7 +44,6 @@ img {
   padding: 0 20px;
 }
 
-/* Анимация "дышащего" градиента */
 body::before {
   content: "";
   position: fixed;
@@ -55,8 +54,8 @@ body::before {
   background: linear-gradient(135deg, #0a192f 0%, #000000 50%, #003366 100%);
   background-size: 400% 400%;
   animation: breathingGradient 15s ease infinite;
-  z-index: -1; /* Поместить под контент */
-  opacity: 0.6; /* Сделать его не слишком ярким */
+  z-index: -1;
+  opacity: 0.6;
 }
 
 @keyframes breathingGradient {
@@ -79,14 +78,14 @@ body::before {
 
 main {
   flex: 1;
-  /* --- ВОТ КЛЮЧЕВОЕ СВОЙСТВО --- */
+
   padding-top: calc(70px + 100px);
-  /* ---------------------------- */
+
   padding-bottom: 40px;
-  padding-left: 20px; /* Добавим общие отступы по бокам */
-  padding-right: 20px; /* Добавим общие отступы по бокам */
-  position: relative; /* Для анимаций */
-  width: 100%; /* Убедимся, что main занимает всю ширину */
-  max-width: 1200px; /* Ограничим максимальную ширину как у .container */
-  margin: 0 auto; /* Центрируем main */
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }

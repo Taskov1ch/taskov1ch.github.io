@@ -28,29 +28,26 @@
   margin-bottom: 60px;
 }
 
-/* --- НОВЫЕ СТИЛИ КАРТОЧКИ --- */
 .project-card {
   border-radius: 10px;
-  overflow: hidden; /* Важно для ::before и border-radius */
+  overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease;
-  display: flex; /* Используем flex, чтобы контент растягивался */
+  display: flex;
   flex-direction: column;
-  min-height: 350px; /* Зададим минимальную высоту */
+  min-height: 350px;
   text-decoration: none;
   color: var(--text-primary);
   border: 1px solid var(--border-color);
-  position: relative; /* Нужно для ::before и .main-project-badge */
+  position: relative;
 
-  /* Стили для фона */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Затемняющий оверлей с помощью ::before */
 .project-card::before {
   content: "";
   position: absolute;
@@ -58,59 +55,57 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(18, 18, 18, 0.88); /* Основное затемнение (88%) */
-  z-index: 1; /* Под контентом */
+  background-color: rgba(18, 18, 18, 0.88);
+  z-index: 1;
   transition: background-color 0.4s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-8px) scale(1.02); /* Немного увеличим при наведении */
+  transform: translateY(-8px) scale(1.02);
   box-shadow: 0 12px 24px rgba(0, 123, 255, 0.25);
   border-color: var(--primary-blue);
 }
 
-/* При наведении делаем оверлей чуть прозрачнее, показывая фон */
 .project-card:hover::before {
-  background-color: rgba(18, 18, 18, 0.7); /* Меньше затемнения (70%) */
+  background-color: rgba(18, 18, 18, 0.7);
 }
 
-/* Контент карточки (над оверлеем) */
 .card-content {
-  padding: 25px; /* Увеличим паддинги */
+  padding: 25px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  position: relative; /* Чтобы был над ::before */
+  position: relative;
   z-index: 2;
-  /* Добавляем легкую тень тексту для читаемости */
+
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .card-title {
-  font-size: 1.6rem; /* Крупнее */
+  font-size: 1.6rem;
   margin-bottom: 15px;
-  color: #fff; /* Ярче */
+  color: #fff;
   font-weight: 700;
 }
 
 .card-description {
   font-size: 1rem;
-  color: #e0e0e0; /* Светлее */
+  color: #e0e0e0;
   margin-bottom: 25px;
   flex-grow: 1;
-  line-height: 1.7; /* Улучшим читаемость */
+  line-height: 1.7;
 }
 
 .card-langs {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Чуть больше gap */
+  gap: 10px;
   margin-top: auto;
 }
 
 .lang-tag {
-  background-color: rgba(0, 123, 255, 0.7); /* Полупрозрачный синий */
-  backdrop-filter: blur(5px); /* Легкий блюр */
+  background-color: rgba(0, 123, 255, 0.7);
+  backdrop-filter: blur(5px);
   color: #fff;
   padding: 5px 12px;
   border-radius: 15px;
@@ -118,10 +113,6 @@
   border: 1px solid rgba(0, 123, 255, 0.3);
 }
 
-/* --- УДАЛЕНЫ стили .card-image-container, .card-cover, .card-overlay, .view-project-btn --- */
-
-/* --- Новый оверлей для "Посмотреть" --- */
-/* --- Новый оверлей для "Посмотреть" --- */
 .view-project-overlay {
   position: absolute;
   top: 0;
@@ -134,22 +125,21 @@
   align-items: center;
   opacity: 0;
   transition: opacity 0.4s ease;
-  z-index: 3; /* Выше контента, но ниже бэйджа */
-  pointer-events: none; /* Чтобы не мешал ссылке */
+  z-index: 3;
+  pointer-events: none;
   font-size: 1.3rem;
   font-weight: bold;
   color: #fff;
   border: 3px solid #fff;
-  margin: 20px; /* Отступы, чтобы было видно рамку */
+  margin: 20px;
   border-radius: 5px;
 }
 
 .project-card:hover .view-project-overlay {
   opacity: 1;
-  pointer-events: auto; /* Делаем активным при наведении */
+  pointer-events: auto;
 }
 
-/* Главный проект */
 .main-project {
   border: 2px solid var(--primary-blue);
   box-shadow: 0 8px 25px rgba(0, 123, 255, 0.25);
@@ -157,19 +147,18 @@
 
 .main-project-badge {
   position: absolute;
-  top: 15px; /* Чуть ниже */
-  right: 15px; /* Чуть левее */
+  top: 15px;
+  right: 15px;
   background-color: var(--primary-blue);
   color: #fff;
   padding: 6px 12px;
   border-radius: 5px;
   font-size: 0.85rem;
   font-weight: bold;
-  z-index: 4; /* Выше всего */
+  z-index: 4;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
