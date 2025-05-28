@@ -1,12 +1,12 @@
-import React from 'react';
-import projectsData from '../data/projects.js';
-import ProjectCard from '../components/ProjectCard';
-import '../styles/Projects.css';
-import { motion } from 'framer-motion';
+import React from "react";
+import projectsData from "../data/projects.js";
+import ProjectCard from "../components/ProjectCard";
+import "../styles/Projects.css";
+import { motion } from "framer-motion";
 
 function Projects() {
-  const mainProjects = projectsData.filter(p => p.isMain);
-  const otherProjects = projectsData.filter(p => !p.isMain);
+  const mainProjects = projectsData.filter((p) => p.isMain);
+  const otherProjects = projectsData.filter((p) => !p.isMain);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -18,22 +18,21 @@ function Projects() {
     },
   };
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0 },
-    };
-
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
 
   return (
-    <div className="projects-container container">
+    <div className='projects-container container'>
       <h2>Главные проекты</h2>
       <motion.div
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
+        className='projects-grid'
+        variants={containerVariants}
+        initial='hidden'
+        animate='show'
       >
-        {mainProjects.map(project => (
+        {mainProjects.map((project) => (
           <motion.div key={project.id} variants={itemVariants}>
             <ProjectCard project={project} isMain={true} />
           </motion.div>
@@ -41,15 +40,15 @@ function Projects() {
       </motion.div>
 
       <h2>Остальные проекты</h2>
-        <motion.div
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
+      <motion.div
+        className='projects-grid'
+        variants={containerVariants}
+        initial='hidden'
+        animate='show'
       >
-        {otherProjects.map(project => (
+        {otherProjects.map((project) => (
           <motion.div key={project.id} variants={itemVariants}>
-             <ProjectCard project={project} isMain={false} />
+            <ProjectCard project={project} isMain={false} />
           </motion.div>
         ))}
       </motion.div>

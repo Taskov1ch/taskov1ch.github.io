@@ -1,10 +1,10 @@
-import React from 'react';
-import '../styles/Footer.css'; // Импортируем стили
+import React from "react";
+import "../styles/Footer.css"; // Импортируем стили
 
 function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="container">
+    <footer className='site-footer'>
+      <div className='container'>
         <p>
           Сделано с помощью Gemini, т.к Taskov1ch полный ноль в фронтенде :)
         </p>

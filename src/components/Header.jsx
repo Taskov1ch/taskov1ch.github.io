@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import '../styles/Header.css';
+import React, { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import "../styles/Header.css";
 
 const getPageTitle = (pathname) => {
   switch (pathname) {
-    case '/': return 'Обо мне';
-    case '/projects': return 'Мои Проекты';
-    case '/links': return 'Ссылки';
-    case '/contacts': return 'Контакты';
-    case '/donate': return 'Задонатить'; // <-- Новая страница
-    default: return 'Taskov1ch';
+    case "/":
+      return "Обо мне";
+    case "/projects":
+      return "Мои Проекты";
+    case "/links":
+      return "Ссылки";
+    case "/contacts":
+      return "Контакты";
+    case "/donate":
+      return "Задонатить"; // <-- Новая страница
+    default:
+      return "Taskov1ch";
   }
 };
 function Header() {
@@ -23,40 +29,53 @@ function Header() {
   useEffect(() => {
     // Если меню открыто, запрещаем скролл body
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
       // Иначе разрешаем
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
 
     // Функция очистки: убедимся, что скролл восстановится,
     // если компонент будет размонтирован
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
   return (
-    <header className="header">
-      <nav className="navbar container">
-        <div className="nav-logo-placeholder"></div>
-        <div className="page-title-mobile">{pageTitle}</div>
+    <header className='header'>
+      <nav className='navbar container'>
+        <div className='nav-logo-placeholder'></div>
+        <div className='page-title-mobile'>{pageTitle}</div>
 
-        <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
-          <NavLink to="/" className="nav-link" onClick={closeMenu}>Обо мне</NavLink>
-          <NavLink to="/projects" className="nav-link" onClick={closeMenu}>Проекты</NavLink>
+        <div className={`nav-menu ${isOpen ? "active" : ""}`}>
+          <NavLink to='/' className='nav-link' onClick={closeMenu}>
+            Обо мне
+          </NavLink>
+          <NavLink to='/projects' className='nav-link' onClick={closeMenu}>
+            Проекты
+          </NavLink>
           {/* --- НОВЫЕ ССЫЛКИ --- */}
-          <NavLink to="/links" className="nav-link" onClick={closeMenu}>Ссылки</NavLink>
-          <NavLink to="/contacts" className="nav-link" onClick={closeMenu}>Контакты</NavLink>
-          <NavLink to="/donate" className="nav-link" onClick={closeMenu}>Задонатить</NavLink>
+          <NavLink to='/links' className='nav-link' onClick={closeMenu}>
+            Ссылки
+          </NavLink>
+          <NavLink to='/contacts' className='nav-link' onClick={closeMenu}>
+            Контакты
+          </NavLink>
+          <NavLink to='/donate' className='nav-link' onClick={closeMenu}>
+            Задонатить
+          </NavLink>
           {/* <NavLink to="/donate" className="nav-link" onClick={closeMenu}>Задонатить</NavLink> <-- Новая ссылка */}
           {/* ------------------- */}
         </div>
 
-        <div className={`hamburger ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+        <div
+          className={`hamburger ${isOpen ? "active" : ""}`}
+          onClick={toggleMenu}
+        >
+          <span className='bar'></span>
+          <span className='bar'></span>
+          <span className='bar'></span>
         </div>
       </nav>
     </header>

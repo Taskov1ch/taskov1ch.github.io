@@ -12,7 +12,9 @@
   z-index: 9999;
   cursor: pointer;
   /* Уменьшаем время перехода самого оверлея */
-  transition: opacity 0.7s ease-in-out, visibility 0s linear 0.7s;
+  transition:
+    opacity 0.7s ease-in-out,
+    visibility 0s linear 0.7s;
   opacity: 1;
   visibility: visible;
 }
@@ -20,12 +22,16 @@
 .preloader-overlay.closing {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.7s ease-in-out, visibility 0s linear 0.7s;
+  transition:
+    opacity 0.7s ease-in-out,
+    visibility 0s linear 0.7s;
 }
 
 .heart-container {
   /* Ускоряем переход для сердца */
-  transition: opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition:
+    opacity 0.4s ease-out,
+    transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   opacity: 1;
   transform: scale(1);
 }
@@ -48,9 +54,15 @@
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.25); } /* Чуть сильнее пульсация */
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  } /* Чуть сильнее пульсация */
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* --- Текст --- */
@@ -61,7 +73,10 @@
   opacity: 0;
   transform: translateY(15px); /* Начнет чуть ниже */
   /* Ускоряем появление и добавляем filter */
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out;
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out,
+    filter 0.5s ease-out;
   letter-spacing: 1px;
   font-weight: 300;
   filter: blur(5px); /* Начнет размытым */
@@ -78,7 +93,8 @@
 
 /* --- Анимация "манящего" мерцания --- */
 @keyframes text-flicker {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     text-shadow:
       0 0 5px rgba(0, 123, 255, 0.2),

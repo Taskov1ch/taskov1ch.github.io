@@ -33,7 +33,9 @@
   border-radius: 10px;
   overflow: hidden; /* Важно для ::before и border-radius */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   display: flex; /* Используем flex, чтобы контент растягивался */
   flex-direction: column;
   min-height: 350px; /* Зададим минимальную высоту */
@@ -50,7 +52,7 @@
 
 /* Затемняющий оверлей с помощью ::before */
 .project-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -69,7 +71,7 @@
 
 /* При наведении делаем оверлей чуть прозрачнее, показывая фон */
 .project-card:hover::before {
-  background-color: rgba(18, 18, 18, 0.70); /* Меньше затемнения (70%) */
+  background-color: rgba(18, 18, 18, 0.7); /* Меньше затемнения (70%) */
 }
 
 /* Контент карточки (над оверлеем) */
@@ -121,30 +123,30 @@
 /* --- Новый оверлей для "Посмотреть" --- */
 /* --- Новый оверлей для "Посмотреть" --- */
 .view-project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 123, 255, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 3; /* Выше контента, но ниже бэйджа */
-    pointer-events: none; /* Чтобы не мешал ссылке */
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #fff;
-    border: 3px solid #fff;
-    margin: 20px; /* Отступы, чтобы было видно рамку */
-    border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 123, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 3; /* Выше контента, но ниже бэйджа */
+  pointer-events: none; /* Чтобы не мешал ссылке */
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+  border: 3px solid #fff;
+  margin: 20px; /* Отступы, чтобы было видно рамку */
+  border-radius: 5px;
 }
 
 .project-card:hover .view-project-overlay {
-    opacity: 1;
-    pointer-events: auto; /* Делаем активным при наведении */
+  opacity: 1;
+  pointer-events: auto; /* Делаем активным при наведении */
 }
 
 /* Главный проект */
@@ -154,17 +156,17 @@
 }
 
 .main-project-badge {
-    position: absolute;
-    top: 15px; /* Чуть ниже */
-    right: 15px; /* Чуть левее */
-    background-color: var(--primary-blue);
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    z-index: 4; /* Выше всего */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: absolute;
+  top: 15px; /* Чуть ниже */
+  right: 15px; /* Чуть левее */
+  background-color: var(--primary-blue);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  z-index: 4; /* Выше всего */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Адаптивность */
@@ -173,8 +175,16 @@
     grid-template-columns: 1fr;
     gap: 25px;
   }
-  .projects-container h2 { font-size: 2rem; }
-  .project-card { min-height: 300px; }
-  .card-title { font-size: 1.4rem; }
-  .card-description { font-size: 0.95rem; }
+  .projects-container h2 {
+    font-size: 2rem;
+  }
+  .project-card {
+    min-height: 300px;
+  }
+  .card-title {
+    font-size: 1.4rem;
+  }
+  .card-description {
+    font-size: 0.95rem;
+  }
 }

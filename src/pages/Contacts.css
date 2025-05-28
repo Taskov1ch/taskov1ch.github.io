@@ -16,32 +16,32 @@
 
 /* Стили для формы (если решите добавить) */
 .contact-form {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 500px;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
 }
 
 .contact-form h2 {
-    margin-bottom: 0.5rem;
-    color: var(--primary-text-color);
+  margin-bottom: 0.5rem;
+  color: var(--primary-text-color);
 }
 
 .contact-form input,
 .contact-form textarea {
-    padding: 0.8em;
-    border-radius: 5px;
-    border: 1px solid var(--accent-color);
-    background-color: var(--bg-color);
-    color: var(--primary-text-color);
-    font-size: 1em;
+  padding: 0.8em;
+  border-radius: 5px;
+  border: 1px solid var(--accent-color);
+  background-color: var(--bg-color);
+  color: var(--primary-text-color);
+  font-size: 1em;
 }
 
 .contact-form textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
 .contact-form button {
-    align-self: flex-start; /* Кнопка не растягивается */
+  align-self: flex-start; /* Кнопка не растягивается */
 }

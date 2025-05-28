@@ -9,7 +9,10 @@
   border-radius: 8px;
   color: var(--text-primary);
   /* Плавный переход для фона (загрузка) и других свойств */
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.5s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background 0.5s ease;
   z-index: 1000;
   position: fixed; /* Плеер всегда фиксирован */
   border: 1px solid var(--border-color);
@@ -25,8 +28,12 @@
 }
 
 @keyframes loading-shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* --- Кликабельная область --- */
@@ -120,7 +127,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .control-btn svg {
@@ -187,17 +196,18 @@
     max-width: 350px;
     position: fixed;
     /* Добавляем transition для десктопа на всякий случай */
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
   }
 
   /* На десктопе .hidden НЕ должен ничего менять (плеер всегда виден) */
   .mini-player.hidden {
-      opacity: 1;
-      visibility: visible;
-      transform: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
   }
 }
-
 
 /* --- Стили для мобильных (внизу экрана) --- */
 @media (max-width: 768px) {
@@ -214,7 +224,10 @@
     opacity: 1;
     visibility: visible;
     /* Обновляем transition */
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, visibility 0s linear 0s;
+    transition:
+      opacity 0.4s ease-in-out,
+      transform 0.4s ease-in-out,
+      visibility 0s linear 0s;
   }
 
   /* --- Стили для СКРЫТОГО плеера --- */
@@ -224,6 +237,9 @@
     /* Уезжает вниз и становится невидимым */
     transform: translateX(-50%) translateY(100px);
     /* Задержка для visibility, чтобы он исчезал ПОСЛЕ анимации */
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, visibility 0s linear 0.4s;
+    transition:
+      opacity 0.4s ease-in-out,
+      transform 0.4s ease-in-out,
+      visibility 0s linear 0.4s;
   }
 }

@@ -10,9 +10,9 @@
 }
 
 .main-projects-grid {
-    /* Можно добавить стили, чтобы главные проекты выделялись еще больше */
-    /* Например, более крупный minmax или другой gap */
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  /* Можно добавить стили, чтобы главные проекты выделялись еще больше */
+  /* Например, более крупный minmax или другой gap */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 
 @media (max-width: 768px) {

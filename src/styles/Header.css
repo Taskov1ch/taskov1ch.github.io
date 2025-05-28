@@ -31,13 +31,15 @@
   color: var(--text-secondary);
   padding: 5px 0;
   position: relative;
-  transition: color 0.3s ease, transform 0.3s ease; /* Добавляем transform */
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease; /* Добавляем transform */
   text-transform: uppercase; /* Можно сделать буквы заглавными */
   letter-spacing: 1px;
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px; /* Немного опустить линию */
   left: 0;
@@ -66,7 +68,7 @@
 }
 
 .hamburger:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .bar {
@@ -83,8 +85,8 @@
   .hamburger {
     display: block;
     position: fixed; /* Фиксируем, чтобы оставался на месте */
-    top: 22px;     /* Подбираем позицию */
-    right: 20px;   /* Подбираем позицию */
+    top: 22px; /* Подбираем позицию */
+    right: 20px; /* Подбираем позицию */
     z-index: 1002; /* Гамбургер должен быть НАД меню */
   }
 
@@ -113,7 +115,7 @@
 
     /* --- Эффект размытия с префиксом --- */
     -webkit-backdrop-filter: blur(15px); /* Для Saыыfari */
-    backdrop-filter: blur(15px);         /* Стандартный */
+    backdrop-filter: blur(15px); /* Стандартный */
 
     z-index: 1001;
 
@@ -126,7 +128,9 @@
     opacity: 0; /* Изначально полностью прозрачно */
     visibility: hidden; /* Изначально скрыто и неактивно */
     /* Плавный переход для opacity и мгновенный для visibility (с задержкой) */
-    transition: opacity 0.4s ease-in-out, visibility 0s linear 0.4s;
+    transition:
+      opacity 0.4s ease-in-out,
+      visibility 0s linear 0.4s;
     /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
 
     border-top: none;
@@ -139,7 +143,9 @@
     opacity: 1; /* Делаем видимым */
     visibility: visible; /* Делаем активным */
     /* Плавный переход для opacity и мгновенный для visibility */
-    transition: opacity 0.4s ease-in-out, visibility 0s linear 0s;
+    transition:
+      opacity 0.4s ease-in-out,
+      visibility 0s linear 0s;
     /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
   }
 
@@ -151,7 +157,10 @@
     opacity: 0;
     transform: translateY(15px); /* Небольшой сдвиг снизу */
     /* --- Обновленный transition --- */
-    transition: color 0.3s ease, opacity 0.4s ease, transform 0.4s ease;
+    transition:
+      color 0.3s ease,
+      opacity 0.4s ease,
+      transform 0.4s ease;
   }
 
   /* Анимация появления ссылок при активном меню */
@@ -165,34 +174,42 @@
     display: none;
   }
   .nav-link:hover {
-      transform: translateY(0) scale(1.1); /* Увеличиваем при наведении */
-      color: var(--primary-blue);
+    transform: translateY(0) scale(1.1); /* Увеличиваем при наведении */
+    color: var(--primary-blue);
   }
-   .nav-link.active {
-       color: var(--primary-blue);
-   }
+  .nav-link.active {
+    color: var(--primary-blue);
+  }
 
   /* --- Задержка анимации для каждой ссылки (оставляем, как было, но подстраиваем под fade) --- */
-   .nav-menu.active .nav-link:nth-child(1) { transition-delay: 0.3s; }
-   .nav-menu.active .nav-link:nth-child(2) { transition-delay: 0.4s; }
-   .nav-menu.active .nav-link:nth-child(3) { transition-delay: 0.5s; }
-   .nav-menu.active .nav-link:nth-child(4) { transition-delay: 0.6s; }
+  .nav-menu.active .nav-link:nth-child(1) {
+    transition-delay: 0.3s;
+  }
+  .nav-menu.active .nav-link:nth-child(2) {
+    transition-delay: 0.4s;
+  }
+  .nav-menu.active .nav-link:nth-child(3) {
+    transition-delay: 0.5s;
+  }
+  .nav-menu.active .nav-link:nth-child(4) {
+    transition-delay: 0.6s;
+  }
 
   /* Прячем placeholder на мобильных, т.к. бургер фиксирован */
   .nav-logo-placeholder {
-      display: none;
+    display: none;
   }
 
   /* Убедимся, что navbar не мешает */
-   .navbar {
-       justify-content: flex-end; /* Все к правому краю */
-   }
+  .navbar {
+    justify-content: flex-end; /* Все к правому краю */
+  }
 }
 /* Добавьте это в src/styles/Header.css */
 
 .player-desktop-container {
-    position: relative;
-    flex-grow: 1; /* Чтобы меню осталось справа */
+  position: relative;
+  flex-grow: 1; /* Чтобы меню осталось справа */
 }
 
 /* Скрываем десктопный плеер на мобильных */
@@ -201,8 +218,8 @@
     display: none;
   }
   .player-desktop-container {
-      flex-grow: 0; /* Убираем растягивание */
-      display: none; /* Полностью скрываем контейнер */
+    flex-grow: 0; /* Убираем растягивание */
+    display: none; /* Полностью скрываем контейнер */
   }
 }
 
@@ -215,7 +232,7 @@
     width: auto;
     max-width: 300px; /* Ограничиваем ширину */
     left: auto; /* Сбрасываем */
-    top: auto;  /* Сбрасываем */
+    top: auto; /* Сбрасываем */
   }
 }
 
@@ -229,9 +246,9 @@
 
 /* Убедитесь, что меню на десктопе не уезжает */
 @media (min-width: 769px) {
-    .nav-menu {
-        margin-left: auto; /* Прижимает к правому краю */
-    }
+  .nav-menu {
+    margin-left: auto; /* Прижимает к правому краю */
+  }
 }
 
 /* ... (Ваши существующие стили для .header, .navbar, .nav-menu и т.д.) ... */
@@ -263,8 +280,8 @@
   .page-title-mobile {
     display: block;
     position: absolute; /* Позиционируем относительно .navbar */
-    left: 20px;       /* Отступ слева */
-    top: 50%;         /* Выравниваем по центру */
+    left: 20px; /* Отступ слева */
+    top: 50%; /* Выравниваем по центру */
     transform: translateY(-50%); /* Точное выравнивание */
   }
 

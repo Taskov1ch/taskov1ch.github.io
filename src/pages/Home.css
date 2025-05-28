@@ -16,8 +16,8 @@
 }
 
 .about-me h1 {
-    border-bottom: none; /* Убираем глобальную черту, если нужно */
-    margin-bottom: 0.5rem;
+  border-bottom: none; /* Убираем глобальную черту, если нужно */
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
@@ -33,5 +33,5 @@
 }
 
 .bio p {
-    color: var(--primary-text-color);
+  color: var(--primary-text-color);
 }

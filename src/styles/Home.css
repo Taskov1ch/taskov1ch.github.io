@@ -20,12 +20,12 @@
 }
 
 .highlight-python {
-    color: #ffd343; /* Цвет Python */
-    font-weight: bold;
+  color: #ffd343; /* Цвет Python */
+  font-weight: bold;
 }
 .highlight-pmmp {
-    color: #07d100; /* Цвет Python */
-    font-weight: bold;
+  color: #07d100; /* Цвет Python */
+  font-weight: bold;
 }
 
 .subtitle {
@@ -45,7 +45,7 @@
 }
 
 .about-text p {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .cta-button {
@@ -56,7 +56,9 @@
   border-radius: 50px;
   font-size: 1.2rem;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
   border: 2px solid var(--primary-blue);
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
@@ -77,8 +79,8 @@
     font-size: 1.3rem;
   }
   .about-text {
-      font-size: 1rem;
-      text-align: center;
+    font-size: 1rem;
+    text-align: center;
   }
 }
 
@@ -86,11 +88,11 @@
   .home-container h1 {
     font-size: 2.2rem;
   }
-   .subtitle {
+  .subtitle {
     font-size: 1.1rem;
   }
   .cta-button {
-      padding: 12px 25px;
-      font-size: 1rem;
+    padding: 12px 25px;
+    font-size: 1rem;
   }
 }
