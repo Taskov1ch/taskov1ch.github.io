@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Contacts from "./pages/Contacts";
+import NotFound from "./pages/NotFound";
 import Links from "./pages/Links";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -112,6 +113,20 @@ function App() {
                   transition={pageTransition.transition}
                 >
                   <Donate />
+                </motion.div>
+              }
+            />
+            <Route
+              path='*'
+              element={
+                <motion.div
+                  initial='initial'
+                  animate='animate'
+                  exit='exit'
+                  variants={pageTransition}
+                  transition={pageTransition.transition}
+                >
+                  <NotFound />
                 </motion.div>
               }
             />
