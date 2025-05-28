@@ -80,6 +80,7 @@
   height: 45px; /* Задаем высоту, чтобы AnimatePresence работал корректно */
   display: flex; /* Чтобы выровнять motion.div */
   align-items: center;
+  width: 150%;
 }
 
 .track-info-wrapper {
@@ -156,8 +157,8 @@
     left: 20px;
     bottom: auto;
     transform: none;
-    width: 300px; /* <-- ЗАДАЕМ ФИКСИРОВАННУЮ ШИРИНУ */
-    max-width: 300px;
+    width: 500px; /* <-- ЗАДАЕМ ФИКСИРОВАННУЮ ШИРИНУ */
+    max-width: 600px;
   }
 }
 
@@ -182,8 +183,8 @@
     left: 20px;
     bottom: auto;
     transform: none;
-    width: 300px;
-    max-width: 300px;
+    width: 350px;
+    max-width: 350px;
     position: fixed;
     /* Добавляем transition для десктопа на всякий случай */
     transition: opacity 0.4s ease, transform 0.4s ease;

@@ -17,3 +17,4 @@ main {
   max-width: 1200px; /* Ограничим максимальную ширину как у .container */
   margin: 0 auto; /* Центрируем main */
 }
+

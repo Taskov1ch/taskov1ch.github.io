@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+  <defs>
+    <style>
+      .line {
+        stroke: #ffffff;
+        stroke-width: 3;
+        stroke-linecap: round; /* Скругленные концы важны для видимости коротких линий */
+      }
+      .node {
+        fill: transparent;
+        stroke: #ffffff;
+        stroke-width: 3;
+      }
+      .outer-ring {
+        fill: transparent;
+        stroke: #ffffff;
+        stroke-width: 5;
+      }
+    </style>
+  </defs>
+
+  <circle cx="50" cy="50" r="45" class="outer-ring"/>
+
+  <g id="lines">
+    <line x1="50.00" y1="38.50" x2="50.00" y2="36.50" class="line"/>
+    <line x1="59.96" y1="44.25" x2="61.69" y2="43.25" class="line"/>
+    <line x1="59.96" y1="55.75" x2="61.69" y2="56.75" class="line"/>
+    <line x1="50.00" y1="61.50" x2="50.00" y2="63.50" class="line"/>
+    <line x1="40.04" y1="55.75" x2="38.31" y2="56.75" class="line"/>
+    <line x1="40.04" y1="44.25" x2="38.31" y2="43.25" class="line"/>
+
+    <line x1="59.96" y1="30.75" x2="61.69" y2="31.75" class="line"/>
+    <line x1="71.65" y1="49.00" x2="71.65" y2="51.00" class="line"/>
+    <line x1="61.69" y1="68.25" x2="59.96" y2="69.25" class="line"/>
+    <line x1="28.35" y1="51.00" x2="28.35" y2="49.00" class="line"/>
+    <line x1="38.31" y1="31.75" x2="40.04" y2="30.75" class="line"/>
+    <line x1="40.04" y1="69.25" x2="38.31" y2="68.25" class="line"/>
+  </g>
+
+  <g id="nodes">
+    <circle id="center" cx="50" cy="50" r="7" class="node"/>
+    <circle id="top" cx="50" cy="25" r="7" class="node"/>
+    <circle id="top-right" cx="71.65" cy="37.5" r="7" class="node"/>
+    <circle id="bottom-right" cx="71.65" cy="62.5" r="7" class="node"/>
+    <circle id="bottom" cx="50" cy="75" r="7" class="node"/>
+    <circle id="bottom-left" cx="28.35" cy="62.5" r="7" class="node"/>
+    <circle id="top-left" cx="28.35" cy="37.5" r="7" class="node"/>
+  </g>
+
+</svg>

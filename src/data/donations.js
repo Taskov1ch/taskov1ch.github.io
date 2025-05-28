@@ -1,17 +1,9 @@
 const donationsData = [
   {
-    id: 'bmc',
-    title: 'Buy Me a Coffee',
-    description: 'Самый простой способ поддержать меня',
-    value: 'https://www.buymeacoffee.com/your_user', // <-- Замените
-    type: 'link',
-    icon: '/icons/buymeacoffee.svg',
-  },
-  {
     id: 'btc',
     title: 'Bitcoin (BTC)',
     description: 'Сеть Bitcoin (BTC)', // <-- Изменено
-    value: 'bc1qYourBitcoinAddressHereLongString123', // <-- Замените
+    value: 'bc1q6cxp4d78yrs4sfhmffrfxl73nm37tczz0u5sxe', // <-- Замените
     type: 'copy',
     icon: '/icons/btc.svg',
   },
@@ -19,15 +11,15 @@ const donationsData = [
     id: 'eth',
     title: 'Ethereum (ETH)',
     description: 'Сеть Ethereum (ERC-20)', // <-- Изменено
-    value: '0xYourEthereumAddressHereLongString456', // <-- Замените
+    value: '0x18AfF09D6e896345bcF9685daDe4888168572CaD', // <-- Замените
     type: 'copy',
     icon: '/icons/eth.svg',
   },
     {
     id: 'usdt',
-    title: 'USDT',
+    title: 'Tether (USDT)',
     description: 'Сеть TRON (TRC-20)', // <-- Изменено
-    value: 'TYourTronAddressHereLongString789', // <-- Замените
+    value: 'TNcajtmiNmKe5c5euggux6ooFqokAtuRYj', // <-- Замените
     type: 'copy',
     icon: '/icons/usdt.svg',
   },

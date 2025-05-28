@@ -13,12 +13,12 @@
   padding-bottom: 10px;
   width: 100%;
   text-align: left;
-  border-bottom-color: var(--border-color); /* Сделать линию менее яркой */
+  border-bottom-color: var(--border-color);
 }
 
 .projects-container h2:first-of-type {
-    border-bottom-color: var(--primary-blue); /* Выделить первую */
-    color: var(--primary-blue);
+  border-bottom-color: var(--primary-blue);
+  color: var(--primary-blue);
 }
 
 .projects-grid {
@@ -28,45 +28,99 @@
   margin-bottom: 60px;
 }
 
-/* Стили карточки */
+/* --- НОВЫЕ СТИЛИ КАРТОЧКИ --- */
 .project-card {
-  background-color: var(--light-bg);
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
+  overflow: hidden; /* Важно для ::before и border-radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex; /* Используем flex, чтобы контент растягивался */
   flex-direction: column;
-  height: 100%; /* Занять всю высоту ячейки грида */
-  text-decoration: none; /* Убрать подчеркивание у ссылки */
+  min-height: 350px; /* Зададим минимальную высоту */
+  text-decoration: none;
   color: var(--text-primary);
   border: 1px solid var(--border-color);
-  position: relative; /* Для бэйджа */
+  position: relative; /* Нужно для ::before и .main-project-badge */
+
+  /* Стили для фона */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Затемняющий оверлей с помощью ::before */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(18, 18, 18, 0.88); /* Основное затемнение (88%) */
+  z-index: 1; /* Под контентом */
+  transition: background-color 0.4s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 123, 255, 0.2);
+  transform: translateY(-8px) scale(1.02); /* Немного увеличим при наведении */
+  box-shadow: 0 12px 24px rgba(0, 123, 255, 0.25);
   border-color: var(--primary-blue);
 }
 
-.card-image-container {
-    position: relative;
-    overflow: hidden;
+/* При наведении делаем оверлей чуть прозрачнее, показывая фон */
+.project-card:hover::before {
+  background-color: rgba(18, 18, 18, 0.70); /* Меньше затемнения (70%) */
 }
 
-.card-cover {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+/* Контент карточки (над оверлеем) */
+.card-content {
+  padding: 25px; /* Увеличим паддинги */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Чтобы был над ::before */
+  z-index: 2;
+  /* Добавляем легкую тень тексту для читаемости */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.project-card:hover .card-cover {
-    transform: scale(1.05);
+.card-title {
+  font-size: 1.6rem; /* Крупнее */
+  margin-bottom: 15px;
+  color: #fff; /* Ярче */
+  font-weight: 700;
 }
 
-.card-overlay {
+.card-description {
+  font-size: 1rem;
+  color: #e0e0e0; /* Светлее */
+  margin-bottom: 25px;
+  flex-grow: 1;
+  line-height: 1.7; /* Улучшим читаемость */
+}
+
+.card-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Чуть больше gap */
+  margin-top: auto;
+}
+
+.lang-tag {
+  background-color: rgba(0, 123, 255, 0.7); /* Полупрозрачный синий */
+  backdrop-filter: blur(5px); /* Легкий блюр */
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(0, 123, 255, 0.3);
+}
+
+/* --- УДАЛЕНЫ стили .card-image-container, .card-cover, .card-overlay, .view-project-btn --- */
+
+/* --- Новый оверлей для "Посмотреть" --- */
+/* --- Новый оверлей для "Посмотреть" --- */
+.view-project-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -78,84 +132,49 @@
     align-items: center;
     opacity: 0;
     transition: opacity 0.4s ease;
-}
-
-.project-card:hover .card-overlay {
-    opacity: 1;
-}
-
-.view-project-btn {
-    color: #fff;
-    font-size: 1.2rem;
+    z-index: 3; /* Выше контента, но ниже бэйджа */
+    pointer-events: none; /* Чтобы не мешал ссылке */
+    font-size: 1.3rem;
     font-weight: bold;
-    padding: 10px 20px;
-    border: 2px solid #fff;
+    color: #fff;
+    border: 3px solid #fff;
+    margin: 20px; /* Отступы, чтобы было видно рамку */
     border-radius: 5px;
 }
 
-
-.card-content {
-  padding: 20px;
-  flex-grow: 1; /* Позволить контенту расти */
-  display: flex;
-  flex-direction: column;
-}
-
-.card-title {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: var(--text-primary);
-}
-
-.card-description {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-  flex-grow: 1; /* Занять доступное пространство */
-}
-
-.card-langs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto; /* Прижать теги к низу */
-}
-
-.lang-tag {
-  background-color: var(--primary-blue);
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  opacity: 0.8;
+.project-card:hover .view-project-overlay {
+    opacity: 1;
+    pointer-events: auto; /* Делаем активным при наведении */
 }
 
 /* Главный проект */
 .main-project {
   border: 2px solid var(--primary-blue);
-  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.25);
 }
 
 .main-project-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px; /* Чуть ниже */
+    right: 15px; /* Чуть левее */
     background-color: var(--primary-blue);
     color: #fff;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 5px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: bold;
-    z-index: 5;
+    z-index: 4; /* Выше всего */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
-
 
 /* Адаптивность */
 @media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr; /* Одна колонка на мобильных */
-    }
-    .projects-container h2 {
-        font-size: 2rem;
-    }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .projects-container h2 { font-size: 2rem; }
+  .project-card { min-height: 300px; }
+  .card-title { font-size: 1.4rem; }
+  .card-description { font-size: 0.95rem; }
 }

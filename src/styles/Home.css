@@ -23,6 +23,10 @@
     color: #ffd343; /* Цвет Python */
     font-weight: bold;
 }
+.highlight-pmmp {
+    color: #07d100; /* Цвет Python */
+    font-weight: bold;
+}
 
 .subtitle {
   font-size: 1.5rem;

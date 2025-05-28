@@ -1,53 +1,103 @@
-// Положите обложки в папку public/images или src/assets/images
-// и импортируйте их или используйте пути из public
-
-// Пример с путями из public:
 const projectsData = [
   {
     id: 1,
-    title: 'Телеграм Бот "Helper"',
-    description: 'Многофункциональный бот для Telegram на Python с использованием aiogram.',
-    cover: '/images/bot-cover.png', // Путь относительно папки public
-    lang: ['Python', 'Aiogram'],
-    isMain: true, // Главный проект
-    link: 'https://github.com/Taskov1ch/helper-bot' // Ссылка на проект
+    title: 'Aurion',
+    description: 'Aurion — PvP-сервер Minecraft BE в стиле тёмного фэнтези, рейтинговыми боями 1v1, 2v2 и FFA.',
+    cover: '/images/aurion.png',
+    lang: ['Minecraft BE'],
+    isMain: true,
+    link: 'https://taskov1ch.github.io/Aurion/'
   },
   {
     id: 2,
-    title: 'Веб-парсер "NewsAggregator"',
-    description: 'Скрипт на Python для сбора новостей с различных сайтов с помощью BeautifulSoup и Scrapy.',
-    cover: '/images/parser-cover.png',
-    lang: ['Python', 'BeautifulSoup', 'Scrapy'],
+    title: 'BANedetta',
+    description: 'Запреты с доказательствами - это справедливо, прозрачно, безопасно.',
+    cover: '/images/banedetta.png',
+    lang: ['PocketMine-MP 5'],
     isMain: true,
-    link: '#'
-  },
-  {
-    id: 3,
-    title: 'Этот Сайт-Портфолио',
-    description: 'Сайт, который вы сейчас видите, созданный на React и Vite.',
-    cover: '/images/portfolio-cover.png',
-    lang: ['React', 'Vite', 'JS', 'CSS'],
-    isMain: false,
-    link: '#'
+    link: 'https://github.com/BANedetta/pmmp5-plugin'
   },
   {
     id: 4,
-    title: 'Проект "Еще один"',
-    description: 'Краткое описание еще одного вашего проекта.',
-    cover: '/images/project4-cover.png',
-    lang: ['Python', 'Django'],
+    title: 'GmInventories',
+    description: 'Отдельные инвентари для каждого игрового режима.',
+    cover: null,
+    lang: ['PHP (PocketMine-MP 5)'],
     isMain: false,
-    link: '#'
+    link: 'https://github.com/Taskov1ch/GmInventories'
   },
-    {
+  {
     id: 5,
-    title: 'Проект "Пятый"',
-    description: 'Описание пятого проекта.',
-    cover: '/images/project5-cover.png',
-    lang: ['Python', 'Flask'],
+    title: 'DonateExecute',
+    description: 'Любой каприз за ваши деньги (на сервере PMMP конечно же).',
+    cover: null,
+    lang: ['PHP (PocketMine-MP 5)'],
     isMain: false,
-    link: '#'
+    link: 'https://github.com/Taskov1ch/DonateExecute'
   },
+  {
+    id: 6,
+    title: 'LimboCrates',
+    description: 'Ключи Лимбо + Азартные донат кейсы (Игрокам GD привет).',
+    cover: null,
+    lang: ['PHP (PocketMine-MP 5)'],
+    isMain: false,
+    link: 'https://github.com/Taskov1ch/LimboCrates'
+  },
+  {
+    id: 7,
+    title: 'BadAppleInMaps',
+    description: 'BadApple!! на картах Minecraft.',
+    cover: null,
+    lang: ['PHP (PocketMine-MP 5)'],
+    isMain: false,
+    link: 'https://github.com/Taskov1ch/BadAppleInMaps'
+  },
+  {
+    id: 8,
+    title: 'EpicDeath',
+    description: 'Эффектный уход с поля боя.',
+    cover: null,
+    lang: ['PHP (PocketMine-MP 5)'],
+    isMain: false,
+    link: 'https://github.com/Taskov1ch/EpicDeath'
+  },
+  {
+    id: 9,
+    title: 'RCON-CrossBots',
+    description: 'Чат-боты RCON на нескольких платформах одновременно.',
+    cover: null,
+    lang: ['Python (aiogram, vkbottle, discord.py)'],
+    isMain: false,
+    link: 'https://github.com/Taskov1ch/RCON-CrossBots'
+  },
+  {
+    id: 10,
+    title: 'TelegramMCBE',
+    description: 'Telegram x Minecraft BE.',
+    cover: null,
+    lang: ['Python (aiogram)', 'PHP (PocketMine-MP 5)'],
+    isMain: false,
+    link: 'https://github.com/Taskov1ch/TelegramMCBE'
+  },
+  {
+    id: 11,
+    title: 'TGSB',
+    description: 'Требую Готовый Сервер Б****.',
+    cover: null,
+    lang: ['Bash'],
+    isMain: false,
+    link: 'https://github.com/TrebuyuGotovyiServerBlyat/TGSB'
+  },
+  {
+    id: 12,
+    title: 'py-limbo',
+    description: 'windows ключи limbo (Игрокам GD снова привет).',
+    cover: null,
+    lang: ['Python (PyQt6, pygame, pywin32)'],
+    isMain: false,
+    link: 'https://github.com/Taskov1ch/py-limbo'
+  }
 ];
 
 export default projectsData;
