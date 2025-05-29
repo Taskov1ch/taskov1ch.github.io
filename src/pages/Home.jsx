@@ -11,7 +11,7 @@ function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.4 }}
       >
-        Привет, я <span className='highlight'>Taskov1ch</span>! 311
+        Привет, я <span className='highlight'>Taskov1ch</span>!
       </motion.h1>
 
       <motion.p
