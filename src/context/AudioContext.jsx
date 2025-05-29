@@ -12,11 +12,38 @@ export const AudioContext = createContext();
 export const AudioProvider = ({ children }) => {
   const [tracks, setTracks]
     = useState(musicData);
+  const [isTracksLoading, setIsTracksLoading] = useState(true);
+  const [tracksError, setTracksError] = useState(null);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef(new Audio());
   const justEndedRef = useRef(false);
+
+  useEffect(() => {
+    const fetchMusicData = async () => {
+      try {
+        setIsTracksLoading(true);
+        setTracksError(null);
+        const response = await fetch('https://raw.githubusercontent.com/2Taskov1ch/tynaevtaskovich.github.io/refs/heads/main/data/music.json'); // <-- ВАШ URL
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setTracks(data);
+      } catch (e) {
+        console.error("Failed to fetch music data:", e);
+        setTracksError(e.message);
+        setTracks([]);
+      } finally {
+        setIsTracksLoading(false);
+      }
+    };
+    if (tracks.length === 0 && !tracksError) {
+        fetchMusicData();
+    }
+  }, []);
+
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
@@ -74,13 +101,23 @@ export const AudioProvider = ({ children }) => {
   }, [tracks.length]);
 
   const selectTrackById = useCallback((trackId) => {
-    const trackIndex = tracks.findIndex(t => t.id === trackId);
-    if (trackIndex !== -1) {
+    if (!tracks || tracks.length === 0) return;
+
+    const newTrackIndex = tracks.findIndex(t => t.id === trackId);
+
+    if (newTrackIndex === -1) {
+      console.warn(`Track with id ${trackId} not found.`);
+      return;
+    }
+
+    if (newTrackIndex === currentTrackIndex) {
+      togglePlayPause();
+    } else {
       setIsLoading(true);
-      setCurrentTrackIndex(trackIndex);
+      setCurrentTrackIndex(newTrackIndex);
       setIsPlaying(true);
     }
-  }, [tracks]);
+  }, [tracks, currentTrackIndex, togglePlayPause]);
 
   useEffect(() => {
     if (currentTrackIndex !== null) {
@@ -91,6 +128,7 @@ export const AudioProvider = ({ children }) => {
       setDuration(0);
     }
   }, [currentTrackIndex, tracks]);
+
   useEffect(() => {
     const audio = audioRef.current;
 
@@ -190,6 +228,7 @@ export const AudioProvider = ({ children }) => {
     togglePlayPause,
     selectTrackById,
     seekTrack,
+    togglePlayPause
   };
 
   return (

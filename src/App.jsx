@@ -138,7 +138,10 @@ function App() {
           </Routes>
         </AnimatePresence>
       </main>
-      {preloaderDone && <MiniPlayer onOpenPlaylistModal={openPlaylistModal} />}
+      {preloaderDone && <MiniPlayer
+          onOpenPlaylistModal={openPlaylistModal}
+          isPlaylistModalOpen={isPlaylistModalOpen}
+        />}
       <PlaylistModal
         isOpen={isPlaylistModalOpen}
         onClose={closePlaylistModal}
