@@ -146,11 +146,10 @@
   flex-shrink: 0;
 }
 
-.spotify-button-modal svg {
-  margin-right: 10px;
-  width: 20px;
-  height: 20px;
+.spotify-button-modal img {
+  margin-right: 5px;
   fill: #fff;
+
 }
 
 .spotify-button-modal:hover {

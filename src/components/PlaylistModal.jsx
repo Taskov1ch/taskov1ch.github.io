@@ -3,11 +3,6 @@ import { AudioContext } from "../context/AudioContext";
 import "../styles/PlaylistModal.css";
 import { motion } from "framer-motion";
 
-const SpotifyIcon = () => (
-  <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor'>
-    <path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.19 14.33c-.14.23-.44.3-.67.16-.97-.59-2.2-.73-3.63-.4-1.43.33-2.73 1-3.66 1.83-.17.15-.43.15-.6 0-.17-.15-.17-.4 0-.55.98-.87 2.37-1.58 3.9-1.94 1.53-.36 2.86-.2 3.9.43.23.14.3.44.16.67zm1.26-2.12c-.17.28-.55.37-.83.2-1.13-.68-2.8-.88-4.15-.48-1.35.4-2.7.97-3.66 1.6-.2.13-.48.1-.68-.1-.2-.2-.23-.48-.03-.68 1.06-.7 2.5-1.3 3.96-1.73 1.46-.43 3.3-.23 4.5.5.28.17.37.55.2.83zm.13-2.3c-.2.33-.65.43-1 .2-1.3-.8-3.33-1-5.1-.55-1.77.45-3.33 1.1-4.33 1.73-.25.15-.58.06-.73-.2-.15-.25-.06-.58.2-.73 1.1-.7 2.76-1.4 4.66-1.88 1.9-.48 4.08-.28 5.5.6.35.2.45.65.2 1z' />
-  </svg>
-);
 const PlayIconMini = () => (
   <svg className='track-play-icon' viewBox='0 0 24 24'>
     <path d='M8 5v14l11-7z'></path>
@@ -146,7 +141,7 @@ function PlaylistModal({ isOpen, onClose, spotifyLink }) {
           rel='noopener noreferrer'
           className='spotify-button-modal'
         >
-          <SpotifyIcon />
+          <img src="/icons/spotify.svg" width="24px"></img>
           <span>Мой плейлист на Spotify</span>
         </a>
 
