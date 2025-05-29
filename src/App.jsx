@@ -15,6 +15,7 @@ import MiniPlayer from "./components/MiniPlayer";
 import { AudioContext } from "./context/AudioContext";
 import "./styles/App.css";
 import Donate from "./pages/Donate";
+import PlaylistModal from "./components/PlaylistModal";
 import "./styles/index.css";
 
 const pageTransition = {
@@ -29,6 +30,7 @@ const YOUR_SPOTIFY_LINK =
 function App() {
   const location = useLocation();
   const [preloaderDone, setPreloaderDone] = useState(false);
+  const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
   const { setRandomTrack, play } = useContext(AudioContext);
 
   const handlePreloaderComplete = () => {
@@ -36,6 +38,9 @@ function App() {
     setRandomTrack();
     play();
   };
+
+  const openPlaylistModal = () => setIsPlaylistModalOpen(true);
+  const closePlaylistModal = () => setIsPlaylistModalOpen(false);
 
   return (
     <div className='app-container'>
@@ -133,7 +138,12 @@ function App() {
           </Routes>
         </AnimatePresence>
       </main>
-      {preloaderDone && <MiniPlayer spotifyLink={YOUR_SPOTIFY_LINK} />}
+      {preloaderDone && <MiniPlayer onOpenPlaylistModal={openPlaylistModal} />}
+      <PlaylistModal
+        isOpen={isPlaylistModalOpen}
+        onClose={closePlaylistModal}
+        spotifyLink={YOUR_SPOTIFY_LINK}
+      />
       <div
         id='footer-intersection-trigger'
         style={{ height: "1px", marginBottom: "-1px" }}

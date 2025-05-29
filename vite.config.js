@@ -4,11 +4,7 @@ import purgecss from "vite-plugin-purgecss"
 
 export default defineConfig({
   plugins: [
-    react(),
-    purgecss({
-      content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
-      css: ["./src/**/*.css"],
-    }),
+    react()
   ],
   base: "/",
 })

@@ -76,6 +76,9 @@
   letter-spacing: 1px;
   font-weight: 300;
   filter: blur(5px);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
 }
 
 .continue-text.visible {

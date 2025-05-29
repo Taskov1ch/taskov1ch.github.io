@@ -25,15 +25,8 @@ const NextIcon = () => (
   </svg>
 );
 
-function MiniPlayer({ spotifyLink }) {
-  const {
-    currentTrack,
-    isPlaying,
-    isLoading,
-    togglePlayPause,
-    prevTrack,
-    nextTrack,
-  } = useContext(AudioContext);
+function MiniPlayer({ onOpenPlaylistModal }) {
+  const { currentTrack, isPlaying, isLoading, togglePlayPause, prevTrack, nextTrack } = useContext(AudioContext);
   const [isNearFooter, setIsNearFooter] = useState(false);
   const playerRef = useRef(null);
 
@@ -65,12 +58,6 @@ function MiniPlayer({ spotifyLink }) {
     action();
   };
 
-  const handleOpenSpotify = () => {
-    if (spotifyLink) {
-      window.open(spotifyLink, "_blank", "noopener,noreferrer");
-    }
-  };
-
   const transitionProps = {
     initial: { opacity: 0, y: 10 },
     animate: { opacity: 1, y: 0 },
@@ -87,7 +74,7 @@ function MiniPlayer({ spotifyLink }) {
       ref={playerRef}
       className={`mini-player ${isLoading ? "loading" : ""} ${isNearFooter ? "hidden" : ""}`}
     >
-      <div className='player-clickable-area' onClick={handleOpenSpotify}>
+      <div className="player-clickable-area" onClick={onOpenPlaylistModal}>
         <div className='player-cover-container'>
           <AnimatePresence mode='wait'>
             {isLoading ? (

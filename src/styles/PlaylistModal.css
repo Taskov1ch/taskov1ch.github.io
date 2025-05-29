@@ -1,0 +1,267 @@
+.playlist-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 20px;
+}
+
+.playlist-modal-content {
+  background-color: var(--light-bg);
+  padding: 25px 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh; /* Ограничение по высоте */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.playlist-modal-content h2 {
+  color: var(--primary-blue);
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.playlist-modal-content .close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  line-height: 1;
+  padding: 5px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.playlist-modal-content .close-button:hover {
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.track-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+  overflow-y: auto; /* Для прокрутки, если треков много */
+  flex-grow: 1; /* Занимает доступное пространство */
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid transparent; /* Для плавного появления бордера */
+}
+
+.track-item:hover {
+  background-color: var(--dark-bg); /* Темнее при наведении */
+}
+
+.track-item.active {
+  background-color: rgba(0, 123, 255, 0.15);
+  border-left: 3px solid var(--primary-blue);
+  padding-left: 9px; /* Компенсируем бордер */
+}
+
+.track-item.playing .track-item-title {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.track-item-cover {
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  margin-right: 15px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.track-item-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.track-item-title {
+  font-size: 1rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-item-composer {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-play-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--primary-blue);
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.spotify-button-modal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1DB954;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin-top: auto; /* Прижимает кнопку Spotify к низу, если есть место */
+}
+
+.spotify-button-modal svg {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.spotify-button-modal:hover {
+  background-color: #1ed760;
+  transform: scale(1.03);
+  color: #fff;
+}
+
+/* Стили для скроллбара в плейлисте */
+.track-list::-webkit-scrollbar {
+  width: 8px;
+}
+.track-list::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+  border-radius: 10px;
+}
+.track-list::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 10px;
+}
+.track-list::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-blue);
+}
+
+
+.current-track-composer {
+    display: block;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    min-height: 1.2em; /* Резервируем место */
+}
+
+.playback-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.playback-progress .time {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  min-width: 40px; /* Чтобы не прыгало при смене цифр */
+  text-align: center;
+}
+
+.seek-bar {
+  -webkit-appearance: none; /* Сброс стандартных стилей */
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--dark-bg); /* Цвет фона полосы */
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.seek-bar:hover {
+  background: #444;
+}
+
+/* Стили для ползунка WebKit (Chrome, Safari, Edge) */
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-blue);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.seek-bar:hover::-webkit-slider-thumb {
+  background: var(--secondary-blue);
+}
+
+/* Стили для ползунка Firefox */
+.seek-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--primary-blue);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.seek-bar:hover::-moz-range-thumb {
+  background: var(--secondary-blue);
+}
+
+/* Стили для дорожки Firefox */
+.seek-bar::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    background: var(--dark-bg);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.seek-bar:hover::-moz-range-track {
+    background: #444;
+}
+
+.seek-bar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.seek-bar:disabled::-webkit-slider-thumb {
+    background: #555;
+}
+.seek-bar:disabled::-moz-range-thumb {
+    background: #555;
+}

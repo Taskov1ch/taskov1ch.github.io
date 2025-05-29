@@ -10,12 +10,15 @@ import musicData from "../data/music.js";
 export const AudioContext = createContext();
 
 export const AudioProvider = ({ children }) => {
-  const [tracks] = useState(musicData);
+  const [tracks, setTracks]
+    = useState(musicData);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef(new Audio());
   const justEndedRef = useRef(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const currentTrack = tracks[currentTrackIndex] || null;
 
@@ -41,6 +44,13 @@ export const AudioProvider = ({ children }) => {
     setCurrentTrackIndex(newIndexCallback);
   }, []);
 
+  const seekTrack = useCallback((time) => {
+    if (audioRef.current && isFinite(time)) {
+      audioRef.current.currentTime = time;
+      setCurrentTime(time);
+    }
+  }, []);
+
   const nextTrack = useCallback(() => {
     if (tracks.length === 0) return;
     switchTrack((prevIndex) =>
@@ -63,23 +73,37 @@ export const AudioProvider = ({ children }) => {
     setCurrentTrackIndex(randomIndex);
   }, [tracks.length]);
 
+  const selectTrackById = useCallback((trackId) => {
+    const trackIndex = tracks.findIndex(t => t.id === trackId);
+    if (trackIndex !== -1) {
+      setIsLoading(true);
+      setCurrentTrackIndex(trackIndex);
+      setIsPlaying(true);
+    }
+  }, [tracks]);
+
   useEffect(() => {
     if (currentTrackIndex !== null) {
       const audio = audioRef.current;
       audio.src = tracks[currentTrackIndex].src;
       audio.load();
+      setCurrentTime(0);
+      setDuration(0);
     }
   }, [currentTrackIndex, tracks]);
-
   useEffect(() => {
     const audio = audioRef.current;
 
     const handleCanPlay = () => {
       setIsLoading(false);
+      setDuration(audio.duration);
       if (isPlaying) {
         audio.play().catch((e) => console.error("Play on ready failed:", e));
       }
     };
+
+    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const handleLoadedMetadata = () => setDuration(audio.duration);
 
     const handleWaiting = () => setIsLoading(true);
     const handlePlaying = () => {
@@ -109,6 +133,8 @@ export const AudioProvider = ({ children }) => {
     audio.addEventListener("error", handleError);
     audio.addEventListener("pause", handlePauseEvent);
     audio.addEventListener("ended", handleEnded);
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audio.addEventListener('timeupdate', handleTimeUpdate);
 
     if (!isLoading) {
       if (isPlaying && audio.paused) {
@@ -126,6 +152,8 @@ export const AudioProvider = ({ children }) => {
       audio.removeEventListener("error", handleError);
       audio.removeEventListener("pause", handlePauseEvent);
       audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
     };
   }, [isPlaying, isLoading, nextTrack]);
 
@@ -151,12 +179,17 @@ export const AudioProvider = ({ children }) => {
     currentTrack,
     isPlaying,
     isLoading,
+    tracks,
+    currentTime,
+    duration,
     play,
     pause,
     nextTrack,
     prevTrack,
     setRandomTrack,
     togglePlayPause,
+    selectTrackById,
+    seekTrack,
   };
 
   return (
