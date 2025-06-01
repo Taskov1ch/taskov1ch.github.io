@@ -8,7 +8,7 @@ import React, {
 export const AudioContext = createContext();
 
 export const AudioProvider = ({ children }) => {
-  const [tracks, setTracks] = useState(null);
+  const [tracks, setTracks] = useState([]);
   const [isTracksLoading, setIsTracksLoading] = useState(true);
   const [tracksError, setTracksError] = useState(null);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(null);
