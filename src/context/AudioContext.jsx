@@ -5,13 +5,10 @@ import React, {
   useEffect,
   useCallback,
 } from "react";
-import musicData from "../data/music.js";
-
 export const AudioContext = createContext();
 
 export const AudioProvider = ({ children }) => {
-  const [tracks, setTracks]
-    = useState(musicData);
+  const [tracks, setTracks] = useState(null);
   const [isTracksLoading, setIsTracksLoading] = useState(true);
   const [tracksError, setTracksError] = useState(null);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(null);
@@ -25,7 +22,7 @@ export const AudioProvider = ({ children }) => {
       try {
         setIsTracksLoading(true);
         setTracksError(null);
-        const response = await fetch('https://raw.githubusercontent.com/2Taskov1ch/tynaevtaskovich.github.io/refs/heads/main/data/music.json'); // <-- ВАШ URL
+        const response = await fetch('https://raw.githubusercontent.com/2Taskov1ch/tynaevtaskovich.github.io/refs/heads/main/data/music.json');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
