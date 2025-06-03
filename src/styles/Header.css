@@ -26,7 +26,7 @@
 }
 
 .nav-link {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   padding: 5px 0;
   position: relative;
@@ -142,8 +142,8 @@
   }
 
   .nav-link {
-    margin: 10px 0; /* Можно уменьшить вертикальные отступы */
-    font-size: 1.5rem; /* Это значение делает текст большим, его нужно уменьшить */
+    margin: 10px 0;
+    font-size: 1.5rem;
     color: var(--text-primary);
     opacity: 0;
     transform: translateY(15px);

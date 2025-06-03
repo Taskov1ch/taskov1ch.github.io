@@ -124,9 +124,9 @@ function Dashboard() {
       result += `${hours} ч `;
     }
     // Можно добавить отображение минут, если нужно
-    // if (mins > 0) {
-    //   result += `${mins} мин`;
-    // }
+    if (mins > 0) {
+      result += `${mins} мин`;
+    }
     return result.trim() || "<1 ч"; // Если меньше часа, но не 0
   };
 
@@ -151,11 +151,6 @@ function Dashboard() {
     exit: { opacity: 0, y: -20 }, transition: { duration: 0.25, ease: "easeInOut" },
   };
 
-  // Общий лоадер для всей страницы, если это необходимо
-  // if (isLoading && !anixartStats && !anixartError) {
-  //   return <div className='page-loading-container'><LoadingSpinner /></div>;
-  // }
-
   if (isLoadingAnixart && isLoadingSteam) {
     return <div className='page-loading-container'><LoadingSpinner /></div>;
   }
@@ -171,67 +166,65 @@ function Dashboard() {
       variants={pageTransition} transition={pageTransition.transition}
     >
       <h1>Моя доска</h1>
-      <section className='dashboard-section'>
-        <h2>Статистика GitHub</h2><p>Здесь будет ваша статистика с GitHub.</p>
-      </section>
 
       <section className='dashboard-section steam-stats'>
         <h2>Моя Steam статистика</h2>
-        {isLoadingSteam && <LoadingSpinner />}
-        {errorSteam && !steamStats?.profile && <p className='error-message'>Ошибка загрузки Steam данных: {errorSteam}</p>}
-
-        {/* Отображаем блок Steam профиля. Аватар будет из API, если доступен, иначе заглушка или ваш GIF. */}
-        <div className='steam-profile-header'>
-          <div className="steam-avatar-container">
-            <img
-              src={steamAvatarGifUrl} // Динамический аватар из API или заглушка
-              alt={steamStats?.profile?.personaname || 'Steam Avatar'}
-              className='steam-avatar-actual'
-              onError={(e) => { e.target.onerror = null; e.target.src="https://avatars.githubusercontent.com/u/154591704?v=4"; }} // Запасной URL, если основной не загрузится
-            />
-            <img
-              src={steamAvatarFrameUrl} // Ваша статическая ссылка на рамку
-              alt="Steam Avatar Frame"
-              className='steam-avatar-frame'
-            />
+        {errorSteam && <p className='error-message'>Ошибка Steam: {errorSteam}</p>}
+        {!errorSteam && !steamStats && !isLoadingSteam && <p>Данные Steam не загружены.</p>}
+        {steamStats && steamStats.profile && (
+          <div className='steam-profile-header'>
+            <div className="steam-avatar-container">
+              <img
+                src={steamAvatarGifUrl}
+                alt={steamStats.profile.personaname || 'Steam Avatar'}
+                className='steam-avatar-actual'
+                onError={(e) => { e.target.onerror = null; e.target.src = STEAM_AVATAR_FALLBACK_URL; }}
+              />
+              <img
+                src={steamAvatarFrameUrl}
+                alt="Steam Avatar Frame"
+                className='steam-avatar-frame'
+              />
+            </div>
+            <div className='steam-profile-info'>
+              <h3>
+                <a href={steamStats.profile.profileurl} target="_blank" rel="noopener noreferrer">
+                  {steamStats.profile.personaname || 'Игрок Steam'}
+                </a>
+              </h3>
+              {steamStats.profile.realname && <p>Имя: {steamStats.profile.realname}</p>}
+              {steamStats.profile.loccountrycode && <p>Страна: {steamStats.profile.loccountrycode}</p>}
+            </div>
           </div>
-          <div className='steam-profile-info'>
-            {steamStats && steamStats.profile ? (
-              <>
-                <h3>
-                  <a href={steamStats.profile.profileurl} target="_blank" rel="noopener noreferrer">
-                    {steamStats.profile.personaname || 'Игрок Steam'}
-                  </a>
-                </h3>
-                {steamStats.profile.realname && <p>Имя: {steamStats.profile.realname}</p>}
-                {steamStats.profile.loccountrycode && <p>Страна: {steamStats.profile.loccountrycode}</p>}
-              </>
-            ) : !isLoadingSteam ? (
-              <>
-                <h3>Игрок Steam</h3>
-                <p>Данные профиля не загружены.</p>
-              </>
-            ) : null }
-          </div>
-        </div>
+        )}
 
-        {steamStats?.recentlyPlayed && ( // Отображаем игры, если есть данные
+        {steamStats?.recentlyPlayed && (
             <>
                 <h4>Недавно сыгранные игры (за 2 недели):</h4>
                 {steamStats.recentlyPlayed.length > 0 ? (
                   <ul className='steam-games-list'>
-                    {steamStats.recentlyPlayed.map(game => (
-                      <li key={game.appid} className='steam-game-item'>
-                        <img src={game.img_icon_url} alt={game.name} className='steam-game-icon' />
-                        <div className='steam-game-details'>
-                          <span className='steam-game-name'>{game.name}</span>
-                          <span className='steam-game-playtime'>
-                            За 2 недели: {formatPlaytime(game.playtime_2weeks)} <br />
-                            Всего: {formatPlaytime(game.playtime_forever)}
-                          </span>
-                        </div>
-                      </li>
-                    ))}
+                    {steamStats.recentlyPlayed.map(game => {
+                      const gameStoreUrl = `https://store.steampowered.com/app/${game.appid}`;
+                      return (
+                        <a
+                          key={game.appid}
+                          href={gameStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="steam-game-item-link" // Класс для ссылки-карточки
+                        >
+                          <li className='steam-game-item-content'> {/* Внутренний контейнер для flex */}
+                            <img src={game.img_icon_url} alt={game.name} className='steam-game-icon' />
+                            <div className='steam-game-details'>
+                              <span className='steam-game-name'>{game.name}</span>
+                              <span className='steam-game-playtime'>
+                                За 2 нед.: {formatPlaytime(game.playtime_2weeks)} | Всего: {formatPlaytime(game.playtime_forever)}
+                              </span>
+                            </div>
+                          </li>
+                        </a>
+                      );
+                    })}
                   </ul>
                 ) : (
                   <p>{steamStats.total_games_played_2weeks > 0 ? `Сыграно игр за 2 недели: ${steamStats.total_games_played_2weeks}, но нет детальной статистики.` : 'Нет данных о недавно сыгранных играх.'}</p>
@@ -319,9 +312,6 @@ function Dashboard() {
         )}
       </section>
 
-      <section className='dashboard-section'>
-        <h2>Моя игровая статистика</h2><p>Здесь будет ваша игровая статистика.</p>
-      </section>
     </motion.div>
   );
 }
