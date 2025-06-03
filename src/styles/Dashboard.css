@@ -594,3 +594,59 @@
     margin-bottom: 15px; /* Добавляем нижний отступ */
   }
 }
+
+/* src/styles/Dashboard.css */
+
+/* ... (остальные стили) ... */
+
+.steam-avatar-container {
+  position: relative;
+  width: 84px;  /* Задаем базовую ширину */
+  /* height: 84px;  Убираем фиксированную высоту, будем использовать aspect-ratio */
+  aspect-ratio: 1 / 1; /* Делаем контейнер всегда квадратным */
+  margin-right: 20px;
+  flex-shrink: 0;
+  overflow: hidden; /* Обрезаем все, что выходит за пределы квадратного контейнера */
+  border-radius: 12px; /* Скругление для самого контейнера, если рамка имеет такое же */
+}
+
+.steam-avatar-actual { /* Ваш GIF аватар */
+  display: block; /* Убираем лишние отступы у img */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Масштабирует изображение, чтобы оно заполнило контейнер, сохраняя пропорции, обрезая лишнее */
+  /* border-radius оставляем, если сам аватар должен быть скруглен внутри рамки,
+     но если рамка полностью непрозрачная по краям, это не обязательно */
+  border-radius: 8px; /* Пример скругления для самого GIF */
+}
+
+.steam-avatar-frame { /* Ваша APNG рамка */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Масштабирует рамку так, чтобы она полностью поместилась в контейнер, сохраняя пропорции.
+                           Если рамка должна растягиваться, можно использовать 'cover' или 'fill' (но fill исказит) */
+  /* Или, если рамка должна быть точного размера поверх аватара:
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.05); /* Пример: рамка чуть больше аватара */
+  /* width: 100%; height: 100%; /* или точные размеры в px, если они известны и должны быть фиксированы */
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .steam-stats .steam-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .steam-avatar-container {
+    width: 100px; /* Увеличиваем на мобильных */
+    /* height автоматически подстроится из-за aspect-ratio */
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}
