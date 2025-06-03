@@ -178,53 +178,65 @@ function Dashboard() {
       <section className='dashboard-section steam-stats'>
         <h2>Моя Steam статистика</h2>
         {isLoadingSteam && <LoadingSpinner />}
-        {errorSteam && !steamStats && <p className='error-message'>Ошибка загрузки Steam данных: {errorSteam}</p>}
-        {steamStats && steamStats.profile && ( // Убедимся, что profile существует
-          <>
-            <div className='steam-profile-header'>
-              <div className="steam-avatar-container">
-                <img
-                  src={steamAvatarGifUrl} // Ваша анимированная аватарка GIF
-                  alt={steamStats.profile.personaname || 'Steam Avatar'}
-                  className='steam-avatar-actual'
-                />
-                <img
-                  src={steamAvatarFrameUrl} // Ваша анимированная рамка (APNG)
-                  alt="Steam Avatar Frame"
-                  className='steam-avatar-frame'
-                />
-              </div>
-              <div className='steam-profile-info'>
+        {errorSteam && !steamStats?.profile && <p className='error-message'>Ошибка загрузки Steam данных: {errorSteam}</p>}
+
+        {/* Отображаем блок Steam профиля. Аватар будет из API, если доступен, иначе заглушка или ваш GIF. */}
+        <div className='steam-profile-header'>
+          <div className="steam-avatar-container">
+            <img
+              src={steamAvatarGifUrl} // Динамический аватар из API или заглушка
+              alt={steamStats?.profile?.personaname || 'Steam Avatar'}
+              className='steam-avatar-actual'
+              onError={(e) => { e.target.onerror = null; e.target.src="https://avatars.githubusercontent.com/u/154591704?v=4"; }} // Запасной URL, если основной не загрузится
+            />
+            <img
+              src={steamAvatarFrameUrl} // Ваша статическая ссылка на рамку
+              alt="Steam Avatar Frame"
+              className='steam-avatar-frame'
+            />
+          </div>
+          <div className='steam-profile-info'>
+            {steamStats && steamStats.profile ? (
+              <>
                 <h3>
                   <a href={steamStats.profile.profileurl} target="_blank" rel="noopener noreferrer">
-                    {steamStats.profile.personaname || 'Неизвестный игрок'}
+                    {steamStats.profile.personaname || 'Игрок Steam'}
                   </a>
                 </h3>
                 {steamStats.profile.realname && <p>Имя: {steamStats.profile.realname}</p>}
                 {steamStats.profile.loccountrycode && <p>Страна: {steamStats.profile.loccountrycode}</p>}
-              </div>
-            </div>
+              </>
+            ) : !isLoadingSteam ? (
+              <>
+                <h3>Игрок Steam</h3>
+                <p>Данные профиля не загружены.</p>
+              </>
+            ) : null }
+          </div>
+        </div>
 
-            <h4>Недавно сыгранные игры (за 2 недели):</h4>
-            {steamStats.recentlyPlayed && steamStats.recentlyPlayed.length > 0 ? (
-              <ul className='steam-games-list'>
-                {steamStats.recentlyPlayed.map(game => (
-                  <li key={game.appid} className='steam-game-item'>
-                    <img src={game.img_icon_url} alt={game.name} className='steam-game-icon' />
-                    <div className='steam-game-details'>
-                      <span className='steam-game-name'>{game.name}</span>
-                      <span className='steam-game-playtime'>
-                        За 2 недели: {formatPlaytime(game.playtime_2weeks)} <br />
-                        Всего: {formatPlaytime(game.playtime_forever)}
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>{steamStats.total_games_played_2weeks > 0 ? `Сыграно игр за 2 недели: ${steamStats.total_games_played_2weeks}, но нет детальной статистики.` : 'Нет данных о недавно сыгранных играх.'}</p>
-            )}
-          </>
+        {steamStats?.recentlyPlayed && ( // Отображаем игры, если есть данные
+            <>
+                <h4>Недавно сыгранные игры (за 2 недели):</h4>
+                {steamStats.recentlyPlayed.length > 0 ? (
+                  <ul className='steam-games-list'>
+                    {steamStats.recentlyPlayed.map(game => (
+                      <li key={game.appid} className='steam-game-item'>
+                        <img src={game.img_icon_url} alt={game.name} className='steam-game-icon' />
+                        <div className='steam-game-details'>
+                          <span className='steam-game-name'>{game.name}</span>
+                          <span className='steam-game-playtime'>
+                            За 2 недели: {formatPlaytime(game.playtime_2weeks)} <br />
+                            Всего: {formatPlaytime(game.playtime_forever)}
+                          </span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{steamStats.total_games_played_2weeks > 0 ? `Сыграно игр за 2 недели: ${steamStats.total_games_played_2weeks}, но нет детальной статистики.` : 'Нет данных о недавно сыгранных играх.'}</p>
+                )}
+            </>
         )}
       </section>
 

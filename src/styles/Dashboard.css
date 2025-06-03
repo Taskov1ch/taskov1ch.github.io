@@ -1,6 +1,6 @@
 /* src/styles/Dashboard.css */
 .dashboard-container {
-  padding-top: 20px; /* Отступ от хедера */
+  padding-top: 20px;
 }
 
 .dashboard-container h1 {
@@ -33,7 +33,7 @@
   margin-bottom: 15px;
 }
 
-/* Стили для секции Anixart */
+/* --- Стили для секции Anixart --- */
 .anixart-stats .anixart-profile-header {
   display: flex;
   align-items: center;
@@ -66,291 +66,23 @@
 .anixart-status {
   font-size: 0.9rem;
   color: var(--text-secondary);
-  white-space: pre-line; /* Для отображения переносов строк из статуса */
+  white-space: pre-line;
 }
 
-.anixart-history-list {
-  list-style: none;
-  padding: 0;
-}
-
-.anixart-history-item {
-  display: flex;
-  align-items: flex-start; /* Выравнивание по верху */
-  background-color: var(--dark-bg);
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  border: 1px solid var(--border-color);
-  transition: background-color 0.2s ease;
-}
-
-.anixart-history-item:hover {
-  background-color: #2a2a3a;
-}
-
-.history-poster {
-  width: 50px; /* Ширина обложки */
-  height: 70px; /* Высота обложки */
-  object-fit: cover;
-  border-radius: 4px;
-  margin-right: 15px;
-  flex-shrink: 0;
-}
-
-.history-details {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 4px; /* Небольшой отступ между текстами */
-}
-
-.history-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 5px;
-}
-
-.history-episode,
-.history-time {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-@media (max-width: 768px) {
-  .dashboard-section h2 {
-    font-size: 1.6rem;
-  }
-  .anixart-profile-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .anixart-avatar {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-/* ... (существующие стили Dashboard.css) ... */
-
-.anime-chart-container {
-  display: flex;
-  flex-direction: row; /* Располагаем диаграмму и легенду в ряд */
-  align-items: center;  /* Выравниваем по центру вертикально */
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-
-/* Стили для легенды Recharts, если нужно кастомизировать */
-.recharts-legend-wrapper {
-  padding-left: 20px !important; /* Пример отступа для легенды */
-}
-
-.recharts-default-legend .recharts-legend-item {
-  margin-bottom: 5px; /* Отступ между элементами легенды */
-}
-
-@media (max-width: 768px) {
-  .anime-chart-container {
-    flex-direction: column; /* На мобильных стек диаграмму и легенду */
-  }
-  .anime-chart-container .recharts-responsive-container {
-    width: 100% !important; /* Растягиваем на всю ширину */
-    height: 200px !important; /* Можно задать фиксированную высоту для диаграммы */
-  }
-  .anime-chart-container .recharts-responsive-container:last-child { /* Легенда */
-    height: auto !important; /* Автоматическая высота для легенды */
-    margin-top: 10px;
-  }
-   .recharts-legend-wrapper {
-    padding-left: 0 !important;
-    text-align: center; /* Центрируем легенду на мобильных */
-  }
-}
-
-/* src/styles/Dashboard.css */
-
-/* ... (существующие стили Dashboard.css) ... */
-
-.anixart-history-list {
-  list-style: none;
-  padding: 0;
-}
-
-/* Стили для ссылки, которая теперь является всей карточкой */
-.anixart-history-item-link {
-  display: block; /* Чтобы ссылка занимала всю ширину и высоту */
-  background-color: var(--dark-bg);
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  border: 1px solid var(--border-color);
-  text-decoration: none; /* Убираем стандартное подчеркивание ссылки */
-  color: inherit; /* Наследуем цвет текста, чтобы внутренние элементы выглядели нормально */
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.anixart-history-item-link:hover {
-  background-color: #2a2a3a;
-  border-color: var(--primary-blue); /* Подсветка рамки при наведении */
-}
-
-/* Внутренний контейнер для контента карточки */
-.anixart-history-item-content {
-  display: flex;
-  align-items: flex-start; /* Выравнивание по верху */
-}
-
-.history-poster {
-  width: 50px;
-  height: 70px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-right: 15px; /* Отступ справа от обложки */
-  flex-shrink: 0;
-}
-
-.history-details {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 4px;
-  /* margin-left: 15px; - теперь не нужен, так как отступ задан у .history-poster */
-}
-
-.history-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary); /* Цвет заголовка */
-  margin-bottom: 5px;
-}
-
-/* Если хотите, чтобы заголовок менял цвет при наведении на карточку */
-.anixart-history-item-link:hover .history-title {
-  color: var(--primary-blue);
-}
-
-.history-episode,
-.history-time {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-/* ... (остальные стили, включая @media запросы) ... */
-
-/* src/styles/Dashboard.css */
-/* ... существующие стили ... */
-
-.anime-chart-wrapper {
-  width: 100%;
-  /* Высота теперь задается в ResponsiveContainer, но можно оставить для контейнера, если нужно */
-  /* height: 280px; */
-  margin-top: 20px;
-  margin-bottom: 30px;
-  background-color: rgba(0,0,0,0.1); /* Можно добавить легкий фон для отладки размеров */
-  border-radius: 8px;
-}
-
-.recharts-legend-item {
-  margin-bottom: 5px !important; /* Отступ между элементами легенды */
-  padding-right: 10px; /* Добавим немного места справа от текста легенды, если нужно */
-}
-
-@media (max-width: 768px) {
-  .anime-chart-wrapper {
-    height: auto;
-  }
-  .recharts-responsive-container {
-      width: 100% !important;
-      /* На мобильных может потребоваться увеличить высоту для диаграммы + легенды */
-      height: 450px !important; /* Общая высота для диаграммы и легенды под ней */
-  }
-
-  /* На мобильных легенда обычно идет под диаграмму.
-     Recharts может сделать это автоматически или можно настроить `cx`, `cy` и `Legend` props.
-     Если легенда все еще справа и обрезается, можно попробовать: */
-  .recharts-pie-chart-wrapper .recharts-legend-wrapper {
-    position: relative !important; /* Сбросить абсолютное позиционирование, если оно есть */
-    width: 100% !important;
-    text-align: center !important; /* Центрировать текст легенды */
-    padding-left: 0 !important; /* Убрать левый отступ */
-    margin-top: 15px; /* Отступ сверху от диаграммы */
-  }
-   /* Стили для самой диаграммы на мобильных, если нужно сделать ее меньше */
-  .recharts-pie-chart-wrapper svg.recharts-surface {
-     /* Можно попробовать уменьшить размер viewBox или управлять этим через props PieChart */
-  }
-}
-
-/* src/styles/Dashboard.css */
-.anime-chart-wrapper {
-  width: 100%;
-  /* height теперь в ResponsiveContainer */
-  margin-top: 20px;
-  margin-bottom: 30px;
-  border-radius: 8px;
-  /* Для отладки можно добавить фон */
-  /* background-color: rgba(255, 0, 0, 0.1); */
-}
-
-.recharts-legend-item {
-  margin-bottom: 4px !important; /* Отступ между элементами легенды, если она вертикальная */
-  /* Для горизонтальной легенды на мобильных, recharts обычно сама расставляет отступы,
-     но можно добавить margin-right, если нужно */
-}
-
-/* Стили для меток на диаграмме (если они показываются снаружи) */
-.recharts-pie-label-text tspan {
-  font-weight: 500;
-}
-
-
-@media (max-width: 768px) {
-  .dashboard-section h4 { /* Заголовок "Статусы просмотра" */
-    text-align: center;
-  }
-
-  .anime-chart-wrapper .recharts-surface { /* SVG элемент диаграммы */
-    /* Убедимся, что SVG не выходит за пределы контейнера */
-    display: block;
-    margin: 0 auto; /* Центрирование SVG, если его фактическая ширина меньше контейнера */
-  }
-
-  /* Стили для легенды на мобильных, если используется layout="horizontal" */
-  .recharts-legend-wrapper ul.recharts-default-legend {
-    display: flex;
-    flex-wrap: wrap; /* Позволяем переносить элементы легенды */
-    justify-content: center; /* Центрируем элементы легенды */
-    text-align: center;
-    padding-left: 0 !important; /* Сброс отступа, если он был */
-  }
-  .recharts-legend-wrapper li.recharts-legend-item {
-    margin-right: 8px !important; /* Горизонтальный отступ между элементами */
-    margin-left: 8px !important;
-    margin-bottom: 6px !important; /* Вертикальный отступ при переносе */
-  }
-}
-
-/* src/styles/Dashboard.css */
-
-/* ... (остальные ваши стили) ... */
-
+/* Стили для HTML/CSS прогресс-бара и легенды Anixart */
 .custom-progress-bar-container {
   width: 100%;
   margin-bottom: 20px;
-  padding: 10px 0; /* Немного отступа сверху/снизу */
+  padding: 10px 0;
 }
 
 .custom-progress-bar {
   display: flex;
   width: 100%;
-  height: 30px; /* Толщина линии/полосы */
-  background-color: var(--light-bg); /* Фон для пустых участков, если сумма процентов < 100 */
+  height: 30px;
+  background-color: var(--dark-bg); /* Изменил фон на более темный для лучшего контраста с var(--light-bg) секции */
   border-radius: 6px;
-  overflow: hidden; /* Чтобы скруглить углы у сегментов */
+  overflow: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border: 1px solid var(--border-color);
 }
@@ -363,19 +95,8 @@
   color: white;
   font-weight: 600;
   font-size: 12px;
-  text-shadow: 0 0 2px rgba(0,0,0,0.5); /* Тень для текста для лучшей читаемости */
-  transition: width 0.3s ease-in-out; /* Плавная анимация при изменении данных */
-  /* Минимальная ширина, чтобы очень маленькие сегменты были видны */
-  /* min-width: 10px;  // Раскомментируйте, если нужно, но может нарушить пропорции */
-}
-/* Если хотите, чтобы первый и последний сегмент имели скругленные углы */
-.custom-progress-bar-segment:first-child {
-  /* border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px; */
-}
-.custom-progress-bar-segment:last-child {
-  /* border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px; */
+  text-shadow: 0 0 3px rgba(0,0,0,0.6);
+  transition: width 0.4s ease-in-out;
 }
 
 .segment-percentage {
@@ -385,79 +106,98 @@
 .custom-legend {
   margin-top: 15px;
   display: flex;
-  flex-wrap: wrap; /* Позволяет элементам легенды переноситься на новую строку */
-  justify-content: center; /* Центрирование элементов легенды */
-  gap: 10px 15px; /* Отступы между элементами (вертикальный и горизонтальный) */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 15px;
 }
 
 .custom-legend-item {
   display: flex;
   align-items: center;
-  font-size: 0.9rem; /* Размер шрифта легенды */
+  font-size: 0.9rem;
 }
 
 .legend-color-indicator {
   width: 14px;
   height: 14px;
-  border-radius: 3px; /* Можно сделать круглым: border-radius: 50%; */
+  border-radius: 3px;
   margin-right: 8px;
-  border: 1px solid rgba(0,0,0,0.1); /* Легкая рамка для светлых цветов */
+  border: 1px solid rgba(255,255,255,0.1); /* Рамка для индикаторов */
 }
 
 .legend-text {
   color: var(--text-secondary);
 }
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .custom-progress-bar {
-    height: 25px; /* Немного тоньше на мобильных */
-  }
-  .custom-progress-bar-segment {
-    font-size: 10px; /* Меньше шрифт для процентов внутри сегментов */
-  }
-  .custom-legend {
-    flex-direction: column; /* Можно расположить элементы легенды строго вертикально */
-    align-items: flex-start; /* Выровнять по левому краю, если вертикально */
-    /* justify-content: flex-start; */ /* Если нужно, чтобы начинались слева */
-    gap: 8px; /* Уменьшить вертикальный отступ */
-  }
-  .custom-legend-item {
-    font-size: 0.85rem; /* Меньше шрифт легенды на мобильных */
-    width: 100%; /* Чтобы каждый элемент занимал всю ширину, если легенда вертикальная */
-    /* justify-content: center; /* Если хотите центрировать текст в элементе при вертикальной легенде */
-  }
+.legend-percentage {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-left: 4px;
 }
 
-@media (max-width: 480px) {
-  .custom-legend {
-    /* Можно оставить flex-wrap: wrap и justify-content: center для очень маленьких экранов,
-       чтобы элементы шли в несколько колонок, если их много */
-    flex-direction: row; /* Возвращаем к горизонтальному потоку с переносом */
-    justify-content: center;
-  }
-  .custom-legend-item {
-    width: auto; /* Сбрасываем ширину, чтобы элементы занимали необходимое место */
-  }
+
+/* История просмотров Anixart */
+.anixart-history-list {
+  list-style: none;
+  padding: 0;
 }
 
-/* src/styles/Dashboard.css */
-/* ...остальные стили... */
-
-.error-message-inline {
-  color: var(--dropped); /* Используем цвет для "брошено" или другой цвет ошибки */
-  background-color: rgba(255, 0, 0, 0.1); /* Легкий фон для выделения */
-  padding: 10px 15px;
-  border-radius: 6px;
-  border: 1px solid var(--dropped);
-  text-align: center;
-  margin-top: 10px;
+.anixart-history-item-link {
+  display: block;
+  background-color: var(--dark-bg);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* src/styles/Dashboard.css */
+.anixart-history-item-link:hover {
+  background-color: #2a2a3a; /* Чуть светлее чем var(--dark-bg) */
+  border-color: var(--primary-blue);
+}
 
-/* ... (существующие стили) ... */
+.anixart-history-item-link:hover .history-title {
+  color: var(--primary-blue);
+}
 
+.anixart-history-item-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.history-poster {
+  width: 50px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.history-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 4px;
+}
+
+.history-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  transition: color 0.2s ease;
+}
+
+.history-episode,
+.history-time {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* --- Стили для секции Steam --- */
 .steam-stats .steam-profile-header {
   display: flex;
   align-items: center;
@@ -465,11 +205,37 @@
   gap: 20px;
 }
 
-.steam-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px; /* Steam аватары часто квадратные */
-  border: 2px solid var(--border-color);
+.steam-avatar-container {
+  position: relative;
+  width: 120px;  /* Ваша подобранная ширина рамки */
+  height: 120px; /* Ваша подобранная высота рамки */
+  margin-right: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steam-avatar-actual { /* Аватар */
+  display: block;
+  width: 97px;   /* Ваша подобранная ширина аватара */
+  height: 97px;  /* Ваша подобранная высота аватара */
+  object-fit: cover;
+  border-radius: 8px;
+  z-index: 1;
+  position: relative;
+}
+
+.steam-avatar-frame { /* Рамка */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 129px;  /* Ваша подобранная ширина рамки */
+  height: 129px; /* Ваша подобранная высота рамки */
+  transform: translate(-50%, -50%) scale(1); /* Ваш подобранный scale */
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .steam-profile-info h3 {
@@ -499,7 +265,7 @@
 .steam-game-item {
   display: flex;
   align-items: center;
-  background-color: var(--dark-bg);
+  background-color: var(--dark-bg); /* Тот же фон, что и у карточек Anixart */
   padding: 10px 15px;
   border-radius: 6px;
   margin-bottom: 10px;
@@ -507,7 +273,7 @@
 }
 
 .steam-game-icon {
-  width: 32px; /* Стандартный размер иконки Steam */
+  width: 32px;
   height: 32px;
   margin-right: 15px;
   flex-shrink: 0;
@@ -532,121 +298,75 @@
 }
 
 .error-message {
-  color: #ff4d4f; /* Красный для ошибок */
+  color: #ff4d4f;
   padding: 10px;
   background-color: rgba(255, 77, 79, 0.1);
   border: 1px solid rgba(255, 77, 79, 0.3);
   border-radius: 6px;
+  text-align: center;
 }
 
 
+/* --- Адаптивность --- */
 @media (max-width: 768px) {
+  .dashboard-section h2 {
+    font-size: 1.6rem;
+  }
+  .anixart-profile-header,
   .steam-stats .steam-profile-header {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
-  .steam-avatar {
+  .anixart-avatar { /* Аватар Anixart */
     width: 100px;
     height: 100px;
   }
-}
 
-/* src/styles/Dashboard.css */
-
-/* ... (существующие стили для .steam-stats .steam-profile-header, .steam-profile-info и т.д.) ... */
-
-.steam-avatar-container {
-  position: relative; /* Для позиционирования рамки относительно этого контейнера */
-  width: 84px;  /* Размер немного больше, чем аватар, для учета рамки, если она выходит за края */
-  height: 84px; /* Подберите под свои размеры аватара + рамки */
-  margin-right: 20px; /* Отступ от информации о профиле, если .steam-profile-header это flex row */
-  flex-shrink: 0;
-}
-
-.steam-avatar-actual {
-  width: 100%; /* Аватар занимает всю ширину контейнера */
-  height: 100%;
-  object-fit: cover; /* Чтобы GIF хорошо вписывался, если пропорции не идеальны */
-  border-radius: 8px; /* Скругление для самого аватара, если рамка не полностью его перекрывает */
-  /* Можно добавить z-index: 1;, если нужно, но обычно порядок в DOM достаточен */
-}
-
-.steam-avatar-frame {
-  position: absolute; /* Позиционируем рамку поверх аватара */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Центрируем рамку */
-  width: 100%; /* Рамка по ширине контейнера (или можно задать точный размер, если он отличается) */
-  height: 100%;/* Рамка по высоте контейнера */
-  pointer-events: none; /* Чтобы клики проходили "сквозь" рамку к аватару, если это нужно */
-  z-index: 2; /* Убедимся, что рамка поверх аватара */
-}
-
-@media (max-width: 768px) {
-  .steam-stats .steam-profile-header {
-    flex-direction: column;
-    text-align: center;
-  }
+  /* Steam аватар на мобильных */
   .steam-avatar-container {
-    width: 100px; /* Можно увеличить на мобильных */
-    height: 100px;
-    margin-right: 0; /* Убираем правый отступ, т.к. теперь элементы в колонке */
-    margin-bottom: 15px; /* Добавляем нижний отступ */
-  }
-}
-
-/* src/styles/Dashboard.css */
-
-/* ... (остальные стили) ... */
-
-.steam-avatar-container {
-  position: relative;
-  width: 84px;  /* Задаем базовую ширину */
-  /* height: 84px;  Убираем фиксированную высоту, будем использовать aspect-ratio */
-  aspect-ratio: 1 / 1; /* Делаем контейнер всегда квадратным */
-  margin-right: 20px;
-  flex-shrink: 0;
-  overflow: hidden; /* Обрезаем все, что выходит за пределы квадратного контейнера */
-  border-radius: 12px; /* Скругление для самого контейнера, если рамка имеет такое же */
-}
-
-.steam-avatar-actual { /* Ваш GIF аватар */
-  display: block; /* Убираем лишние отступы у img */
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Масштабирует изображение, чтобы оно заполнило контейнер, сохраняя пропорции, обрезая лишнее */
-  /* border-radius оставляем, если сам аватар должен быть скруглен внутри рамки,
-     но если рамка полностью непрозрачная по краям, это не обязательно */
-  border-radius: 8px; /* Пример скругления для самого GIF */
-}
-
-.steam-avatar-frame { /* Ваша APNG рамка */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Масштабирует рамку так, чтобы она полностью поместилась в контейнер, сохраняя пропорции.
-                           Если рамка должна растягиваться, можно использовать 'cover' или 'fill' (но fill исказит) */
-  /* Или, если рамка должна быть точного размера поверх аватара:
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.05); /* Пример: рамка чуть больше аватара */
-  /* width: 100%; height: 100%; /* или точные размеры в px, если они известны и должны быть фиксированы */
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-  .steam-stats .steam-profile-header {
-    flex-direction: column;
-    text-align: center;
-  }
-  .steam-avatar-container {
-    width: 100px; /* Увеличиваем на мобильных */
-    /* height автоматически подстроится из-за aspect-ratio */
+    /* Оставляем размеры как подобраны, или немного уменьшаем, если нужно */
+    /* width: 100px;
+       height: 100px; */
     margin-right: 0;
     margin-bottom: 15px;
+  }
+  /* Если нужно адаптировать внутренние размеры аватара и рамки Steam: */
+  /* .steam-avatar-actual {
+    width: 77px;
+    height: 77px;
+  }
+  .steam-avatar-frame {
+    width: 102px;
+    height: 102px;
+  } */
+
+  /* Адаптивность для HTML/CSS прогресс-бара и легенды Anixart */
+  .custom-progress-bar {
+    height: 25px;
+  }
+  .custom-progress-bar-segment {
+    font-size: 10px;
+  }
+  .custom-legend {
+    flex-direction: column;
+    align-items: center; /* Центрируем элементы легенды, если они в колонку */
+    gap: 8px;
+  }
+  .custom-legend-item {
+    font-size: 0.85rem;
+    /* width: 100%; /* Раскомментируйте, если хотите, чтобы каждый элемент занимал всю ширину */
+    justify-content: center; /* Центрирует содержимое элемента легенды (иконку и текст) */
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-legend {
+    flex-direction: row; /* На очень маленьких экранах возвращаем к строке с переносом */
+    justify-content: center;
+  }
+  .custom-legend-item {
+    width: auto; /* Авто ширина для элементов */
+    justify-content: flex-start; /* Сброс центрирования, если нужно */
   }
 }
