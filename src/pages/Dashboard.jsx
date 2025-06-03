@@ -98,7 +98,7 @@ function Dashboard() {
       setErrorSteam(null);
       try {
         // const response = await fetch('/api/steam-stats');
-        const response = await fetch('https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?steamid=76561199808981886&key=37FB82421B39056B73D036C3B66084BA');
+        const response = await fetch('/api/steam-stats');
         if (!response.ok) {
           const errorData = await response.json();
           throw new Error(errorData.error || `Steam Stats API error: ${response.status}`);
