@@ -17,6 +17,7 @@ import "./styles/App.css";
 import Donate from "./pages/Donate";
 import PlaylistModal from "./components/PlaylistModal";
 import "./styles/index.css";
+import Dashboard from "./pages/Dashboard";
 
 const pageTransition = {
   initial: { opacity: 0, y: 20 },
@@ -118,6 +119,20 @@ function App() {
                   transition={pageTransition.transition}
                 >
                   <Donate />
+                </motion.div>
+              }
+            />
+            <Route
+              path='/dashboard' // Новый маршрут
+              element={
+                <motion.div
+                  initial='initial'
+                  animate='animate'
+                  exit='exit'
+                  variants={pageTransition}
+                  transition={pageTransition.transition}
+                >
+                  <Dashboard />
                 </motion.div>
               }
             />

@@ -142,12 +142,11 @@
   }
 
   .nav-link {
-    margin: 25px 0;
-    font-size: 2.2rem;
+    margin: 10px 0; /* Можно уменьшить вертикальные отступы */
+    font-size: 1.5rem; /* Это значение делает текст большим, его нужно уменьшить */
     color: var(--text-primary);
     opacity: 0;
     transform: translateY(15px);
-
     transition:
       color 0.3s ease,
       opacity 0.4s ease,

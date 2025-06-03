@@ -14,6 +14,8 @@ const getPageTitle = (pathname) => {
       return "Контакты";
     case "/donate":
       return "Задонатить";
+    case "/dashboard":
+      return "Моя доска"
     default:
       return "Taskov1ch";
   }
@@ -60,6 +62,9 @@ function Header() {
           </NavLink>
           <NavLink to='/donate' className='nav-link' onClick={closeMenu}>
             Задонатить
+          </NavLink>
+          <NavLink to='/dashboard' className='nav-link' onClick={closeMenu}>
+            Моя доска
           </NavLink>
         </div>
 
