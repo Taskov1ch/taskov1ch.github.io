@@ -160,6 +160,10 @@ function Dashboard() {
     return <div className='page-loading-container'><LoadingSpinner /></div>;
   }
 
+  const steamAvatarGifUrl = "https://cdn.fastly.steamstatic.com/steamcommunity/public/images/items/1070330/97227479c36b82d531c866562be67193c691a6d5.gif";
+  const steamAvatarFrameUrl = "https://cdn.fastly.steamstatic.com/steamcommunity/public/images/items/2873080/7591f6defdeafebf72d2bfdc75fc7568262557ba.png";
+
+
   return (
     <motion.div
       className='dashboard-container container'
@@ -175,20 +179,29 @@ function Dashboard() {
         <h2>Моя Steam статистика</h2>
         {isLoadingSteam && <LoadingSpinner />}
         {errorSteam && !steamStats && <p className='error-message'>Ошибка загрузки Steam данных: {errorSteam}</p>}
-        {steamStats && (
+        {steamStats && steamStats.profile && ( // Убедимся, что profile существует
           <>
             <div className='steam-profile-header'>
-              {steamStats.profile?.avatarfull && (
-                <img src={steamStats.profile.avatarfull} alt={steamStats.profile.personaname} className='steam-avatar' />
-              )}
+              <div className="steam-avatar-container">
+                <img
+                  src={steamAvatarGifUrl} // Ваша анимированная аватарка GIF
+                  alt={steamStats.profile.personaname || 'Steam Avatar'}
+                  className='steam-avatar-actual'
+                />
+                <img
+                  src={steamAvatarFrameUrl} // Ваша анимированная рамка (APNG)
+                  alt="Steam Avatar Frame"
+                  className='steam-avatar-frame'
+                />
+              </div>
               <div className='steam-profile-info'>
                 <h3>
-                  <a href={steamStats.profile?.profileurl} target="_blank" rel="noopener noreferrer">
-                    {steamStats.profile?.personaname || 'Неизвестный игрок'}
+                  <a href={steamStats.profile.profileurl} target="_blank" rel="noopener noreferrer">
+                    {steamStats.profile.personaname || 'Неизвестный игрок'}
                   </a>
                 </h3>
-                {steamStats.profile?.realname && <p>Имя: {steamStats.profile.realname}</p>}
-                {steamStats.profile?.loccountrycode && <p>Страна: {steamStats.profile.loccountrycode}</p>}
+                {steamStats.profile.realname && <p>Имя: {steamStats.profile.realname}</p>}
+                {steamStats.profile.loccountrycode && <p>Страна: {steamStats.profile.loccountrycode}</p>}
               </div>
             </div>
 
