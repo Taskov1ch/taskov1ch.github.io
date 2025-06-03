@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-// Recharts больше не используется для этой секции, удаляем импорты, если они были только для пончика
-// import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import "../styles/Dashboard.css";
 import LoadingSpinner from "../components/LoadingSpinner";
 
@@ -45,28 +43,27 @@ const ANIME_STATUS_NAMES_RU = {
 
 function Dashboard() {
   const [anixartStats, setAnixartStats] = useState(null);
-  const [steamStats, setSteamStats] = useState(null); // Состояние для Steam статистики
+  const [steamStats, setSteamStats] = useState(null);
   const [isLoadingAnixart, setIsLoadingAnixart] = useState(true);
-  const [isLoadingSteam, setIsLoadingSteam] = useState(true); // Отдельный лоадер для Steam
+  const [isLoadingSteam, setIsLoadingSteam] = useState(true);
   const [errorAnixart, setErrorAnixart] = useState(null);
   const [errorSteam, setErrorSteam] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [anixartError, setAnixartError] = useState(null); // Отдельное состояние для ошибки Anixart
+  const [anixartError, setAnixartError] = useState(null);
   const isMobile = useIsMobile();
 
   useEffect(() => {
     const fetchAnixartStats = async () => {
       setIsLoading(true);
-      setAnixartError(null); // Сбрасываем предыдущую ошибку
+      setAnixartError(null);
       try {
         const response = await fetch('https://api.anixart.tv/profile/1932711');
 
         if (!response.ok) {
-          // Попытка прочитать тело ошибки, если сервер его предоставил
           let errorBody = "";
           try {
             errorBody = await response.text();
-          } catch (e) { /* игнорируем ошибку чтения тела */ }
+          } catch (e) {}
           console.error(`HTTP error! status: ${response.status}, body: ${errorBody}`);
           throw new Error(`Не удалось получить данные от Anixart. Статус: ${response.status}`);
         }
@@ -81,23 +78,21 @@ function Dashboard() {
         }
       } catch (e) {
         console.error("Не удалось загрузить статистику Anixart:", e);
-        // Устанавливаем сообщение об ошибке, которое будет отображено в блоке
         setAnixartError(e.message || "Произошла неизвестная ошибка при загрузке данных Anixart.");
-        setAnixartStats(null); // Убедимся, что старые данные не отображаются
+        setAnixartStats(null);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchAnixartStats();
-  }, []); // Пустой массив зависимостей - запускается один раз при монтировании
+  }, []);
 
   useEffect(() => {
     const fetchSteamStats = async () => {
       setIsLoadingSteam(true);
       setErrorSteam(null);
       try {
-        // const response = await fetch('/api/steam-stats');
         const response = await fetch('/api/steam-stats');
         if (!response.ok) {
           const errorData = await response.json();
@@ -123,11 +118,10 @@ function Dashboard() {
     if (hours > 0) {
       result += `${hours} ч `;
     }
-    // Можно добавить отображение минут, если нужно
     if (mins > 0) {
       result += `${mins} мин`;
     }
-    return result.trim() || "<1 ч"; // Если меньше часа, но не 0
+    return result.trim() || "<1 ч";
   };
 
   const preparedAnimeStats = useMemo(() => {
@@ -156,6 +150,10 @@ function Dashboard() {
   }
 
   const steamAvatarGifUrl = "https://cdn.fastly.steamstatic.com/steamcommunity/public/images/items/1070330/97227479c36b82d531c866562be67193c691a6d5.gif";
+
+  if (isLoadingAnixart && isLoadingSteam) {
+    return <div className='page-loading-container'><LoadingSpinner /></div>;
+  }
   const steamAvatarFrameUrl = "https://cdn.fastly.steamstatic.com/steamcommunity/public/images/items/2873080/7591f6defdeafebf72d2bfdc75fc7568262557ba.png";
 
 
@@ -308,7 +306,7 @@ function Dashboard() {
           </>
         )}
         {!isLoading && !anixartError && !anixartStats && (
-             <p>Данные Anixart не загружены.</p> // На случай если stats null, но ошибки нет (маловероятно при такой логике)
+             <p>Данные Anixart не загружены.</p>
         )}
       </section>
 

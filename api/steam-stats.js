@@ -1,6 +1,3 @@
-// api/steam-stats.js (Vercel Serverless Function Example)
-// Этот файл должен находиться в папке /api вашего проекта Vercel
-
 export default async function handler(request, response) {
   const steamId = process.env.STEAM_ID;
   const apiKey = process.env.STEAM_API_KEY;
@@ -9,9 +6,7 @@ export default async function handler(request, response) {
     return response.status(500).json({ error: 'Steam ID or API Key not configured' });
   }
 
-  // Пример запроса для получения общей информации об игроке
   const playerSummaryUrl = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`;
-  // Пример запроса для недавно сыгранных игр
   const recentlyPlayedUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`;
 
   try {
@@ -34,7 +29,6 @@ export default async function handler(request, response) {
     const playerData = await playerSummaryRes.json();
     const recentlyPlayedData = await recentlyPlayedRes.json();
 
-    // Упрощаем данные для ответа
     const profile = playerData.response?.players?.[0] || {};
     const games = recentlyPlayedData.response?.games || [];
 
@@ -50,8 +44,8 @@ export default async function handler(request, response) {
       recentlyPlayed: games.map(game => ({
         appid: game.appid,
         name: game.name,
-        playtime_2weeks: game.playtime_2weeks, // в минутах
-        playtime_forever: game.playtime_forever, // в минутах
+        playtime_2weeks: game.playtime_2weeks,
+        playtime_forever: game.playtime_forever,
         img_icon_url: `http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`,
         img_logo_url: `http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_logo_url}.jpg`,
       })),

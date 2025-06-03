@@ -1,372 +1,376 @@
-/* src/styles/Dashboard.css */
 .dashboard-container {
-  padding-top: 20px;
+	padding-top: 20px;
 }
 
 .dashboard-container h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  color: var(--primary-blue);
+	text-align: center;
+	margin-bottom: 40px;
+	color: var(--primary-blue);
 }
 
 .dashboard-section {
-  background-color: var(--light-bg);
-  padding: 25px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--border-color);
+	background-color: var(--light-bg);
+	padding: 25px;
+	border-radius: 10px;
+	margin-bottom: 30px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	border: 1px solid var(--border-color);
 }
 
 .dashboard-section h2 {
-  font-size: 1.8rem;
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-color);
+	font-size: 1.8rem;
+	color: var(--text-primary);
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--border-color);
 }
 
 .dashboard-section h4 {
-  font-size: 1.3rem;
-  color: var(--text-secondary);
-  margin-top: 20px;
-  margin-bottom: 15px;
+	font-size: 1.3rem;
+	color: var(--text-secondary);
+	margin-top: 20px;
+	margin-bottom: 15px;
 }
 
-/* --- Стили для секции Anixart --- */
 .anixart-stats .anixart-profile-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  gap: 20px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	gap: 20px;
 }
 
 .anixart-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px solid var(--primary-blue);
-  object-fit: cover;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	border: 3px solid var(--primary-blue);
+	object-fit: cover;
 }
 
 .anixart-profile-info h3 {
-  font-size: 1.5rem;
-  color: var(--text-primary);
-  margin: 0 0 5px 0;
-  display: flex;
-  align-items: center;
+	font-size: 1.5rem;
+	color: var(--text-primary);
+	margin: 0 0 5px 0;
+	display: flex;
+	align-items: center;
 }
 
 .anixart-badge {
-  width: 24px;
-  height: 24px;
-  margin-left: 10px;
+	width: 24px;
+	height: 24px;
+	margin-left: 10px;
 }
 
 .anixart-status {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  white-space: pre-line;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	white-space: pre-line;
 }
 
-/* Стили для HTML/CSS прогресс-бара и легенды Anixart */
 .custom-progress-bar-container {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 10px 0;
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 10px 0;
 }
 
 .custom-progress-bar {
-  display: flex;
-  width: 100%;
-  height: 30px;
-  background-color: var(--dark-bg); /* Изменил фон на более темный для лучшего контраста с var(--light-bg) секции */
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border: 1px solid var(--border-color);
+	display: flex;
+	width: 100%;
+	height: 30px;
+	background-color: var(--dark-bg);
+	border-radius: 6px;
+	overflow: hidden;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	border: 1px solid var(--border-color);
 }
 
 .custom-progress-bar-segment {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 12px;
-  text-shadow: 0 0 3px rgba(0,0,0,0.6);
-  transition: width 0.4s ease-in-out;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: 600;
+	font-size: 12px;
+	text-shadow: 0 0 3px rgba(0,0,0,0.6);
+	transition: width 0.4s ease-in-out;
 }
 
 .segment-percentage {
-  opacity: 0.9;
+	opacity: 0.9;
 }
 
 .custom-legend {
-  margin-top: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 15px;
+	margin-top: 15px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px 15px;
 }
 
 .custom-legend-item {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
+	display: flex;
+	align-items: center;
+	font-size: 0.9rem;
 }
 
 .legend-color-indicator {
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-  margin-right: 8px;
-  border: 1px solid rgba(255,255,255,0.1); /* Рамка для индикаторов */
+	width: 14px;
+	height: 14px;
+	border-radius: 3px;
+	margin-right: 8px;
+	border: 1px solid rgba(255,255,255,0.1);
 }
 
 .legend-text {
-  color: var(--text-secondary);
+	color: var(--text-secondary);
 }
+
 .legend-percentage {
-  color: var(--text-primary);
-  font-weight: 500;
-  margin-left: 4px;
+	color: var(--text-primary);
+	font-weight: 500;
+	margin-left: 4px;
 }
 
-
-/* История просмотров Anixart */
 .anixart-history-list {
-  list-style: none;
-  padding: 0;
+	list-style: none;
+	padding: 0;
 }
 
 .anixart-history-item-link {
-  display: block;
-  background-color: var(--dark-bg);
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  border: 1px solid var(--border-color);
-  text-decoration: none;
-  color: inherit;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+	display: block;
+	background-color: var(--dark-bg);
+	padding: 15px;
+	border-radius: 8px;
+	margin-bottom: 15px;
+	border: 1px solid var(--border-color);
+	text-decoration: none;
+	color: inherit;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .anixart-history-item-link:hover {
-  background-color: #2a2a3a; /* Чуть светлее чем var(--dark-bg) */
-  border-color: var(--primary-blue);
+	background-color: #2a2a3a;
+	border-color: var(--primary-blue);
 }
 
 .anixart-history-item-link:hover .history-title {
-  color: var(--primary-blue);
+	color: var(--primary-blue);
 }
 
 .anixart-history-item-content {
-  display: flex;
-  align-items: flex-start;
+	display: flex;
+	align-items: flex-start;
 }
 
 .history-poster {
-  width: 50px;
-  height: 70px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-right: 15px;
-  flex-shrink: 0;
+	width: 50px;
+	height: 70px;
+	object-fit: cover;
+	border-radius: 4px;
+	margin-right: 15px;
+	flex-shrink: 0;
 }
 
 .history-details {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 4px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	gap: 4px;
 }
 
 .history-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 5px;
-  transition: color 0.2s ease;
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--text-primary);
+	margin-bottom: 5px;
+	transition: color 0.2s ease;
 }
 
 .history-episode,
 .history-time {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+	font-size: 0.85rem;
+	color: var(--text-secondary);
 }
 
-/* --- Стили для секции Steam --- */
 .steam-stats .steam-profile-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  gap: 20px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	gap: 20px;
 }
 
 .steam-avatar-container {
-  position: relative;
-  width: 120px;  /* Ваша подобранная ширина рамки */
-  height: 120px; /* Ваша подобранная высота рамки */
-  margin-right: 20px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: relative;
+	width: 120px;
+	height: 120px;
+	margin-right: 20px;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.steam-avatar-actual { /* Аватар */
-  display: block;
-  width: 97px;   /* Ваша подобранная ширина аватара */
-  height: 97px;  /* Ваша подобранная высота аватара */
-  object-fit: cover;
-  border-radius: 8px;
-  z-index: 1;
-  position: relative;
+.steam-avatar-actual {
+	display: block;
+	width: 97px;
+	height: 97px;
+	object-fit: cover;
+	border-radius: 8px;
+	z-index: 1;
+	position: relative;
 }
 
-.steam-avatar-frame { /* Рамка */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 129px;  /* Ваша подобранная ширина рамки */
-  height: 129px; /* Ваша подобранная высота рамки */
-  transform: translate(-50%, -50%) scale(1); /* Ваш подобранный scale */
-  object-fit: contain;
-  pointer-events: none;
-  z-index: 2;
+.steam-avatar-frame {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 129px;
+	height: 129px;
+	transform: translate(-50%, -50%) scale(1);
+	object-fit: contain;
+	pointer-events: none;
+	z-index: 2;
 }
 
 .steam-profile-info h3 {
-  font-size: 1.4rem;
-  margin: 0 0 5px 0;
+	font-size: 1.4rem;
+	margin: 0 0 5px 0;
 }
+
 .steam-profile-info h3 a {
-  color: var(--text-primary);
-  text-decoration: none;
+	color: var(--text-primary);
+	text-decoration: none;
 }
+
 .steam-profile-info h3 a:hover {
-  color: var(--primary-blue);
+	color: var(--primary-blue);
 }
 
 .steam-profile-info p {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin: 2px 0;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	margin: 2px 0;
 }
 
 .steam-games-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 15px;
+	list-style: none;
+	padding: 0;
+	margin-top: 15px;
 }
 
-.steam-game-item {
-  display: flex;
-  align-items: center;
-  background-color: var(--dark-bg); /* Тот же фон, что и у карточек Anixart */
-  padding: 10px 15px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  border: 1px solid var(--border-color);
+.steam-game-item-link {
+	display: block;
+	background-color: var(--dark-bg);
+	padding: 10px 15px;
+	border-radius: 6px;
+	margin-bottom: 10px;
+	border: 1px solid var(--border-color);
+	text-decoration: none;
+	color: inherit;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.steam-game-item-link:hover {
+	background-color: #2a2a3a;
+	border-color: var(--primary-blue);
+}
+
+.steam-game-item-link:hover .steam-game-name {
+	color: var(--primary-blue);
+}
+
+.steam-game-item-content {
+	display: flex;
+	align-items: center;
 }
 
 .steam-game-icon {
-  width: 32px;
-  height: 32px;
-  margin-right: 15px;
-  flex-shrink: 0;
-  border-radius: 3px;
+	width: 32px;
+	height: 32px;
+	margin-right: 15px;
+	flex-shrink: 0;
+	border-radius: 3px;
 }
 
 .steam-game-details {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 .steam-game-name {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-primary);
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--text-primary);
+	transition: color 0.2s ease;
 }
 
 .steam-game-playtime {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
+	font-size: 0.8rem;
+	color: var(--text-secondary);
+	line-height: 1.4;
 }
 
 .error-message {
-  color: #ff4d4f;
-  padding: 10px;
-  background-color: rgba(255, 77, 79, 0.1);
-  border: 1px solid rgba(255, 77, 79, 0.3);
-  border-radius: 6px;
-  text-align: center;
+	color: #ff4d4f;
+	padding: 10px;
+	background-color: rgba(255, 77, 79, 0.1);
+	border: 1px solid rgba(255, 77, 79, 0.3);
+	border-radius: 6px;
+	text-align: center;
 }
 
-
-/* --- Адаптивность --- */
 @media (max-width: 768px) {
-  .dashboard-section h2 {
-    font-size: 1.6rem;
-  }
-  .anixart-profile-header,
-  .steam-stats .steam-profile-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .anixart-avatar { /* Аватар Anixart */
-    width: 100px;
-    height: 100px;
-  }
+	.dashboard-section h2 {
+		font-size: 1.6rem;
+	}
 
-  /* Steam аватар на мобильных */
-  .steam-avatar-container {
-    /* Оставляем размеры как подобраны, или немного уменьшаем, если нужно */
-    /* width: 100px;
-       height: 100px; */
-    margin-right: 0;
-    margin-bottom: 15px;
-  }
-  /* Если нужно адаптировать внутренние размеры аватара и рамки Steam: */
-  /* .steam-avatar-actual {
-    width: 77px;
-    height: 77px;
-  }
-  .steam-avatar-frame {
-    width: 102px;
-    height: 102px;
-  } */
+	.anixart-profile-header,
+	.steam-stats .steam-profile-header {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
 
-  /* Адаптивность для HTML/CSS прогресс-бара и легенды Anixart */
-  .custom-progress-bar {
-    height: 25px;
-  }
-  .custom-progress-bar-segment {
-    font-size: 10px;
-  }
-  .custom-legend {
-    flex-direction: column;
-    align-items: center; /* Центрируем элементы легенды, если они в колонку */
-    gap: 8px;
-  }
-  .custom-legend-item {
-    font-size: 0.85rem;
-    /* width: 100%; /* Раскомментируйте, если хотите, чтобы каждый элемент занимал всю ширину */
-    justify-content: center; /* Центрирует содержимое элемента легенды (иконку и текст) */
-  }
+	.anixart-avatar {
+		width: 100px;
+		height: 100px;
+	}
+
+	.steam-avatar-container {
+		margin-right: 0;
+		margin-bottom: 15px;
+	}
+
+	.custom-progress-bar {
+		height: 25px;
+	}
+
+	.custom-progress-bar-segment {
+		font-size: 10px;
+	}
+
+	.custom-legend {
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.custom-legend-item {
+		font-size: 0.85rem;
+		justify-content: center;
+	}
 }
 
 @media (max-width: 480px) {
-  .custom-legend {
-    flex-direction: row; /* На очень маленьких экранах возвращаем к строке с переносом */
-    justify-content: center;
-  }
-  .custom-legend-item {
-    width: auto; /* Авто ширина для элементов */
-    justify-content: flex-start; /* Сброс центрирования, если нужно */
-  }
+	.custom-legend {
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.custom-legend-item {
+		width: auto;
+		justify-content: flex-start;
+	}
 }
