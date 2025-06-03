@@ -550,3 +550,47 @@
     height: 100px;
   }
 }
+
+/* src/styles/Dashboard.css */
+
+/* ... (существующие стили для .steam-stats .steam-profile-header, .steam-profile-info и т.д.) ... */
+
+.steam-avatar-container {
+  position: relative; /* Для позиционирования рамки относительно этого контейнера */
+  width: 84px;  /* Размер немного больше, чем аватар, для учета рамки, если она выходит за края */
+  height: 84px; /* Подберите под свои размеры аватара + рамки */
+  margin-right: 20px; /* Отступ от информации о профиле, если .steam-profile-header это flex row */
+  flex-shrink: 0;
+}
+
+.steam-avatar-actual {
+  width: 100%; /* Аватар занимает всю ширину контейнера */
+  height: 100%;
+  object-fit: cover; /* Чтобы GIF хорошо вписывался, если пропорции не идеальны */
+  border-radius: 8px; /* Скругление для самого аватара, если рамка не полностью его перекрывает */
+  /* Можно добавить z-index: 1;, если нужно, но обычно порядок в DOM достаточен */
+}
+
+.steam-avatar-frame {
+  position: absolute; /* Позиционируем рамку поверх аватара */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Центрируем рамку */
+  width: 100%; /* Рамка по ширине контейнера (или можно задать точный размер, если он отличается) */
+  height: 100%;/* Рамка по высоте контейнера */
+  pointer-events: none; /* Чтобы клики проходили "сквозь" рамку к аватару, если это нужно */
+  z-index: 2; /* Убедимся, что рамка поверх аватара */
+}
+
+@media (max-width: 768px) {
+  .steam-stats .steam-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .steam-avatar-container {
+    width: 100px; /* Можно увеличить на мобильных */
+    height: 100px;
+    margin-right: 0; /* Убираем правый отступ, т.к. теперь элементы в колонке */
+    margin-bottom: 15px; /* Добавляем нижний отступ */
+  }
+}
