@@ -209,9 +209,9 @@ function Dashboard() {
                           href={gameStoreUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="steam-game-item-link" // Класс для ссылки-карточки
+                          className="steam-game-item-link"
                         >
-                          <li className='steam-game-item-content'> {/* Внутренний контейнер для flex */}
+                          <li className='steam-game-item-content'>
                             <img src={game.img_icon_url} alt={game.name} className='steam-game-icon' />
                             <div className='steam-game-details'>
                               <span className='steam-game-name'>{game.name}</span>
@@ -308,6 +308,10 @@ function Dashboard() {
         {!isLoading && !anixartError && !anixartStats && (
              <p>Данные Anixart не загружены.</p>
         )}
+      </section>
+
+      <section>
+        Возможно ещё что-то будет здесь...
       </section>
 
     </motion.div>
