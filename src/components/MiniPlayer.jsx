@@ -25,8 +25,30 @@ const NextIcon = () => (
   </svg>
 );
 
+const RepeatAllIcon = () => ( // Иконка для "Повторять всё"
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+  </svg>
+);
+const RepeatOneIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+    {/* Кружочек по центру */}
+    <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+  </svg>
+);
+
 function MiniPlayer({ onOpenPlaylistModal }) {
-  const { currentTrack, isPlaying, isLoading, togglePlayPause, prevTrack, nextTrack } = useContext(AudioContext);
+  const {
+    currentTrack,
+    isPlaying,
+    isLoading,
+    togglePlayPause,
+    prevTrack,
+    nextTrack,
+    repeatMode,
+    toggleRepeatMode
+  } = useContext(AudioContext);
   const [isNearFooter, setIsNearFooter] = useState(false);
   const playerRef = useRef(null);
 
@@ -134,7 +156,17 @@ function MiniPlayer({ onOpenPlaylistModal }) {
           aria-label='Next Track'
           disabled={isLoading}
         >
+
           <NextIcon />
+        </button>
+        <button
+          onClick={(e) => handleControlClick(e, toggleRepeatMode)}
+          className={`control-btn repeat-btn ${repeatMode === 'one' ? 'mode-one' : 'mode-all'}`}
+          aria-label='Repeat Mode'
+          title={repeatMode === 'one' ? "Повтор одного трека" : "Повтор плейлиста"}
+          disabled={isLoading}
+        >
+          {repeatMode === 'one' ? <RepeatOneIcon /> : <RepeatAllIcon />}
         </button>
       </div>
     </div>

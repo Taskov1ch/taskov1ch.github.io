@@ -374,3 +374,108 @@
 		justify-content: flex-start;
 	}
 }
+
+/* src/styles/Dashboard.css */
+
+/* ... (остальные стили) ... */
+
+.steam-wishlist-section h2 {
+  /* Стили для заголовка секции, если нужны */
+}
+
+.steam-wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Адаптивная сетка */
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.wishlist-game-card {
+  background-color: var(--dark-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: 1px solid var(--border-color);
+}
+
+.wishlist-game-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.2);
+  border-color: var(--primary-blue);
+}
+
+.wishlist-game-image {
+  width: 100%;
+  height: 95px; /* Соотношение сторон для обложек Steam ~292x136 или 460x215 */
+  object-fit: cover;
+}
+
+.wishlist-game-info {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Чтобы блок информации занимал оставшееся место */
+}
+
+.wishlist-game-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Обрезаем длинные названия */
+  line-height: 1.3;
+  min-height: 2.6em; /* Примерно 2 строки */
+}
+
+.wishlist-game-price {
+  margin-top: auto; /* Прижимаем цену к низу карточки */
+  font-size: 0.9rem;
+}
+
+.wishlist-game-price .original-price {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  margin-right: 8px;
+  font-size: 0.8em;
+}
+
+.wishlist-game-price .discounted-price {
+  color: #a1ffa1; /* Ярко-зеленый для цены со скидкой */
+  font-weight: bold;
+}
+
+.wishlist-game-price .current-price {
+  color: var(--text-primary); /* Обычная цена */
+  font-weight: 500;
+}
+.wishlist-game-price .free-game {
+  color: #82ca9d; /* Цвет для бесплатных игр */
+  font-weight: bold;
+}
+
+
+.wishlist-game-price .discount-badge {
+  background-color: #5c9d00; /* Цвет фона для значка скидки */
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+
+@media (max-width: 480px) {
+  .steam-wishlist-grid {
+    grid-template-columns: 1fr; /* Одна колонка на очень маленьких экранах */
+  }
+  .wishlist-game-image {
+    height: 110px; /* Можно немного увеличить высоту обложки */
+  }
+}

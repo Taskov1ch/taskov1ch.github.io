@@ -228,3 +228,16 @@
       visibility 0s linear 0.4s;
   }
 }
+
+.control-btn.repeat-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.control-btn.repeat-btn.mode-all {
+  color: var(--text-secondary);
+}
+
+.control-btn.repeat-btn.mode-one {
+  color: var(--primary-blue);
+}

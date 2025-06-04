@@ -11,6 +11,12 @@ const PlayIconMini = () => (
 
 const PlayIcon = () => <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>;
 const PauseIcon = () => <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>;
+const RepeatIcon = ({ active }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" style={{ opacity: active ? 1 : 0.6, width: '22px', height: '22px' }}>
+    <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+    {active && <circle cx="12" cy="12" r="2.5" fill="currentColor" />}
+  </svg>
+);
 
 function PlaylistModal({ isOpen, onClose, spotifyLink }) {
   const {
