@@ -51,6 +51,9 @@ function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [anixartError, setAnixartError] = useState(null);
   const isMobile = useIsMobile();
+  const [steamWishlist, setSteamWishlist] = useState([]);
+  const [isLoadingWishlist, setIsLoadingWishlist] = useState(true);
+  const [errorWishlist, setErrorWishlist] = useState(null);
 
   useEffect(() => {
     const fetchAnixartStats = async () => {
