@@ -117,14 +117,22 @@ function Dashboard() {
     const fetchSteamWishlist = async () => {
       setIsLoadingWishlist(true);
       setErrorWishlist(null);
+      setWishlistErrorMessage(''); // Сбрасываем сообщение об ошибке
       try {
         const response = await fetch('/api/steam-wishlist');
+        const data = await response.json(); // Пробуем спарсить JSON в любом случае
+
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({ error: `Steam Wishlist API error: ${response.status}` }));
-          throw new Error(errorData.error || `Steam Wishlist API: ${response.status}`);
+          // Если есть специальное сообщение от нашего API (например, "Список желаемого приватный")
+          if (data && data.error_message) {
+            setWishlistErrorMessage(data.error_message);
+            setSteamWishlist([]); // Устанавливаем пустой список
+          } else {
+            throw new Error(data.error || `Steam Wishlist API: ${response.status}`);
+          }
+        } else {
+          setSteamWishlist(data); // data уже должен быть массивом игр
         }
-        const data = await response.json();
-        setSteamWishlist(data);
       } catch (e) {
         console.error('Failed to fetch Steam wishlist:', e);
         setErrorWishlist(e.message || "Ошибка загрузки списка желаемого Steam.");
@@ -338,27 +346,20 @@ function Dashboard() {
         )}
       </section>
 
-       <section className='dashboard-section steam-wishlist-section'>
+      <section className='dashboard-section steam-wishlist-section'>
         <h2>Мои желания в Steam</h2>
         {isLoadingWishlist && <LoadingSpinner />}
         {errorWishlist && <p className='error-message'>Ошибка: {errorWishlist}</p>}
-        {!isLoadingWishlist && !errorWishlist && steamWishlist.length === 0 && <p>Список желаемого пуст или не удалось загрузить.</p>}
+        {wishlistErrorMessage && !isLoadingWishlist && <p className='info-message'>{wishlistErrorMessage}</p>}
+
+        {!isLoadingWishlist && !errorWishlist && !wishlistErrorMessage && steamWishlist.length === 0 && (
+          <p>Список желаемого пуст.</p>
+        )}
 
         {steamWishlist.length > 0 && (
           <div className="steam-wishlist-grid">
             {steamWishlist.map(game => {
-              // Ссылка для "подарка" - просто ссылка на страницу игры.
-              // Подарок самому себе невозможен, но ссылка на страницу игры полезна.
-              // Для подарка другому пользователю нужен его SteamID, но это усложнит.
-              // Просто ссылка на страницу игры:
               const gameStoreUrl = `https://store.steampowered.com/app/${game.appid}/`;
-              // Для прямой отправки подарка (если бы это было возможно через URL для КОНКРЕТНОГО ДРУГА):
-              // const giftUrl = `steam://run//gift/${game.appid}/TARGET_STEAM_ID`; (это не работает просто так)
-              // Так как дарим "taskov1ch" (т.е. себе, что Steam не позволит напрямую через URL для покупки в подарок),
-              // то просто откроем страницу игры. Если бы был другой Steam ID, то можно было бы попробовать
-              // сформировать ссылку для покупки в подарок, но это не всегда работает через URL.
-              // Безопаснее всего просто ссылка на страницу игры.
-
               return (
                 <a
                   key={game.appid}
@@ -368,26 +369,15 @@ function Dashboard() {
                   className="wishlist-game-card"
                   title={`Перейти на страницу ${game.name} в Steam`}
                 >
-                  <img src={game.header_image} alt={game.name} className="wishlist-game-image" />
+                  <img
+                    src={game.header_image || `https://via.placeholder.com/200x93?text=${game.name || 'Game'}`}
+                    alt={game.name}
+                    className="wishlist-game-image"
+                    onError={(e) => { e.target.onerror = null; e.target.src = `https://via.placeholder.com/200x93?text=Error`; }}
+                  />
                   <div className="wishlist-game-info">
-                    <h5 className="wishlist-game-name">{game.name}</h5>
-                    {game.price_overview ? (
-                      <div className="wishlist-game-price">
-                        {game.price_overview.discount_percent > 0 ? (
-                          <>
-                            <span className="original-price">{game.price_overview.initial_formatted}</span>
-                            <span className="discounted-price">{game.price_overview.final_formatted}</span>
-                            <span className="discount-badge">-{game.price_overview.discount_percent}%</span>
-                          </>
-                        ) : (
-                          <span className="current-price">{game.price_overview.final_formatted}</span>
-                        )}
-                      </div>
-                    ) : game.is_free ? (
-                      <span className="current-price free-game">Бесплатно</span>
-                    ) : (
-                      <span className="current-price">Цена не указана</span>
-                    )}
+                    <h5 className="wishlist-game-name">{game.name || 'Название неизвестно'}</h5>
+                    {/* Блок цены теперь не нужен */}
                   </div>
                 </a>
               );
