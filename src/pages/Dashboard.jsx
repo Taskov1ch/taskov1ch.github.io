@@ -54,7 +54,7 @@ function Dashboard() {
   const [steamWishlist, setSteamWishlist] = useState([]);
   const [isLoadingWishlist, setIsLoadingWishlist] = useState(true);
   const [errorWishlist, setErrorWishlist] = useState(null);
-  const [wishlistErrorMessage, setWishlistErrorMessage] = useState("");
+  const [wishlistErrorMessage, setWishlistErrorMessage] = useState('');
 
   useEffect(() => {
     const fetchAnixartStats = async () => {
@@ -205,12 +205,8 @@ function Dashboard() {
     transition: { duration: 0.25, ease: "easeInOut" },
   };
 
-  if (isLoadingAnixart && isLoadingSteam) {
-    return (
-      <div className='page-loading-container'>
-        <LoadingSpinner />
-      </div>
-    );
+  if (isLoadingAnixart && isLoadingSteam && isLoadingWishlist) {
+     return <div className='page-loading-container'><LoadingSpinner /></div>;
   }
 
   const steamAvatarGifUrl =
