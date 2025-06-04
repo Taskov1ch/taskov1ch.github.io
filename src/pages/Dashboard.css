@@ -375,13 +375,6 @@
 	}
 }
 
-/* src/styles/Dashboard.css */
-
-/* ... (все предыдущие стили) ... */
-
-.steam-wishlist-section h2 {
-  /* ... */
-}
 
 .steam-wishlist-grid {
   display: grid;
@@ -400,7 +393,7 @@
   flex-direction: column;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   border: 1px solid var(--border-color);
-  min-height: 150px; /* Минимальная высота карточки, чтобы выровнять, если названия разной длины */
+  min-height: 150px;
 }
 
 .wishlist-game-card:hover {
@@ -417,7 +410,7 @@
 
 .wishlist-game-info {
   padding: 10px 12px;
-  display: flex; /* Чтобы имя игры занимало доступное пространство */
+  display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
@@ -426,26 +419,10 @@
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.3;
-  /* Убрали margin-bottom и min-height, так как цены больше нет */
-  /* Позволяем тексту занимать все доступное пространство */
   flex-grow: 1;
-  /* Для многострочного текста с обрезкой (если нужно): */
-  /* display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis; */
 }
 
-/* Стили для цены и скидок УДАЛЕНЫ, так как цены больше не отображаются */
-/* .wishlist-game-price { ... } */
-/* .wishlist-game-price .original-price { ... } */
-/* .wishlist-game-price .discounted-price { ... } */
-/* .wishlist-game-price .current-price { ... } */
-/* .wishlist-game-price .free-game { ... } */
-/* .wishlist-game-price .discount-badge { ... } */
-
-.info-message { /* Стиль для сообщений типа "Список приватный" */
+.info-message {
   color: var(--text-secondary);
   padding: 10px;
   background-color: rgba(100, 100, 100, 0.1);

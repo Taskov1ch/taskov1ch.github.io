@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import "./Dashboard.css";
 import LoadingSpinner from "../components/LoadingSpinner";
+import useAnchorNavigation from "../hooks/useAnchorNavigation";
 
 const useIsMobile = (breakpoint = 768) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoint);
@@ -48,7 +49,6 @@ function Dashboard() {
   const [isLoadingSteam, setIsLoadingSteam] = useState(true);
   const [errorAnixart, setErrorAnixart] = useState(null);
   const [errorSteam, setErrorSteam] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [anixartError, setAnixartError] = useState(null);
   const isMobile = useIsMobile();
   const [steamWishlist, setSteamWishlist] = useState([]);
@@ -56,9 +56,13 @@ function Dashboard() {
   const [errorWishlist, setErrorWishlist] = useState(null);
   const [wishlistErrorMessage, setWishlistErrorMessage] = useState('');
 
+  const isLoadingPage = isLoadingAnixart || isLoadingSteam || isLoadingWishlist;
+
+  useAnchorNavigation(isLoadingPage);
+
   useEffect(() => {
     const fetchAnixartStats = async () => {
-      setIsLoading(true);
+      setIsLoadingAnixart(true);
       setAnixartError(null);
       try {
         const response = await fetch("https://api.anixart.tv/profile/1932711");
@@ -92,7 +96,7 @@ function Dashboard() {
         );
         setAnixartStats(null);
       } finally {
-        setIsLoading(false);
+        setIsLoadingAnixart(false);
       }
     };
 
@@ -205,8 +209,8 @@ function Dashboard() {
     transition: { duration: 0.25, ease: "easeInOut" },
   };
 
-  if (isLoadingAnixart && isLoadingSteam && isLoadingWishlist) {
-     return <div className='page-loading-container'><LoadingSpinner /></div>;
+  if (isLoadingPage) {
+    return <div className='page-loading-container'><LoadingSpinner /></div>;
   }
 
   const steamAvatarGifUrl =
@@ -233,15 +237,15 @@ function Dashboard() {
     >
       <h1>Моя доска</h1>
 
-      <section className='dashboard-section anixart-stats'>
+      <section className='dashboard-section anixart-stats' id="anixart-stats">
         <h2>Моя аниме статистика (Anixart)</h2>
-        {isLoading && <LoadingSpinner />}
-        {anixartError && !isLoading && (
+        {isLoadingAnixart && <LoadingSpinner />}
+        {anixartError && !isLoadingAnixart && (
           <p className='error-message-inline'>
             Не удалось получить данные: {anixartError}
           </p>
         )}
-        {!isLoading && !anixartError && anixartStats && (
+        {!isLoadingAnixart && !anixartError && anixartStats && (
           <>
             <div className='anixart-profile-header'>
               {anixartStats.avatar && (
@@ -362,12 +366,12 @@ function Dashboard() {
             )}
           </>
         )}
-        {!isLoading && !anixartError && !anixartStats && (
+        {!isLoadingAnixart && !anixartError && !anixartStats && (
           <p>Данные Anixart не загружены.</p>
         )}
       </section>
 
-      <section className='dashboard-section steam-stats'>
+      <section className='dashboard-section steam-stats' id="steam-stats">
         <h2>Моя Steam статистика</h2>
         {errorSteam && (
           <p className='error-message'>Ошибка Steam: {errorSteam}</p>
@@ -457,7 +461,7 @@ function Dashboard() {
         )}
       </section>
 
-      <section className='dashboard-section steam-wishlist-section'>
+      <section className='dashboard-section steam-wishlist-section' id="steam-wishlist">
         <h2>Мои желания в Steam</h2>
         {isLoadingWishlist && <LoadingSpinner />}
         {errorWishlist && (
@@ -501,7 +505,6 @@ function Dashboard() {
                     <h5 className='wishlist-game-name'>
                       {game.name || "Название неизвестно"}
                     </h5>
-                    {/* Блок цены теперь не нужен */}
                   </div>
                 </a>
               );

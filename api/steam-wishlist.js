@@ -1,5 +1,3 @@
-// api/steam-wishlist.js (Vercel Serverless Function)
-
 export default async function handler(request, response) {
   const steamId = process.env.STEAM_ID;
 
@@ -7,7 +5,6 @@ export default async function handler(request, response) {
     return response.status(500).json({ error: 'Steam ID not configured in environment variables.' });
   }
 
-  // URL для нового эндпоинта списка желаемого
   const wishlistServiceUrl = `https://api.steampowered.com/IWishlistService/GetWishlist/v1?steamid=${steamId}&l=russian`;
 
   try {
@@ -25,7 +22,7 @@ export default async function handler(request, response) {
     if (!wishlistServiceRes.ok || !wishlistServiceData.response || !wishlistServiceData.response.items) {
       const errorMessage = wishlistServiceData?.response?.error_description || wishlistServiceData?.response?.errormsg || `Failed to fetch wishlist data (status ${wishlistServiceRes.status})`;
       console.warn(`Steam Wishlist (IWishlistService) for ${steamId}: ${errorMessage}`);
-      if (wishlistServiceRes.status === 403 || (wishlistServiceData.response && Object.keys(wishlistServiceData.response).length === 0) ) { // Пустой response или 403
+      if (wishlistServiceRes.status === 403 || (wishlistServiceData.response && Object.keys(wishlistServiceData.response).length === 0) ) {
         return response.status(200).json({ games: [], message: "Список желаемого приватный, пуст или недоступен." });
       }
       return response.status(wishlistServiceRes.status).json({ error: errorMessage });
@@ -34,14 +31,12 @@ export default async function handler(request, response) {
     const wishlistItems = wishlistServiceData.response.items;
 
     if (!Array.isArray(wishlistItems) || wishlistItems.length === 0) {
-      return response.status(200).json([]); // Список желаемого пуст
+      return response.status(200).json([]);
     }
 
-    // Теперь для каждого appid запрашиваем детали
     const gameDetailsPromises = wishlistItems.map(async (item) => {
       const appid = item.appid;
       try {
-        // cc=US для получения цен в USD, если они вдруг понадобятся в будущем, l=russian для русских названий
         const appDetailsUrl = `http://store.steampowered.com/api/appdetails?appids=${appid}&cc=US&l=russian`;
         const appRes = await fetch(appDetailsUrl);
         if (!appRes.ok) {
@@ -54,11 +49,9 @@ export default async function handler(request, response) {
           const gameData = appData[appid].data;
           return {
             appid: appid,
-            name: gameData.name || `Игра (ID: ${appid})`, // Название из деталей
-            header_image: gameData.header_image, // Обложка из деталей
-            priority: item.priority, // Приоритет из IWishlistService
-            added_timestamp: item.date_added, // Дата добавления из IWishlistService
-            // Цены здесь не обрабатываем, как и договаривались
+            name: gameData.name || `Игра (ID: ${appid})`,
+            header_image: gameData.header_image,
+            added_timestamp: item.date_added,
           };
         }
         return null;
