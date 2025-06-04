@@ -156,8 +156,8 @@ export const AudioProvider = ({ children }) => {
         audio.play().catch(e => console.error("Play on repeat one failed:", e));
         // isPlaying уже должно быть true, или установится через handlePlaying
       } else if (repeatMode === 'all' && tracks.length > 0) {
-        nextTrack(); // Переходим к следующему треку (который зациклится, если это последний)
-        // isPlaying будет установлено при загрузке нового трека, если оно было true
+        nextTrack();
+        setIsPlaying(true);
       } else {
         // Если это был последний трек и repeatMode = 'all', nextTrack уже переключил на первый.
         // Если repeatMode не 'one' и не 'all' (хотя у нас только эти два), или треков нет.
