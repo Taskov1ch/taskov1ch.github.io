@@ -6,7 +6,7 @@ function Footer() {
     <footer className='site-footer'>
       <div className='container'>
         <p>
-          Сделано с помощью Gemini, т.к Taskov1ch полный ноль в фронтенде :)
+          Сделано с помощью Gemini + GPT-4o (ChatGPT) + щепотка Grok 3 , т.к Taskov1ch полный ноль в фронтенде :)
         </p>
       </div>
     </footer>
