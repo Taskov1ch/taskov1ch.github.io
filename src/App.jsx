@@ -25,7 +25,7 @@ const pageTransition = {
   exit: { opacity: 0, y: -20 },
   transition: { duration: 0.25, ease: "easeInOut" },
 };
-const YOUR_SPOTIFY_LINK =
+const SPOTIFY =
   "https://open.spotify.com/playlist/3hqWWWwaNflFPwQffTGQSq?si=ZXDcpJPCTwuxemWJiwjDBw";
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
   const handlePreloaderComplete = () => {
     setPreloaderDone(true);
     setRandomTrack();
-    play();
+    // play();
   };
 
   const openPlaylistModal = () => setIsPlaylistModalOpen(true);
@@ -160,7 +160,7 @@ function App() {
       <PlaylistModal
         isOpen={isPlaylistModalOpen}
         onClose={closePlaylistModal}
-        spotifyLink={YOUR_SPOTIFY_LINK}
+        spotifyLink={SPOTIFY}
       />
       <div
         id='footer-intersection-trigger'

@@ -1,4 +1,3 @@
-// src/context/AudioContext.jsx
 import React, {
   createContext,
   useState,
@@ -18,8 +17,7 @@ export const AudioProvider = ({ children }) => {
   const audioRef = useRef(new Audio());
   const justEndedRef = useRef(false);
 
-  // 'all' - повтор всего плейлиста, 'one' - повтор текущего трека
-  const [repeatMode, setRepeatMode] = useState('all'); // Начальное состояние - повтор всего плейлиста
+  const [repeatMode, setRepeatMode] = useState('all');
 
   useEffect(() => {
     const fetchMusicData = async () => {
@@ -40,10 +38,10 @@ export const AudioProvider = ({ children }) => {
         setIsTracksLoading(false);
       }
     };
-    if (tracks.length === 0 && !tracksError) { //
+    if (tracks.length === 0 && !tracksError) {
         fetchMusicData();
     }
-  }, [tracks.length, tracksError]); // Добавил tracksError в зависимости
+  }, [tracks.length, tracksError]);
 
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -55,9 +53,9 @@ export const AudioProvider = ({ children }) => {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: currentTrack.title,
       artist: currentTrack.composer,
-      album: "Taskov1ch Portfolio Mix", // Можно изменить
+      album: "Taskov1ch Portfolio Mix",
       artwork: [
-        { src: currentTrack.cover, sizes: "512x512", type: "image/jpeg" }, // Убедитесь, что тип корректен
+        { src: currentTrack.cover, sizes: "512x512", type: "image/jpeg" },
       ],
     });
     navigator.mediaSession.playbackState = isPlaying ? "playing" : "paused";
@@ -68,7 +66,6 @@ export const AudioProvider = ({ children }) => {
 
   const switchTrack = useCallback((newIndexCallback) => {
     setIsLoading(true);
-    // Если newIndexCallback это функция, вызываем ее с предыдущим значением
     setCurrentTrackIndex(prevIndex =>
         typeof newIndexCallback === 'function' ? newIndexCallback(prevIndex) : newIndexCallback
     );
@@ -89,8 +86,8 @@ export const AudioProvider = ({ children }) => {
     );
   }, [tracks.length, switchTrack]);
 
-  const setRandomTrack = useCallback(() => { //
-    if (tracks.length === 0) return; // Добавил проверку на пустой массив треков
+  const setRandomTrack = useCallback(() => {
+    if (tracks.length === 0) return;
     setIsLoading(true);
     const randomIndex = Math.floor(Math.random() * tracks.length);
     setCurrentTrackIndex(randomIndex);
@@ -104,7 +101,7 @@ export const AudioProvider = ({ children }) => {
       return;
     }
     if (newTrackIndex === currentTrackIndex) {
-      setIsPlaying(prev => !prev); // Используем setIsPlaying для переключения
+      setIsPlaying(prev => !prev);
     } else {
       setIsLoading(true);
       setCurrentTrackIndex(newTrackIndex);
@@ -112,9 +109,8 @@ export const AudioProvider = ({ children }) => {
     }
   }, [tracks, currentTrackIndex]);
 
-  // Переключатель Play/Pause, который используется в плеерах
   const togglePlayPause = useCallback(() => {
-      if (!currentTrack && tracks.length > 0) { // Если трек не выбран, но треки есть, выбираем первый и играем
+      if (!currentTrack && tracks.length > 0) {
           setCurrentTrackIndex(0);
           setIsPlaying(true);
       } else if (currentTrack) {
@@ -124,19 +120,17 @@ export const AudioProvider = ({ children }) => {
 
 
   useEffect(() => {
-    if (currentTrackIndex !== null && tracks[currentTrackIndex]) { // Добавил проверку tracks[currentTrackIndex]
+    if (currentTrackIndex !== null && tracks[currentTrackIndex]) {
       const audio = audioRef.current;
       audio.src = tracks[currentTrackIndex].src;
       audio.load();
       setCurrentTime(0);
       setDuration(0);
-      // Если isPlaying было true, пытаемся запустить трек
-      // Это полезно при переключении треков, когда isPlaying уже true
       if (isPlaying) {
         audio.play().catch(e => console.error("Play on track switch failed:", e));
       }
     }
-  }, [currentTrackIndex, tracks]); // isPlaying убрал из зависимостей здесь, чтобы не было конфликта с другим useEffect
+  }, [currentTrackIndex, tracks]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -150,18 +144,15 @@ export const AudioProvider = ({ children }) => {
     const handlePauseEvent = () => { if (!justEndedRef.current) setIsPlaying(false); justEndedRef.current = false; };
 
     const handleEnded = () => {
-      justEndedRef.current = true; // Флаг, что трек закончился сам
+      justEndedRef.current = true;
       if (repeatMode === 'one' && tracks.length > 0) {
         audio.currentTime = 0;
         audio.play().catch(e => console.error("Play on repeat one failed:", e));
-        // isPlaying уже должно быть true, или установится через handlePlaying
       } else if (repeatMode === 'all' && tracks.length > 0) {
         nextTrack();
         setIsPlaying(true);
       } else {
-        // Если это был последний трек и repeatMode = 'all', nextTrack уже переключил на первый.
-        // Если repeatMode не 'one' и не 'all' (хотя у нас только эти два), или треков нет.
-        setIsPlaying(false); // Останавливаем воспроизведение, если нет других условий
+        setIsPlaying(false);
       }
     };
 
@@ -175,14 +166,13 @@ export const AudioProvider = ({ children }) => {
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('timeupdate', handleTimeUpdate);
 
-    // Синхронизация состояния isPlaying с HTML5 audio элементом
-    if (currentTrack) { // Только если есть текущий трек
+    if (currentTrack) {
         if (isPlaying && audio.paused) {
             audio.play().catch(e => console.error("Play sync failed:", e));
         } else if (!isPlaying && !audio.paused) {
             audio.pause();
         }
-    } else if (!isPlaying && !audio.paused) { // Если трека нет, но аудио играет (маловероятно, но для безопасности)
+    } else if (!isPlaying && !audio.paused) {
         audio.pause();
     }
 
@@ -198,7 +188,7 @@ export const AudioProvider = ({ children }) => {
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('timeupdate', handleTimeUpdate);
     };
-  }, [isPlaying, nextTrack, repeatMode, currentTrack]); // currentTrack добавлен в зависимости
+  }, [isPlaying, nextTrack, repeatMode, currentTrack]);
 
   useEffect(() => {
     updateMediaSession();
@@ -210,18 +200,17 @@ export const AudioProvider = ({ children }) => {
     navigator.mediaSession.setActionHandler("pause", pause);
     navigator.mediaSession.setActionHandler("previoustrack", prevTrack);
     navigator.mediaSession.setActionHandler("nexttrack", nextTrack);
-    // Дополнительные обработчики, если нужны (например, seek)
     return () => {
       navigator.mediaSession.setActionHandler("play", null);
       navigator.mediaSession.setActionHandler("pause", null);
       navigator.mediaSession.setActionHandler("previoustrack", null);
       navigator.mediaSession.setActionHandler("nexttrack", null);
     };
-  }, [play, pause, prevTrack, nextTrack, currentTrack, tracks]); // Добавлены currentTrack и tracks
+  }, [play, pause, prevTrack, nextTrack, currentTrack, tracks]);
 
-  const seekTrack = useCallback((time) => { //
-    if (audioRef.current && isFinite(time) && audioRef.current.duration) { // Добавил audioRef.current.duration для проверки
-      audioRef.current.currentTime = Math.max(0, Math.min(time, audioRef.current.duration)); // Ограничиваем время
+  const seekTrack = useCallback((time) => {
+    if (audioRef.current && isFinite(time) && audioRef.current.duration) {
+      audioRef.current.currentTime = Math.max(0, Math.min(time, audioRef.current.duration));
       setCurrentTime(audioRef.current.currentTime);
     }
   }, []);
@@ -233,18 +222,18 @@ export const AudioProvider = ({ children }) => {
   const value = {
     currentTrack,
     isPlaying,
-    isLoading: isLoading || isTracksLoading, // Объединенный флаг загрузки
+    isLoading: isLoading || isTracksLoading,
     tracks,
-    tracksError, // Передаем ошибку загрузки треков
+    tracksError,
     currentTime,
     duration,
-    play, // Оставляем для прямого вызова, если нужно
-    pause, // Оставляем для прямого вызова, если нужно
+    play,
+    pause,
     nextTrack,
     prevTrack,
     setRandomTrack,
     selectTrackById,
-    togglePlayPause, // Основной метод для UI
+    togglePlayPause,
     seekTrack,
     repeatMode,
     toggleRepeatMode,
