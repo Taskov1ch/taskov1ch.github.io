@@ -441,3 +441,19 @@
     height: 110px;
   }
 }
+
+.chart-scroll-wrapper {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .chart-scroll-wrapper {
+    overflow-x: auto;
+	overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .watch-dynamics-chart-container {
+    min-width: 700px;
+  }
+}

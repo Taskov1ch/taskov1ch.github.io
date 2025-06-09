@@ -1,25 +1,16 @@
-// /api/steam-stats.js
 import { createClient } from 'redis';
 
-// --- НАЧАЛО ИЗМЕНЕНИЙ ---
-
-// Создаем клиент Redis. Vercel предоставит KV_URL после подключения KV store.
 const redisClient = createClient({
   url: process.env.REDIS_URL,
 });
 
 redisClient.on('error', (err) => console.error('Redis Client Error', err));
 
-// Убедимся, что клиент подключен перед обработкой запросов.
-// Это выполнится один раз при "холодном старте" функции.
 if (!redisClient.isOpen) {
     await redisClient.connect();
 }
 
-// --- КОНЕЦ ИЗМЕНЕНИЙ ---
-
 export default async function handler(request, response) {
-  // Убедимся, что переменные окружения доступны
   const steamId = process.env.STEAM_ID;
   const apiKey = process.env.STEAM_API_KEY;
 
@@ -28,18 +19,15 @@ export default async function handler(request, response) {
   }
 
   const CACHE_KEY = `steam:stats:${steamId}`;
-  const CACHE_TTL_SECONDS = 3600; // Кеш на 1 час
+  const CACHE_TTL_SECONDS = 3600;
 
   try {
-    // 1. Проверяем наличие данных в кеше Redis
     const cachedString = await redisClient.get(CACHE_KEY);
 
     if (cachedString) {
-      // Если данные есть в кеше, возвращаем их
       return response.status(200).json(JSON.parse(cachedString));
     }
 
-    // 2. Если в кеше пусто, делаем запросы к Steam API
     const playerSummaryUrl = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`;
     const recentlyPlayedUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`;
 
@@ -78,12 +66,10 @@ export default async function handler(request, response) {
       total_games_played_2weeks: recentlyPlayedData.response?.total_count || 0,
     };
 
-    // 3. Сохраняем свежие данные в кеш Redis на 1 час
     await redisClient.set(CACHE_KEY, JSON.stringify(dataToRespondAndCache), {
       EX: CACHE_TTL_SECONDS,
     });
 
-    // 4. Возвращаем свежие данные клиенту
     return response.status(200).json(dataToRespondAndCache);
 
   } catch (error) {

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import "./Dashboard.css";
 import LoadingSpinner from "../components/LoadingSpinner";
 import useAnchorNavigation from "../hooks/useAnchorNavigation";
+import WatchDynamicsChart from "../components/WatchDynamicsChart";
 
 const useIsMobile = (breakpoint = 768) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoint);
@@ -54,7 +55,7 @@ function Dashboard() {
   const [steamWishlist, setSteamWishlist] = useState([]);
   const [isLoadingWishlist, setIsLoadingWishlist] = useState(true);
   const [errorWishlist, setErrorWishlist] = useState(null);
-  const [wishlistErrorMessage, setWishlistErrorMessage] = useState('');
+  const [wishlistErrorMessage, setWishlistErrorMessage] = useState("");
 
   const isLoadingPage = isLoadingAnixart || isLoadingSteam || isLoadingWishlist;
 
@@ -210,7 +211,11 @@ function Dashboard() {
   };
 
   if (isLoadingPage) {
-    return <div className='page-loading-container'><LoadingSpinner /></div>;
+    return (
+      <div className='page-loading-container'>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   const steamAvatarGifUrl =
@@ -237,7 +242,7 @@ function Dashboard() {
     >
       <h1>Моя доска</h1>
 
-      <section className='dashboard-section anixart-stats' id="anixart-stats">
+      <section className='dashboard-section anixart-stats' id='anixart-stats'>
         <h2>Моя аниме статистика (Anixart)</h2>
         {isLoadingAnixart && <LoadingSpinner />}
         {anixartError && !isLoadingAnixart && (
@@ -321,6 +326,17 @@ function Dashboard() {
               <p>Нет данных о статусах просмотра.</p>
             )}
 
+            <h4>Динамика просмотров за последний месяц</h4>
+            <div className='chart-scroll-wrapper'>
+              <div className='watch-dynamics-chart-container'>
+                {anixartStats?.watch_dynamics ? (
+                  <WatchDynamicsChart data={anixartStats.watch_dynamics} />
+                ) : (
+                  <p>Данные о динамике просмотров отсутствуют.</p>
+                )}
+              </div>
+            </div>
+
             <h4>История просмотров:</h4>
             {anixartStats.history && anixartStats.history.length > 0 ? (
               <ul className='anixart-history-list'>
@@ -371,7 +387,7 @@ function Dashboard() {
         )}
       </section>
 
-      <section className='dashboard-section steam-stats' id="steam-stats">
+      <section className='dashboard-section steam-stats' id='steam-stats'>
         <h2>Моя Steam статистика</h2>
         {errorSteam && (
           <p className='error-message'>Ошибка Steam: {errorSteam}</p>
@@ -461,7 +477,10 @@ function Dashboard() {
         )}
       </section>
 
-      <section className='dashboard-section steam-wishlist-section' id="steam-wishlist">
+      <section
+        className='dashboard-section steam-wishlist-section'
+        id='steam-wishlist'
+      >
         <h2>Мои желания в Steam</h2>
         {isLoadingWishlist && <LoadingSpinner />}
         {errorWishlist && (
