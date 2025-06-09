@@ -132,23 +132,22 @@ function Dashboard() {
     const fetchSteamWishlist = async () => {
       setIsLoadingWishlist(true);
       setErrorWishlist(null);
-      setWishlistErrorMessage(""); // Сбрасываем сообщение об ошибке
+      setWishlistErrorMessage("");
       try {
         const response = await fetch("/api/steam-wishlist");
-        const data = await response.json(); // Пробуем спарсить JSON в любом случае
+        const data = await response.json();
 
         if (!response.ok) {
-          // Если есть специальное сообщение от нашего API (например, "Список желаемого приватный")
           if (data && data.error_message) {
             setWishlistErrorMessage(data.error_message);
-            setSteamWishlist([]); // Устанавливаем пустой список
+            setSteamWishlist([]);
           } else {
             throw new Error(
               data.error || `Steam Wishlist API: ${response.status}`
             );
           }
         } else {
-          setSteamWishlist(data); // data уже должен быть массивом игр
+          setSteamWishlist(data);
         }
       } catch (e) {
         console.error("Failed to fetch Steam wishlist:", e);
@@ -210,13 +209,13 @@ function Dashboard() {
     transition: { duration: 0.25, ease: "easeInOut" },
   };
 
-  if (isLoadingPage) {
-    return (
-      <div className='page-loading-container'>
-        <LoadingSpinner />
-      </div>
-    );
-  }
+  // if (isLoadingPage) {
+  //   return (
+  //     <div className='page-loading-container'>
+  //       <LoadingSpinner />
+  //     </div>
+  //   );
+  // }
 
   const steamAvatarGifUrl =
     "https://cdn.fastly.steamstatic.com/steamcommunity/public/images/items/1070330/97227479c36b82d531c866562be67193c691a6d5.gif";
