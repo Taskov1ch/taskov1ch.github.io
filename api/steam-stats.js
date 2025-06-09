@@ -28,8 +28,8 @@ export default async function handler(request, response) {
       return response.status(200).json(JSON.parse(cachedString));
     }
 
-    const playerSummaryUrl = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`;
-    const recentlyPlayedUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`;
+    const playerSummaryUrl = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`;
+    const recentlyPlayedUrl = `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`;
 
     const [playerSummaryRes, recentlyPlayedRes] = await Promise.all([
       fetch(playerSummaryUrl),
@@ -60,8 +60,8 @@ export default async function handler(request, response) {
         name: game.name,
         playtime_2weeks: game.playtime_2weeks,
         playtime_forever: game.playtime_forever,
-        img_icon_url: `http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`,
-        img_logo_url: `http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_logo_url}.jpg`,
+        img_icon_url: `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`,
+        img_logo_url: `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_logo_url}.jpg`,
       })),
       total_games_played_2weeks: recentlyPlayedData.response?.total_count || 0,
     };

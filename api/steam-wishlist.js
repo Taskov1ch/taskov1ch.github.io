@@ -1,7 +1,7 @@
 import { createClient } from 'redis';
 
 const redisClient = createClient({
-  url: process.env.KV_URL,
+  url: process.env.REDIS_URL,
 });
 
 redisClient.on('error', (err) => console.error('Redis Client Error', err));
@@ -60,7 +60,7 @@ export default async function handler(request, response) {
     const gameDetailsPromises = wishlistItems.map(async (item) => {
         const appid = item.appid;
         try {
-            const appDetailsUrl = `http://store.steampowered.com/api/appdetails?appids=${appid}&cc=US&l=russian`;
+            const appDetailsUrl = `https://store.steampowered.com/api/appdetails?appids=${appid}&cc=US&l=russian`;
             const appRes = await fetch(appDetailsUrl);
             if (!appRes.ok) {
               console.warn(`Failed to fetch details for appid ${appid}: ${appRes.status}`);
