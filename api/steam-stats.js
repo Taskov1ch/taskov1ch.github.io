@@ -1,9 +1,20 @@
 // /api/steam-stats.js
-import { createClient } from '@vercel/kv';
+import { createClient } from 'redis';
 
-const kv = createClient({
+// --- Начало изменений ---
+
+// Создаем и подключаем клиент Redis один раз за пределами обработчика
+// чтобы переиспользовать соединение между вызовами функции
+const redisClient = createClient({
   url: process.env.REDIS_URL,
 });
+redisClient.on('error', (err) => console.error('Redis Client Error', err));
+// Убедимся, что клиент подключен перед тем как принимать запросы
+if (!redisClient.isOpen) {
+    await redisClient.connect();
+}
+
+// --- Конец изменений ---
 
 export default async function handler(request, response) {
   const steamId = process.env.STEAM_ID;
@@ -13,21 +24,21 @@ export default async function handler(request, response) {
     return response.status(500).json({ error: 'Steam ID or API Key not configured' });
   }
 
-  // Уникальный ключ для кэша на основе Steam ID
   const CACHE_KEY = `steam:stats:${steamId}`;
-  // Время жизни кэша в секундах (здесь 15 минут)
   const CACHE_TTL_SECONDS = 3600;
 
   try {
-    // 1. Пытаемся получить данные из кэша
-    let cachedData = await kv.get(CACHE_KEY);
+    // --- Начало изменений ---
+    // 1. Получаем данные из Redis (они придут в виде строки)
+    const cachedString = await redisClient.get(CACHE_KEY);
 
-    if (cachedData) {
-      // Если данные найдены, возвращаем их
-      return response.status(200).json(cachedData);
+    if (cachedString) {
+      // Если строка существует, парсим ее в объект и возвращаем
+      return response.status(200).json(JSON.parse(cachedString));
     }
+    // --- Конец изменений ---
 
-    // 2. Если в кэше пусто (cache miss), делаем запросы к Steam API
+    // Если в кэше пусто, делаем запросы к Steam API
     const playerSummaryUrl = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`;
     const recentlyPlayedUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`;
 
@@ -37,7 +48,6 @@ export default async function handler(request, response) {
     ]);
 
     if (!playerSummaryRes.ok || !recentlyPlayedRes.ok) {
-        // Логика обработки ошибок остается прежней
         return response.status(502).json({ error: 'Failed to fetch data from Steam API' });
     }
 
@@ -47,7 +57,6 @@ export default async function handler(request, response) {
     const profile = playerData.response?.players?.[0] || {};
     const games = recentlyPlayedData.response?.games || [];
 
-    // 3. Собираем данные в объект, который будем и кэшировать, и отправлять
     const dataToRespondAndCache = {
       profile: {
         steamid: profile.steamid,
@@ -68,15 +77,17 @@ export default async function handler(request, response) {
       total_games_played_2weeks: recentlyPlayedData.response?.total_count || 0,
     };
 
-    // 4. Сохраняем свежие данные в кэш Vercel KV
-    await kv.set(CACHE_KEY, dataToRespondAndCache, { ex: CACHE_TTL_SECONDS });
+    // --- Начало изменений ---
+    // 4. Преобразуем объект в строку и сохраняем в Redis с указанием времени жизни (EX)
+    await redisClient.set(CACHE_KEY, JSON.stringify(dataToRespondAndCache), {
+      EX: CACHE_TTL_SECONDS,
+    });
+    // --- Конец изменений ---
 
-    // 5. Отправляем данные клиенту
     return response.status(200).json(dataToRespondAndCache);
 
   } catch (error) {
     console.error('Error in steam-stats handler:', error);
-    // Если произошла ошибка (например, с Vercel KV), возвращаем ошибку сервера
     return response.status(500).json({ error: 'Internal server error' });
   }
 }
