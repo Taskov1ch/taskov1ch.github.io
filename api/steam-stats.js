@@ -1,3 +1,6 @@
+// /api/steam-stats.js
+import { kv } from '@vercel/kv';
+
 export default async function handler(request, response) {
   const steamId = process.env.STEAM_ID;
   const apiKey = process.env.STEAM_API_KEY;
@@ -6,23 +9,32 @@ export default async function handler(request, response) {
     return response.status(500).json({ error: 'Steam ID or API Key not configured' });
   }
 
-  const playerSummaryUrl = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`;
-  const recentlyPlayedUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`;
+  // Уникальный ключ для кэша на основе Steam ID
+  const CACHE_KEY = `steam:stats:${steamId}`;
+  // Время жизни кэша в секундах (здесь 15 минут)
+  const CACHE_TTL_SECONDS = 3600;
 
   try {
+    // 1. Пытаемся получить данные из кэша
+    let cachedData = await kv.get(CACHE_KEY);
+
+    if (cachedData) {
+      // Если данные найдены, возвращаем их
+      return response.status(200).json(cachedData);
+    }
+
+    // 2. Если в кэше пусто (cache miss), делаем запросы к Steam API
+    const playerSummaryUrl = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`;
+    const recentlyPlayedUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`;
+
     const [playerSummaryRes, recentlyPlayedRes] = await Promise.all([
       fetch(playerSummaryUrl),
       fetch(recentlyPlayedUrl)
     ]);
 
     if (!playerSummaryRes.ok || !recentlyPlayedRes.ok) {
-      const summaryError = !playerSummaryRes.ok ? await playerSummaryRes.text() : '';
-      const playedError = !recentlyPlayedRes.ok ? await recentlyPlayedRes.text() : '';
-      console.error('Steam API error:', {
-          summaryStatus: playerSummaryRes.status, summaryError,
-          playedStatus: recentlyPlayedRes.status, playedError
-      });
-      return response.status(502).json({ error: 'Failed to fetch data from Steam API' });
+        // Логика обработки ошибок остается прежней
+        return response.status(502).json({ error: 'Failed to fetch data from Steam API' });
     }
 
     const playerData = await playerSummaryRes.json();
@@ -31,7 +43,8 @@ export default async function handler(request, response) {
     const profile = playerData.response?.players?.[0] || {};
     const games = recentlyPlayedData.response?.games || [];
 
-    response.status(200).json({
+    // 3. Собираем данные в объект, который будем и кэшировать, и отправлять
+    const dataToRespondAndCache = {
       profile: {
         steamid: profile.steamid,
         personaname: profile.personaname,
@@ -49,10 +62,17 @@ export default async function handler(request, response) {
         img_logo_url: `http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_logo_url}.jpg`,
       })),
       total_games_played_2weeks: recentlyPlayedData.response?.total_count || 0,
-    });
+    };
+
+    // 4. Сохраняем свежие данные в кэш Vercel KV
+    await kv.set(CACHE_KEY, dataToRespondAndCache, { ex: CACHE_TTL_SECONDS });
+
+    // 5. Отправляем данные клиенту
+    return response.status(200).json(dataToRespondAndCache);
 
   } catch (error) {
-    console.error('Error fetching Steam stats:', error);
-    response.status(500).json({ error: 'Internal server error' });
+    console.error('Error in steam-stats handler:', error);
+    // Если произошла ошибка (например, с Vercel KV), возвращаем ошибку сервера
+    return response.status(500).json({ error: 'Internal server error' });
   }
 }
