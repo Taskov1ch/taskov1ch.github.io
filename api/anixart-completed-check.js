@@ -13,7 +13,7 @@ export default async function handler(request, response) {
 	const idsToCheck = anime_ids.split(',').map(id => parseInt(id.trim(), 10));
 
 	try {
-		const anixartResponse = await fetch(`https://api.anixart.tv/profile/list/all/3/0?token=${token}`);
+		const anixartResponse = await fetch(`https://api.anixart.tv/profile/list/all/3/0?token=${token}&sort=1`);
 
 		if (!anixartResponse.ok) {
 			throw new Error(`Anixart API responded with status: ${anixartResponse.status}`);

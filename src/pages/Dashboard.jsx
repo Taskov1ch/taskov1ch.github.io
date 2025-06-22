@@ -370,7 +370,7 @@ function Dashboard() {
                 // ... внутри рендера anixartStats.history
                 {anixartStats.history.slice(0, 10).map((item) => {
                   const animeId = item.id;
-                  const anixartReleaseUrl = `https://beta.anixart.tv/release/${animeId}`;
+                  const anixartReleaseUrl = `https://anixartapp.com/release/${animeId}`;
                   const isCompleted = completedAnime[animeId];
 
                   return (
