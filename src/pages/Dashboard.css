@@ -80,7 +80,7 @@
 	background-color: var(--dark-bg);
 	border-radius: 6px;
 	overflow: hidden;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	border: 1px solid var(--border-color);
 }
 
@@ -92,7 +92,7 @@
 	color: white;
 	font-weight: 600;
 	font-size: 12px;
-	text-shadow: 0 0 3px rgba(0,0,0,0.6);
+	text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
 	transition: width 0.4s ease-in-out;
 }
 
@@ -119,7 +119,7 @@
 	height: 14px;
 	border-radius: 3px;
 	margin-right: 8px;
-	border: 1px solid rgba(255,255,255,0.1);
+	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .legend-text {
@@ -377,83 +377,108 @@
 
 
 .steam-wishlist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  margin-top: 15px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 20px;
+	margin-top: 15px;
 }
 
 .wishlist-game-card {
-  background-color: var(--dark-bg);
-  border-radius: 8px;
-  overflow: hidden;
-  text-decoration: none;
-  color: var(--text-primary);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border: 1px solid var(--border-color);
-  min-height: 150px;
+	background-color: var(--dark-bg);
+	border-radius: 8px;
+	overflow: hidden;
+	text-decoration: none;
+	color: var(--text-primary);
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+	border: 1px solid var(--border-color);
+	min-height: 150px;
 }
 
 .wishlist-game-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.2);
-  border-color: var(--primary-blue);
+	transform: translateY(-5px) scale(1.02);
+	box-shadow: 0 8px 15px rgba(0, 123, 255, 0.2);
+	border-color: var(--primary-blue);
 }
 
 .wishlist-game-image {
-  width: 100%;
-  height: 95px;
-  object-fit: cover;
+	width: 100%;
+	height: 95px;
+	object-fit: cover;
 }
 
 .wishlist-game-info {
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+	padding: 10px 12px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 .wishlist-game-name {
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.3;
-  flex-grow: 1;
+	font-size: 0.95rem;
+	font-weight: 600;
+	line-height: 1.3;
+	flex-grow: 1;
 }
 
 .info-message {
-  color: var(--text-secondary);
-  padding: 10px;
-  background-color: rgba(100, 100, 100, 0.1);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  text-align: center;
-  margin-top: 10px;
+	color: var(--text-secondary);
+	padding: 10px;
+	background-color: rgba(100, 100, 100, 0.1);
+	border: 1px solid var(--border-color);
+	border-radius: 6px;
+	text-align: center;
+	margin-top: 10px;
 }
 
 
 @media (max-width: 480px) {
-  .steam-wishlist-grid {
-    grid-template-columns: 1fr;
-  }
-  .wishlist-game-image {
-    height: 110px;
-  }
+	.steam-wishlist-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.wishlist-game-image {
+		height: 110px;
+	}
 }
 
 .chart-scroll-wrapper {
-  width: 100%;
+	width: 100%;
 }
 
 @media (max-width: 768px) {
-  .chart-scroll-wrapper {
-    overflow-x: auto;
-	overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
+	.chart-scroll-wrapper {
+		overflow-x: auto;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+	}
 
-  .watch-dynamics-chart-container {
-    min-width: 700px;
-  }
+	.watch-dynamics-chart-container {
+		min-width: 700px;
+	}
+}
+
+.anixart-history-item-link {
+	position: relative;
+	display: block;
+}
+
+.completed-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 8px;
+}
+
+.completed-overlay-image {
+	width: 80px;
+	height: auto;
+	opacity: 0.9;
 }

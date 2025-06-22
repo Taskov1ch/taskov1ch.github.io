@@ -56,6 +56,8 @@ function Dashboard() {
   const [isLoadingWishlist, setIsLoadingWishlist] = useState(true);
   const [errorWishlist, setErrorWishlist] = useState(null);
   const [wishlistErrorMessage, setWishlistErrorMessage] = useState("");
+  const [completedAnime, setCompletedAnime] = useState({});
+  const [isLoadingCompleted, setIsLoadingCompleted] = useState(true);
 
   const isLoadingPage = isLoadingAnixart || isLoadingSteam || isLoadingWishlist;
 
@@ -161,6 +163,32 @@ function Dashboard() {
     };
     fetchSteamWishlist();
   }, []);
+
+  useEffect(() => {
+    if (anixartStats?.history?.length > 0) {
+      const fetchCompletedStatus = async () => {
+        setIsLoadingCompleted(true);
+        const animeIds = anixartStats.history.map((item) => item.id).join(",");
+        try {
+          const response = await fetch(
+            `/api/anixart-completed-check?anime_ids=${animeIds}`
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch completed status");
+          }
+          const data = await response.json();
+          setCompletedAnime(data);
+        } catch (error) {
+          console.error("Failed to fetch completed anime statuses:", error);
+        } finally {
+          setIsLoadingCompleted(false);
+        }
+      };
+      fetchCompletedStatus();
+    } else {
+      setIsLoadingCompleted(false);
+    }
+  }, [anixartStats?.history]);
 
   const formatPlaytime = (minutes) => {
     if (minutes === 0) return "0 ч";
@@ -339,9 +367,12 @@ function Dashboard() {
             <h4>История просмотров:</h4>
             {anixartStats.history && anixartStats.history.length > 0 ? (
               <ul className='anixart-history-list'>
+                // ... внутри рендера anixartStats.history
                 {anixartStats.history.slice(0, 10).map((item) => {
                   const animeId = item.id;
                   const anixartReleaseUrl = `https://beta.anixart.tv/release/${animeId}`;
+                  const isCompleted = completedAnime[animeId];
+
                   return (
                     <a
                       key={item["@id"] || animeId}
@@ -372,6 +403,15 @@ function Dashboard() {
                           </span>
                         </div>
                       </li>
+                      {isCompleted && (
+                        <div className='completed-overlay'>
+                          <img
+                            src='/images/stamp.png'
+                            alt='Завершено'
+                            className='completed-overlay-image'
+                          />
+                        </div>
+                      )}
                     </a>
                   );
                 })}
