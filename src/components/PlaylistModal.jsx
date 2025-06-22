@@ -9,12 +9,24 @@ const PlayIconMini = () => (
   </svg>
 );
 
-const PlayIcon = () => <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>;
-const PauseIcon = () => <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>;
+const PlayIcon = () => (
+  <svg viewBox='0 0 24 24'>
+    <path d='M8 5v14l11-7z'></path>
+  </svg>
+);
+const PauseIcon = () => (
+  <svg viewBox='0 0 24 24'>
+    <path d='M6 19h4V5H6v14zm8-14v14h4V5h-4z'></path>
+  </svg>
+);
 const RepeatIcon = ({ active }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" style={{ opacity: active ? 1 : 0.6, width: '22px', height: '22px' }}>
-    <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
-    {active && <circle cx="12" cy="12" r="2.5" fill="currentColor" />}
+  <svg
+    viewBox='0 0 24 24'
+    fill='currentColor'
+    style={{ opacity: active ? 1 : 0.6, width: "22px", height: "22px" }}
+  >
+    <path d='M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z' />
+    {active && <circle cx='12' cy='12' r='2.5' fill='currentColor' />}
   </svg>
 );
 
@@ -28,7 +40,7 @@ function PlaylistModal({ isOpen, onClose, spotifyLink }) {
     duration,
     seekTrack,
     isLoading,
-    togglePlayPause
+    togglePlayPause,
   } = useContext(AudioContext);
 
   const seekBarRef = useRef(null);
@@ -39,7 +51,7 @@ function PlaylistModal({ isOpen, onClose, spotifyLink }) {
       const progressPercentage = (currentTime / duration) * 100;
       seekBar.style.background = `linear-gradient(to right, var(--primary-blue) ${progressPercentage}%, rgba(255, 255, 255, 0.15) ${progressPercentage}%)`;
     } else if (seekBar) {
-      seekBar.style.background = 'rgba(255, 255, 255, 0.15)';
+      seekBar.style.background = "rgba(255, 255, 255, 0.15)";
     }
   }, [currentTime, duration, currentTrack, isLoading]);
 
@@ -48,8 +60,9 @@ function PlaylistModal({ isOpen, onClose, spotifyLink }) {
     const originalBodyPaddingRight = document.body.style.paddingRight;
 
     if (isOpen) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.overflow = 'hidden';
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
       if (scrollbarWidth > 0) {
         document.body.style.paddingRight = `${scrollbarWidth}px`;
       }
@@ -63,17 +76,17 @@ function PlaylistModal({ isOpen, onClose, spotifyLink }) {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener("keydown", handleKeyDown);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
 
@@ -137,7 +150,25 @@ function PlaylistModal({ isOpen, onClose, spotifyLink }) {
                 <span className='track-item-title'>{track.title}</span>
                 <span className='track-item-composer'>{track.composer}</span>
               </div>
-              {currentTrack?.id === track.id && isPlaying && <PlayIconMini />}
+              <div className='track-item-icons'>
+                {typeof track.from_sc === "string" && track.from_sc && (
+                  <a
+                    href={track.from_sc}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='platform-link'
+                    onClick={(e) => e.stopPropagation()}
+                    title='Посмотреть на SoundCloud'
+                  >
+                    <img
+                      src='/icons/soundcloud.svg'
+                      alt='From SoundCloud'
+                      className='platform-icon'
+                    />
+                  </a>
+                )}
+                {currentTrack?.id === track.id && isPlaying && <PlayIconMini />}
+              </div>
             </li>
           ))}
         </ul>
@@ -147,47 +178,61 @@ function PlaylistModal({ isOpen, onClose, spotifyLink }) {
           rel='noopener noreferrer'
           className='spotify-button-modal'
         >
-          <img src="/icons/spotify.svg" width="24px"></img>
+          <img src='/icons/spotify.svg' width='24px'></img>
           <span>Мой плейлист на Spotify</span>
         </a>
 
-        <div className="playlist-now-playing-bar">
+        <div className='playlist-now-playing-bar'>
           {currentTrack ? (
             <>
-              <img src={currentTrack.cover} alt={currentTrack.title} className="now-playing-cover" />
-              <div className="now-playing-details">
-                <div className="now-playing-info">
-                  <span className="now-playing-title">{currentTrack.title}</span>
-                  <span className="now-playing-composer">{currentTrack.composer}</span>
+              <img
+                src={currentTrack.cover}
+                alt={currentTrack.title}
+                className='now-playing-cover'
+              />
+              <div className='now-playing-details'>
+                <div className='now-playing-info'>
+                  <span className='now-playing-title'>
+                    {currentTrack.title}
+                  </span>
+                  <span className='now-playing-composer'>
+                    {currentTrack.composer}
+                  </span>
                 </div>
-                <div className="now-playing-controls-progress">
+                <div className='now-playing-controls-progress'>
                   <button
                     onClick={togglePlayPause}
-                    className="modal-play-pause-button"
+                    className='modal-play-pause-button'
                     disabled={isLoading || !currentTrack}
                     aria-label={isPlaying ? "Pause" : "Play"}
                   >
                     {isPlaying ? <PauseIcon /> : <PlayIcon />}
                   </button>
-                  <div className="playback-progress">
-                    <span className="time current-time">{formatTime(currentTime)}</span>
+                  <div className='playback-progress'>
+                    <span className='time current-time'>
+                      {formatTime(currentTime)}
+                    </span>
                     <input
-                    ref={seekBarRef}
-                      type="range"
-                      min="0"
+                      ref={seekBarRef}
+                      type='range'
+                      min='0'
                       max={duration || 0}
                       value={currentTime}
                       onChange={handleSeekChange}
-                      className="seek-bar"
+                      className='seek-bar'
                       disabled={!duration || isLoading}
                     />
-                    <span className="time duration-time">{formatTime(duration)}</span>
+                    <span className='time duration-time'>
+                      {formatTime(duration)}
+                    </span>
                   </div>
                 </div>
               </div>
             </>
           ) : (
-            <div className="no-track-info">Выберите трек для воспроизведения</div>
+            <div className='no-track-info'>
+              Выберите трек для воспроизведения
+            </div>
           )}
         </div>
       </motion.div>

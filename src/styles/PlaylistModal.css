@@ -17,7 +17,7 @@
 .playlist-modal-content {
   background-color: var(--light-bg);
   border-radius: 12px;
-  max-width: 550px; /* Оставим чуть шире для комфорта */
+  max-width: 550px;
   width: 100%;
   max-height: 85vh;
   display: flex;
@@ -25,7 +25,7 @@
   border: 1px solid var(--border-color);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
-  padding: 25px 30px 0 30px; /* Убираем нижний padding, он будет у .playlist-now-playing-bar */
+  padding: 25px 30px 0 30px;
 }
 
 .playlist-modal-content h2 {
@@ -38,7 +38,7 @@
 
 .playlist-modal-content .close-button {
   position: absolute;
-  top: 15px; /* Поправим позицию */
+  top: 15px;
   right: 20px;
   background: none;
   border: none;
@@ -46,7 +46,7 @@
   color: var(--text-secondary);
   cursor: pointer;
   line-height: 1;
-  padding: 0; /* Уменьшим, чтобы не перекрывал */
+  padding: 0;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -61,7 +61,7 @@
   margin: 0 0 15px 0;
   overflow-y: auto;
   flex-grow: 1;
-  padding-right: 5px; /* Для не кастомного скроллбара */
+  padding-right: 5px;
 }
 
 .track-item {
@@ -126,7 +126,6 @@
   width: 20px;
   height: 20px;
   fill: var(--primary-blue);
-  margin-left: 10px;
   flex-shrink: 0;
 }
 
@@ -142,14 +141,13 @@
   font-weight: bold;
   font-size: 1rem;
   transition: background-color 0.2s ease, transform 0.2s ease;
-  margin: 15px auto; /* Центрируем и добавляем отступы */
+  margin: 15px auto;
   flex-shrink: 0;
 }
 
 .spotify-button-modal img {
   margin-right: 5px;
   fill: #fff;
-
 }
 
 .spotify-button-modal:hover {
@@ -158,21 +156,32 @@
   color: #fff;
 }
 
-/* Стили для скроллбара в плейлисте (оставляем как есть) */
-.track-list::-webkit-scrollbar { width: 8px; }
-.track-list::-webkit-scrollbar-track { background: var(--dark-bg); border-radius: 10px; }
-.track-list::-webkit-scrollbar-thumb { background: var(--primary-blue); border-radius: 10px; }
-.track-list::-webkit-scrollbar-thumb:hover { background: var(--secondary-blue); }
+.track-list::-webkit-scrollbar {
+  width: 8px;
+}
 
-/* --- "Now Playing Bar" внизу модалки --- */
+.track-list::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+  border-radius: 10px;
+}
+
+.track-list::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 10px;
+}
+
+.track-list::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-blue);
+}
+
 .playlist-now-playing-bar {
   display: flex;
   align-items: center;
   padding: 12px 15px;
-  background-color: rgba(20, 20, 30, 0.85); /* Немного другой фон */
+  background-color: rgba(20, 20, 30, 0.85);
   backdrop-filter: blur(5px);
   border-top: 1px solid var(--border-color);
-  margin: 0 -30px; /* Растягиваем на всю ширину модалки, компенсируя паддинги .playlist-modal-content */
+  margin: 0 -30px;
   border-bottom-left-radius: 11px;
   border-bottom-right-radius: 11px;
   flex-shrink: 0;
@@ -191,18 +200,17 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  min-width: 0; /* Для корректного text-overflow */
-  gap: 5px; /* Уменьшим gap */
+  min-width: 0;
+  gap: 5px;
 }
 
 .now-playing-info {
   display: flex;
   flex-direction: column;
-  /* margin-bottom не нужен, т.к. есть gap у родителя */
 }
 
 .now-playing-title {
-  font-size: 0.9rem; /* Чуть меньше для компактности */
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
   white-space: nowrap;
@@ -211,18 +219,17 @@
 }
 
 .now-playing-composer {
-  font-size: 0.7rem; /* Чуть меньше */
+  font-size: 0.7rem;
   color: var(--text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Обертка для прогресс-бара и кнопки Play/Pause */
 .now-playing-controls-progress {
   display: flex;
   align-items: center;
-  gap: 12px; /* Отступ между прогресс-баром и кнопкой */
+  gap: 12px;
 }
 
 .playback-progress {
@@ -230,7 +237,7 @@
   align-items: center;
   gap: 8px;
   width: 100%;
-  flex-grow: 1; /* Прогресс-бар занимает доступное место */
+  flex-grow: 1;
 }
 
 .playback-progress .time {
@@ -251,7 +258,7 @@
   justify-content: center;
   transition: color 0.2s ease, transform 0.2s ease;
   flex-shrink: 0;
-  order: 2; /* Помещаем кнопку справа от .playback-progress */
+  order: 2;
 }
 
 .modal-play-pause-button svg {
@@ -264,42 +271,37 @@
   color: var(--primary-blue);
   transform: scale(1.1);
 }
+
 .modal-play-pause-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* --- Улучшенные стили для seek-bar --- */
 .seek-bar {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 6px;
-  /* Фон неактивной части (будет перезаписан JS для прогресса) */
   background: rgba(255, 255, 255, 0.15);
   border-radius: 3px;
   outline: none;
   cursor: pointer;
-  /* position: relative; - убрали, т.к. ::before для трека больше не нужен */
 }
-
-/* Убираем ::before, т.к. фон теперь управляется JS на самом input */
-/* .seek-bar::before { ... } */
-
 
 .seek-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 15px; /* Чуть больше и круглее */
+  width: 15px;
   height: 15px;
   background: var(--primary-blue);
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -4.5px; /* (6px/2 - 15px/2) */
+  margin-top: -4.5px;
   transition: background 0.2s ease, transform 0.2s ease;
-  border: 2px solid var(--light-bg); /* Обводка в цвет фона для "парения" */
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  border: 2px solid var(--light-bg);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
+
 .seek-bar:hover::-webkit-slider-thumb,
 .seek-bar:active::-webkit-slider-thumb {
   background: var(--secondary-blue);
@@ -312,10 +314,11 @@
   background: var(--primary-blue);
   border-radius: 50%;
   border: 2px solid var(--light-bg);
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
 }
+
 .seek-bar:hover::-moz-range-thumb,
 .seek-bar:active::-moz-range-thumb {
   background: var(--secondary-blue);
@@ -325,15 +328,24 @@
 .seek-bar::-moz-range-track {
   width: 100%;
   height: 6px;
-  background: transparent; /* Дорожка прозрачна, фон на input */
+  background: transparent;
   border-radius: 3px;
   border: none;
   cursor: pointer;
 }
 
-.seek-bar:disabled { opacity: 0.5; cursor: not-allowed; }
-.seek-bar:disabled::-webkit-slider-thumb { background: #555; }
-.seek-bar:disabled::-moz-range-thumb { background: #555; }
+.seek-bar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.seek-bar:disabled::-webkit-slider-thumb {
+  background: #555;
+}
+
+.seek-bar:disabled::-moz-range-thumb {
+  background: #555;
+}
 
 .no-track-info {
   width: 100%;
@@ -341,4 +353,37 @@
   color: var(--text-secondary);
   font-style: italic;
   padding: 10px 0;
+}
+
+.platform-icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0.6;
+}
+
+.track-item-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.platform-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.platform-icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.platform-link:hover .platform-icon {
+  opacity: 1;
+  transform: scale(1.15);
 }
