@@ -367,7 +367,6 @@ function Dashboard() {
             <h4>История просмотров:</h4>
             {anixartStats.history && anixartStats.history.length > 0 ? (
               <ul className='anixart-history-list'>
-                // ... внутри рендера anixartStats.history
                 {anixartStats.history.slice(0, 10).map((item) => {
                   const animeId = item.id;
                   const anixartReleaseUrl = `https://anixartapp.com/release/${animeId}`;
