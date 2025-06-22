@@ -473,11 +473,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.822);
 	border-radius: 8px;
 }
 
 .completed-overlay-image {
-	width: 96%;
+	width: 150px;
 	height: auto;
 }
