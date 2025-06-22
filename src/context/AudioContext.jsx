@@ -53,7 +53,7 @@ export const AudioProvider = ({ children }) => {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: currentTrack.title,
       artist: currentTrack.composer,
-      album: "Taskov1ch Portfolio Mix",
+      album: "Taskov1ch Playlist (Spotify)",
       artwork: [
         { src: currentTrack.cover, sizes: "512x512", type: "image/jpeg" },
       ],
