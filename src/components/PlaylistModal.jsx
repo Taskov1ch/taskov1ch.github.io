@@ -167,6 +167,22 @@ function PlaylistModal({ isOpen, onClose, spotifyLink }) {
                     />
                   </a>
                 )}
+                {typeof track.from_yt === "string" && track.from_yt && (
+                  <a
+                    href={track.from_yt}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='platform-link'
+                    onClick={(e) => e.stopPropagation()}
+                    title='Посмотреть на SoundCloud'
+                  >
+                    <img
+                      src='/icons/yt.svg'
+                      alt='From YouTube'
+                      className='platform-icon'
+                    />
+                  </a>
+                )}
                 {currentTrack?.id === track.id && isPlaying && <PlayIconMini />}
               </div>
             </li>
