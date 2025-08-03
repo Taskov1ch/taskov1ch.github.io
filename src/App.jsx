@@ -153,7 +153,8 @@ function App() {
           </Routes>
         </AnimatePresence>
       </main>
-      {preloaderDone && <MiniPlayer
+      {/* TODO: Снеси плеер целиком */}
+      {/* {preloaderDone && <MiniPlayer
           onOpenPlaylistModal={openPlaylistModal}
           isPlaylistModalOpen={isPlaylistModalOpen}
         />}
@@ -161,7 +162,7 @@ function App() {
         isOpen={isPlaylistModalOpen}
         onClose={closePlaylistModal}
         spotifyLink={SPOTIFY}
-      />
+      /> */}
       <div
         id='footer-intersection-trigger'
         style={{ height: "1px", marginBottom: "-1px" }}
