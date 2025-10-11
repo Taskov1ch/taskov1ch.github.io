@@ -18,6 +18,7 @@ import Donate from "./pages/Donate";
 import PlaylistModal from "./components/PlaylistModal";
 import "./styles/index.css";
 import Dashboard from "./pages/Dashboard";
+import StaticPage from "./pages/StaticPage";
 
 const pageTransition = {
   initial: { opacity: 0, y: 20 },
@@ -136,6 +137,10 @@ function App() {
                 </motion.div>
               }
             />
+            <Route 
+          path="/wplace-task" 
+          element={<StaticPage fileName="wplace-task.html" />} 
+        />
             <Route
               path='*'
               element={
