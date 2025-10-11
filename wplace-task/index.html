@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=https://taskov1ch.vercel.app/wplace-task">
-    <title>Перенаправление...</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="0;url=" id="redirectMeta">
+	<title>Перенаправление...</title>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		const todo = urlParams.get("todo");
+
+		let redirectUrl = "";
+
+		switch (todo) {
+			case "alliance":
+				redirectUrl = "https://wplace.live/join?id=0199d461-a681-7e92-b5d0-fa908d49eda0";
+				break;
+			default:
+				redirectUrl = "https://taskov1ch.vervel.app/wplace-task";
+				break;
+		}
+
+		document.getElementById("redirectMeta").setAttribute("content", `0;url=${redirectUrl}`);
+	</script>
 </head>
 <body>
-    Если перенаправление не происходит автоматически, <a href="https://taskov1ch.vercel.app/wplace-task">нажмите здесь</a>.
+	Если перенаправление не происходит автоматически, <a href="" id="redirectLink">нажмите здесь</a>.
+	<script>
+		document.getElementById("redirectLink").href = document.getElementById("redirectMeta").content.split("=")[1];
+	</script>
 </body>
 </html>
