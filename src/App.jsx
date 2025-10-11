@@ -137,10 +137,10 @@ function App() {
                 </motion.div>
               }
             />
-            <Route 
+            { /*<Route 
           path="/wplace-task" 
           element={<StaticPage fileName="wplace-task.html" />} 
-        />
+        />*/ }
             <Route
               path='*'
               element={
