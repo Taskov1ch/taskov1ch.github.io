@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/wplace-task", "destination": "/static/wplace-task.html" }
+    { "source": "/pikuseru", "destination": "/static/wplace-task.html" }
   ]
 }
