@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/arknights-tipo", "destination": "https://arknights-tipo.vercel.app" },
     { "source": "/pikuseru", "destination": "/static/wplace-task.html" }
   ]
 }
