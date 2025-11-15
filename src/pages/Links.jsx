@@ -14,7 +14,7 @@ function Links() {
         setIsLoading(true);
         setError(null);
         const response = await fetch(
-          "https://raw.githubusercontent.com/2Taskov1ch/tynaevtaskovich.github.io/refs/heads/main/data/links.json"
+          "https://github.com/Taskov1ch-Repos/trash/raw/refs/heads/main/data/links.json"
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
