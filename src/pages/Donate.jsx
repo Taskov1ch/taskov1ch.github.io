@@ -14,7 +14,7 @@ function Donate() {
         setIsLoading(true);
         setError(null);
         const response = await fetch(
-          "https://github.com/Taskov1ch-Repos/trash/raw/refs/heads/main/data/donations.json"
+          "https://raw.githubusercontent.com/Taskov1ch-Repos/trash/refs/heads/main/data/donations.json"
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
