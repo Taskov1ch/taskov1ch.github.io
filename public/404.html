@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>404 // SIGNAL LOST</title>
+	<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #09090b;
+			--surface: #18181b;
+			--accent: #fbbf24;
+			--text: #ffffff;
+			--muted: #71717a;
+		}
+
+		body {
+			background-color: var(--bg);
+			color: var(--text);
+			font-family: "Rajdhani", sans-serif;
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.grid-bg {
+			position: absolute;
+			inset: 0;
+			background-image: radial-gradient(#333 1px, transparent 1px);
+			background-size: 40px 40px;
+			opacity: 0.2;
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		.container {
+			position: relative;
+			z-index: 10;
+			text-align: center;
+			border: 1px solid var(--surface);
+			background: rgba(24, 24, 27, 0.8);
+			padding: 3rem;
+			backdrop-filter: blur(5px);
+			max-width: 90%;
+		}
+
+		h1 {
+			font-size: 8rem;
+			line-height: 1;
+			margin: 0;
+			font-weight: bold;
+			letter-spacing: -5px;
+			color: var(--text);
+			position: relative;
+		}
+
+		.glitch-wrapper {
+			position: relative;
+			display: inline-block;
+		}
+
+		.scanline {
+			width: 100%;
+			height: 1px;
+			background: var(--accent);
+			opacity: 0.5;
+			position: absolute;
+			animation: scan 2s linear infinite;
+			top: 0;
+			left: 0;
+			pointer-events: none;
+		}
+
+		.subtitle {
+			color: var(--accent);
+			font-size: 1.2rem;
+			letter-spacing: 0.2rem;
+			margin-top: 1rem;
+			margin-bottom: 2rem;
+			text-transform: uppercase;
+		}
+
+		.logs {
+			text-align: left;
+			color: var(--muted);
+			font-size: 0.8rem;
+			margin-bottom: 2rem;
+			border-top: 1px solid var(--surface);
+			border-bottom: 1px solid var(--surface);
+			padding: 1rem 0;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			background: transparent;
+			color: var(--accent);
+			border: 1px solid var(--accent);
+			padding: 1rem 2rem;
+			text-decoration: none;
+			font-weight: bold;
+			text-transform: uppercase;
+			transition: all 0.2s ease;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			background: var(--accent);
+			color: black;
+			box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+		}
+
+		@keyframes scan {
+			0% {
+				top: 0%;
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 0.5;
+			}
+
+			100% {
+				top: 100%;
+				opacity: 0;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="grid-bg"></div>
+	<div class="scanline"></div>
+
+	<div class="container">
+		<div class="glitch-wrapper">
+			<h1>404</h1>
+		</div>
+
+		<div class="subtitle">
+			// SYSTEM ERROR: SIGNAL LOST
+		</div>
+
+		<div class="logs">
+			> ERROR_CODE: PAGE_NOT_FOUND<br>
+			> TARGET_URL: UNREACHABLE<br>
+			> PROTOCOL: CONNECTION_TERMINATED<br>
+			> ADVICE: INITIATE_SYSTEM_REBOOT
+		</div>
+
+		<a href="/" class="btn">
+			<span>:: RETURN TO BASE</span>
+		</a>
+	</div>
+
+	<script>
+		console.log("%c TASKOV1CH // WEBSITE ", "background: #000; color: #fbbf24; font-size: 20px; font-weight: bold;");
+		console.log("Error 404: The requested resource could not be found.");
+	</script>
+</body>
+
+</html>

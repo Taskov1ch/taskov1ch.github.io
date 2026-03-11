@@ -1,0 +1,10 @@
+root = true
+
+[*]
+indent_style = tab
+
+[*.{css,html,json,tsx,md}]
+indent_size = 2
+
+[*.{ts}]
+indent_size = 4
