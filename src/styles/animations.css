@@ -1,0 +1,194 @@
+/* ===== Animated Background Grid ===== */
+@keyframes grid-move {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 50px 50px;
+	}
+}
+
+.animate-grid-move {
+	animation: grid-move 4s linear infinite;
+}
+
+/* ===== Glitch Text Effect (one-shot) ===== */
+@keyframes glitch {
+	0% {
+		clip-path: inset(40% 0 61% 0);
+		transform: translate(-2px, 2px);
+	}
+
+	20% {
+		clip-path: inset(92% 0 1% 0);
+		transform: translate(1px, -1px);
+	}
+
+	40% {
+		clip-path: inset(43% 0 1% 0);
+		transform: translate(-1px, 3px);
+	}
+
+	60% {
+		clip-path: inset(25% 0 58% 0);
+		transform: translate(3px, 1px);
+	}
+
+	80% {
+		clip-path: inset(54% 0 7% 0);
+		transform: translate(-3px, -2px);
+	}
+
+	100% {
+		clip-path: inset(0 0 0 0);
+		transform: translate(0);
+	}
+}
+
+.glitch-text {
+	position: relative;
+	animation: glitch 0.6s ease-out forwards;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.glitch-text::before {
+	color: var(--color-cyan-val);
+	animation: glitch-before 0.6s ease-out forwards;
+	opacity: 0.7;
+}
+
+.glitch-text::after {
+	color: var(--color-accent-val);
+	animation: glitch-after 0.6s ease-out forwards;
+	opacity: 0.7;
+}
+
+@keyframes glitch-before {
+	0% {
+		clip-path: inset(0 0 65% 0);
+		transform: translate(-3px, 0);
+	}
+
+	30% {
+		clip-path: inset(30% 0 40% 0);
+		transform: translate(2px, 0);
+	}
+
+	60% {
+		clip-path: inset(60% 0 0 0);
+		transform: translate(-1px, 0);
+	}
+
+	100% {
+		clip-path: inset(0 0 100% 0);
+		transform: translate(0);
+	}
+}
+
+@keyframes glitch-after {
+	0% {
+		clip-path: inset(65% 0 0 0);
+		transform: translate(3px, 0);
+	}
+
+	30% {
+		clip-path: inset(40% 0 30% 0);
+		transform: translate(-2px, 0);
+	}
+
+	60% {
+		clip-path: inset(0 0 60% 0);
+		transform: translate(1px, 0);
+	}
+
+	100% {
+		clip-path: inset(100% 0 0 0);
+		transform: translate(0);
+	}
+}
+
+/* ===== Scan Line (Home page only) ===== */
+@keyframes scanline {
+	0% {
+		top: -2px;
+	}
+
+	100% {
+		top: 100%;
+	}
+}
+
+.scan-line::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: linear-gradient(90deg,
+			transparent 0%,
+			var(--color-cyan-val) 20%,
+			var(--color-accent-val) 50%,
+			var(--color-cyan-val) 80%,
+			transparent 100%);
+	opacity: 0.15;
+	animation: scanline 8s linear infinite;
+	pointer-events: none;
+	z-index: 20;
+}
+
+/* ===== Neon Glow hover for cards ===== */
+.neon-card-hover {
+	transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.neon-card-hover:hover {
+	box-shadow: var(--neon-glow);
+	border-color: var(--color-accent-val);
+}
+
+/* ===== Skill bar fill ===== */
+@keyframes fill-bar {
+	from {
+		width: 0;
+	}
+
+	to {
+		width: var(--fill-width);
+	}
+}
+
+.skill-bar-fill {
+	animation: fill-bar 1s ease-out forwards;
+	will-change: width;
+}
+
+/* ===== Loader spinner ===== */
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loader {
+	border: 2px solid var(--color-surface-val);
+	border-top: 2px solid var(--color-accent-val);
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	animation: spin 1s linear infinite;
+}

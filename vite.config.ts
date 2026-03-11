@@ -6,5 +6,16 @@ export default defineConfig({
 	plugins: [
 		react(),
 		tailwindcss(),
-	]
+	],
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					vendor: ["react", "react-dom", "react-router-dom"],
+					markdown: ["react-markdown", "remark-gfm", "rehype-raw"],
+					motion: ["framer-motion"],
+				},
+			},
+		},
+	},
 });

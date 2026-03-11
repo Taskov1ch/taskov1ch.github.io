@@ -1,0 +1,14 @@
+/* ===== Dark Theme ===== */
+:root {
+	--color-bg-val: #09090b;
+	--color-surface-val: #18181b;
+	--color-accent-val: #fbbf24;
+	--color-cyan-val: #22d3ee;
+	--color-muted-val: #71717a;
+	--color-text-main: #ffffff;
+	--grid-dot-color: rgba(255, 255, 255, 0.3);
+	--color-button-bg: #27272a;
+	--color-button-text: #fbbf24;
+	--neon-glow: 0 0 10px rgba(251, 191, 36, 0.3), 0 0 20px rgba(251, 191, 36, 0.1);
+	--neon-glow-cyan: 0 0 10px rgba(34, 211, 238, 0.3), 0 0 20px rgba(34, 211, 238, 0.1);
+}

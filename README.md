@@ -2,7 +2,7 @@
   <img src="public/images/taskov1ch.svg" width="120" height="120" alt="Logo" />
   <h1>TASKOV1CH // WEBSITE</h1>
   <p>
-    <strong>Industrial Futurism Portfolio Interface</strong>
+    <strong>Cyberpunk Portfolio Terminal</strong>
     <br />
     Inspired by <em><a href="https://endfield.gryphline.com/">Arknights: Endfield</a></em> & <a href="https://www.cyberpunk.net/">Cyberpunk 2077</a> aesthetics.
   </p>
@@ -12,10 +12,10 @@
       <img src="https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
     </a>
     <a href="https://vitejs.dev/">
-      <img src="https://img.shields.io/badge/Vite_6.0-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+      <img src="https://img.shields.io/badge/Vite_7-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
     </a>
     <a href="https://tailwindcss.com/">
-      <img src="https://img.shields.io/badge/Tailwind_CSS_4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+      <img src="https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
     </a>
   </p>
 </div>
@@ -24,21 +24,24 @@
 
 ## ⚡ About the Project
 
-**Taskov1ch Website** is a web portfolio in an industrial futurism/cyberpunk style, inspired by the aesthetics of **Arknights: Endfield** and **Cyberpunk 2077**.
-The project simulates a cyber-terminal interface with a focus on utility, readability, and animated navigation.
+**Taskov1ch Website** — web portfolio in a cyberpunk / industrial futurism style, inspired by **Arknights: Endfield** and **Cyberpunk 2077**.
+Simulates a cyber-terminal interface with glitch animations, scan-line effects, and neon accents.
 
 ### ✨ Key Features
 
-- **🎨 Custom Design System:** Tailwind CSS v4 with an extended variable system and a custom theme.
+- **🏗 Feature-Based Architecture:** Clean modular structure — `features/`, `widgets/`, `pages/`, `shared/`.
 - **📱 Responsive Interface:**
-  - **Desktop:** Two-panel layout with content preview.
-  - **Mobile:** Modal windows, simplified navigation, optimized for touch.
+  - **Desktop:** Sidebar with hover-expand, content area.
+  - **Mobile:** Burger menu with Ark UI Drawer.
 - **🌍 i18n Localization:**
-  - Support for **EN** and **RU**, autodetection + localStorage persistence.
+  - Multi-language support with auto-detection. Add a locale JSON and a config entry — done.
 - **🐙 GitHub Integration:**
   - Fetches `README.md` from repositories in real time.
+  - Loads projects/skills/links data from a GitHub Gist (with local fallback + caching).
 - **🔄 Animations:**
-  - Page transitions and micro-interactions powered by **Framer Motion**.
+  - Page transitions, glitch text, scan-line, neon card hover, skill bar fill — powered by **Framer Motion** + CSS.
+- **⚙️ Easy Customisation:**
+  - Single config file (`src/shared/constants/site.config.ts`) to set name, logo, copyright, Gist URL, languages, cache TTL.
 
 ---
 
@@ -46,24 +49,28 @@ The project simulates a cyber-terminal interface with a focus on utility, readab
 
 | Category | Technologies |
 | --- | --- |
-| **Core** | React 19, TypeScript |
-| **Build Tool** | Vite |
-| **Styling** | Tailwind CSS v4 |
-| **Router** | React Router DOM |
+| **Core** | React 19, TypeScript 5.9 |
+| **Build Tool** | Vite 7 |
+| **Styling** | Tailwind CSS 4 (CSS-first config) |
+| **Router** | React Router DOM 7 (HashRouter) |
 | **Animation** | Framer Motion |
+| **UI Primitives** | Ark UI |
 | **Icons** | React Icons |
-| **i18n** | i18next, react-i18next |
-| **Markdown** | react-markdown, remark-gfm |
+| **i18n** | i18next, react-i18next, i18next-browser-languagedetector |
+| **Markdown** | react-markdown, remark-gfm, rehype-raw |
+| **Deploy** | GitHub Pages (gh-pages) |
 
 ---
 
-## 🚀 Run Locally
+## 🚀 Quick Start
 
-1. **Clone the repository:**
+### Use as a template
+
+1. **Fork / clone the repo:**
 
    ```bash
-   git clone https://github.com/taskov1ch-repos/taskov1ch-website.git
-   cd taskov1ch-website
+   git clone https://github.com/Taskov1ch/taskov1ch.github.io.git
+   cd taskov1ch.github.io
    ```
 
 2. **Install dependencies:**
@@ -72,15 +79,35 @@ The project simulates a cyber-terminal interface with a focus on utility, readab
    npm install
    ```
 
-3. **Start the dev server:**
+3. **Edit the config to make it yours:**
+
+   Open [`src/shared/constants/site.config.ts`](src/shared/constants/site.config.ts) and change:
+
+   ```ts
+   export const siteConfig = {
+     name: "YOUR_NAME",
+     tagline: "DEV",
+     id: "XX-XX-XX",
+     copyright: "© 2025 YOUR_NAME",
+     title: "YOUR_NAME",
+     logo: "/images/your-logo.svg",
+     favicon: "/images/your-logo.svg",
+     gistRawUrl: "https://gist.githubusercontent.com/...",
+     // ...
+   };
+   ```
+
+4. **Start the dev server:**
 
    ```bash
    npm run dev
    ```
 
-4. Open in your browser:
+5. **Deploy to GitHub Pages:**
 
-   **[http://localhost:5173](http://localhost:5173)**
+   ```bash
+   npm run deploy
+   ```
 
 ---
 
@@ -88,23 +115,32 @@ The project simulates a cyber-terminal interface with a focus on utility, readab
 
 ```text
 src/
-├── components/      # UI components and atomic elements
-├── config/          # App settings and static data
-├── hooks/           # Custom React hooks
-├── locales/         # Localization JSON files (en/ru)
-├── pages/           # App pages
-├── types/           # TypeScript types and interfaces
-├── App.tsx          # Root component + routing
-└── main.tsx         # Application entry point
+├── app/                  # Entry point, App, providers, routes
+├── features/
+│   ├── data/             # Gist data fetching + caching
+│   ├── github/           # README.md loader
+│   └── i18n/             # i18next config, locale JSONs, language switcher
+├── pages/
+│   ├── home/             # Hero with glitch effect
+│   ├── about/            # Bio + animated skill bars
+│   ├── projects/         # Project list + live README preview
+│   ├── links/            # Contact links grid
+│   └── not-found/        # 404 with glitch
+├── shared/
+│   ├── constants/        # site.config.ts, fallback data
+│   ├── hooks/            # useDeviceDetect
+│   ├── lib/              # cn() utility
+│   ├── types/            # TypeScript interfaces
+│   └── ui/               # Reusable UI components (Button, Card, Badge, Drawer)
+├── styles/
+│   ├── globals.css        # Tailwind imports, @theme tokens, body
+│   ├── themes.css         # Dark theme CSS variables
+│   └── animations.css     # Glitch, scanline, neon, grid, skill-bar
+└── widgets/
+    ├── layout/            # Main layout wrapper
+    ├── sidebar/           # Desktop sidebar (hover-expand)
+    └── mobile-header/     # Mobile header + burger drawer
 ```
-
----
-
-## 🖼 Screenshots
-
-|                               Desktop Interface                              |                              Mobile Interface                              |
-| :--------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
-| <img src="public/screenshots/desktop.png" alt="Desktop Preview" width="400"> | <img src="public/screenshots/mobile.jpg" alt="Mobile Preview" width="200"> |
 
 ---
 
@@ -115,5 +151,5 @@ See the [LICENSE](LICENSE) file for details.
 
 <div align="center">
 <br />
-<sub>Designed & Built by <strong>Taskov1ch</strong> // 2025</sub>
+<sub>Designed & Built by <strong>Taskov1ch</strong> // 2026</sub>
 </div>

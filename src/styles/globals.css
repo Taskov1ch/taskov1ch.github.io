@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@import "./themes.css";
+@import "./animations.css";
+
+@theme {
+	--font-sans: "Rajdhani", sans-serif;
+	--font-mono: "JetBrains Mono", monospace;
+
+	--color-bg: var(--color-bg-val);
+	--color-surface: var(--color-surface-val);
+	--color-accent: var(--color-accent-val);
+	--color-cyan: var(--color-cyan-val);
+	--color-muted: var(--color-muted-val);
+
+	--color-main: var(--color-text-main);
+
+	--background-image-grid-pattern: radial-gradient(var(--grid-dot-color) 1px, transparent 1px);
+	--color-btn-bg: var(--color-button-bg);
+	--color-btn-text: var(--color-button-text);
+}
+
+body {
+	background-color: var(--color-bg);
+	color: var(--color-text-main);
+	overflow: hidden;
+	font-family: var(--font-sans);
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+	background: #3f3f46;
+	border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-accent);
+}
