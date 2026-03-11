@@ -4,16 +4,17 @@ import { useTranslation } from "react-i18next";
 import { FaArrowRight, FaTerminal } from "react-icons/fa6";
 import { Button } from "../../shared/ui/button";
 import { siteConfig } from "../../shared/constants/site.config";
+import { SystemTerminal } from "../../widgets/system-terminal/SystemTerminal";
 
 export const HomePage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
 	return (
-		<div className="h-full w-full flex flex-col justify-center relative p-8 md:p-16 overflow-hidden scan-line">
+		<div className="h-full w-full flex flex-col justify-center lg:flex-row lg:items-center relative p-8 md:p-16 gap-8 overflow-hidden scan-line">
 			<div className="absolute inset-0 pointer-events-none opacity-60 bg-[size:50px_50px] bg-[radial-gradient(rgba(255,255,255,0.3)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,white,transparent)] animate-grid-move" />
 
-			<div className="relative z-10 max-w-4xl">
+			<div className="relative z-10 shrink-0 flex flex-col justify-center lg:max-w-[40%]">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -61,7 +62,11 @@ export const HomePage = () => {
 				</motion.div>
 			</div>
 
-			<div className="absolute bottom-8 right-8 font-mono text-xs text-muted/40 text-right hidden md:block">
+			<div className="relative z-10 flex-1 hidden lg:flex items-center justify-center self-stretch">
+				<SystemTerminal />
+			</div>
+
+			<div className="absolute bottom-8 right-8 font-mono text-xs text-muted/40 text-right">
 				<p>{t("home.built_with")}: VITE</p>
 				<p>{t("home.framework")}: REACT 19</p>
 				<p>{t("home.style")}: TAILWIND 4</p>

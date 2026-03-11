@@ -79,7 +79,6 @@ export const ProjectsPage = () => {
 
 	return (
 		<div className="h-full w-full flex flex-col md:flex-row relative overflow-hidden">
-			{/* Project list */}
 			<div className="w-full md:w-1/2 flex-1 md:flex-initial h-full border-r border-muted/20 bg-bg flex flex-col relative z-0">
 				<div className="p-8 bg-bg z-20 border-b border-muted/20 shadow-xl shadow-black/5 shrink-0">
 					<h2 className="text-4xl font-bold text-main tracking-tight">
@@ -146,7 +145,6 @@ export const ProjectsPage = () => {
 				</div>
 			</div>
 
-			{/* Mobile README modal */}
 			<AnimatePresence>
 				{isMobileModalOpen && (
 					<motion.div
@@ -201,7 +199,6 @@ export const ProjectsPage = () => {
 				)}
 			</AnimatePresence>
 
-			{/* Desktop README panel */}
 			<div className="hidden md:flex w-1/2 bg-surface relative flex-col overflow-hidden h-full">
 				<div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
 

@@ -25,7 +25,7 @@ export const LinksPage = () => {
 				<motion.div
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
-					className="mb-12 border-b border-muted/20 pb-8 flex flex-col md:flex-row justify-between md:items-end gap-4"
+					className="mb-12 border-b border-muted/20 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4"
 				>
 					<div>
 						<h2 className="text-xs font-mono text-accent mb-2">
@@ -44,7 +44,7 @@ export const LinksPage = () => {
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					{links.map((link, index) => {
-						const baseLabel = link.label.split("_")[0];
+						const baseLabel = link.label.split(" ")[0];
 						const Icon = ICON_MAP[baseLabel] || FaLink;
 						return (
 							<motion.a
@@ -74,7 +74,7 @@ export const LinksPage = () => {
 
 								<div className="relative z-10">
 									<span className="font-mono text-xs text-muted group-hover:text-black/70 mb-1 block">
-										:: {link.category}
+										{link.tip ? `${link.tip} :: ${link.category}` : `:: ${link.category}`}
 									</span>
 									<h3 className="text-3xl font-bold font-sans text-main group-hover:text-black transition-colors">
 										{link.label}

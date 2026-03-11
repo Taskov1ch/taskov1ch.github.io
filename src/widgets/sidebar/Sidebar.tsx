@@ -4,6 +4,7 @@ import { cn } from "../../shared/lib/utils";
 import { useDeviceDetect } from "../../shared/hooks/useDeviceDetect";
 import { FaCube, FaLink, FaMicrochip, FaTerminal } from "react-icons/fa6";
 import { LanguageSwitcher } from "../../features/i18n";
+import { MusicToggle } from "../../features/audio";
 import { siteConfig } from "../../shared/constants/site.config";
 
 const NAV_ITEMS = [
@@ -74,6 +75,11 @@ export const Sidebar = () => {
 					);
 				})}
 			</nav>
+
+			<MusicToggle
+				showLabel
+				className="w-full h-16 border-t border-muted/20 hover:bg-black/5 transition-colors overflow-hidden px-0"
+			/>
 
 			<LanguageSwitcher
 				showLabel

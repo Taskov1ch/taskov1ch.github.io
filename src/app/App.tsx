@@ -1,9 +1,10 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Layout } from "../widgets/layout/Layout";
 import { Providers } from "./providers";
 import { routes } from "./routes";
+import { Preloader } from "../widgets/preloader/Preloader";
 
 const PageTransition = ({ children }: { children: React.ReactNode }) => (
 	<motion.div
@@ -49,8 +50,11 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
+	const [ready, setReady] = useState(false);
+
 	return (
 		<Providers>
+			{!ready && <Preloader onComplete={() => setReady(true)} />}
 			<HashRouter>
 				<Layout>
 					<AnimatedRoutes />

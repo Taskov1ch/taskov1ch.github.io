@@ -3,7 +3,7 @@
 		"home": "HOME",
 		"projects": "PROJECTS",
 		"about": "INFO",
-		"links": "CONTACT",
+		"links": "LINKS",
 		"menu": "MENU"
 	},
 	"common": {
@@ -12,14 +12,22 @@
 		"location_val": "KYRGYZSTAN",
 		"viewing": "VIEWING",
 		"portfolio_terminal": "PORTFOLIO TERMINAL",
-		"rights": "ALL RIGHTS RESERVED"
+		"rights": "SOURCES",
+		"music": "MUSIC"
 	},
 	"home": {
 		"welcome": "WELCOME // USER DETECTED",
 		"subtitle": "Python Developer & PMMP Plugin Creator",
 		"built_with": "BUILT WITH",
 		"framework": "FRAMEWORK",
-		"style": "STYLE"
+		"style": "STYLE",
+		"terminal": {
+			"loading": "LOADING...",
+			"threads": "threads",
+			"help_text": "Available commands: home, about, projects, links, help, clear",
+			"navigating": "Navigating to {{page}}...",
+			"not_found": "Command '{{cmd}}' not found. Type 'help' for available commands."
+		}
 	},
 	"projects": {
 		"title": "MY PROJECTS",
@@ -47,7 +55,7 @@
 	},
 	"links": {
 		"subtitle": "CONTACTS",
-		"title": "CONTACT",
+		"title": "LINKS",
 		"connect": "CONNECT",
 		"ping": "PING"
 	},

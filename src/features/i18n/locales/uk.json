@@ -3,7 +3,7 @@
 		"home": "ГОЛОВНА",
 		"projects": "ПРОЄКТИ",
 		"about": "ІНФО",
-		"links": "ЗВ'ЯЗОК",
+		"links": "ПОСИЛАННЯ",
 		"menu": "МЕНЮ"
 	},
 	"common": {
@@ -12,14 +12,22 @@
 		"location_val": "КИРГИЗСТАН",
 		"viewing": "ПЕРЕГЛЯД",
 		"portfolio_terminal": "ПОРТФОЛІО ТЕРМІНАЛ",
-		"rights": "УСІ ПРАВА ЗАХИЩЕНІ"
+		"rights": "ДЖЕРЕЛА",
+		"music": "МУЗИКА"
 	},
 	"home": {
 		"welcome": "ЛАСКАВО ПРОСИМО // КОРИСТУВАЧА ВИЯВЛЕНО",
 		"subtitle": "Розробник Python & PMMP плагінів",
 		"built_with": "ПОБУДОВАНО НА",
 		"framework": "ФРЕЙМВОРК",
-		"style": "СТИЛЬ"
+		"style": "СТИЛЬ",
+		"terminal": {
+			"loading": "ЗАВАНТАЖЕННЯ...",
+			"threads": "потоків",
+			"help_text": "Доступні команди: home, about, projects, links, help, clear",
+			"navigating": "Перехід на {{page}}...",
+			"not_found": "Команду '{{cmd}}' не знайдено. Введіть 'help' для списку команд."
+		}
 	},
 	"projects": {
 		"title": "МОЇ ПРОЄКТИ",
@@ -47,7 +55,7 @@
 	},
 	"links": {
 		"subtitle": "КОНТАКТИ",
-		"title": "ЗВ'ЯЗОК",
+		"title": "ПОСИЛАННЯ",
 		"connect": "ЗВ'ЯЗАТИСЯ",
 		"ping": "ПІНГ"
 	},

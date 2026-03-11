@@ -3,7 +3,7 @@
 		"home": "ГЛАВНАЯ",
 		"projects": "ПРОЕКТЫ",
 		"about": "ИНФО",
-		"links": "СВЯЗЬ",
+		"links": "ССЫЛКИ",
 		"menu": "МЕНЮ"
 	},
 	"common": {
@@ -12,14 +12,22 @@
 		"location_val": "КЫРГЫЗСТАН",
 		"viewing": "ПРОСМОТР",
 		"portfolio_terminal": "ПОРТФОЛИО ТЕРМИНАЛ",
-		"rights": "ВСЕ ПРАВА ЗАЩИЩЕНЫ"
+		"rights": "ИСТОЧНИКИ",
+		"music": "МУЗЫКА"
 	},
 	"home": {
 		"welcome": "ДОБРО ПОЖАЛОВАТЬ // ПОЛЬЗОВАТЕЛЬ ОБНАРУЖЕН",
 		"subtitle": "Разработчик Python & PMMP плагинов",
 		"built_with": "ПОСТРОЕНО НА",
 		"framework": "ФРЕЙМВОРК",
-		"style": "СТИЛЬ"
+		"style": "СТИЛЬ",
+		"terminal": {
+			"loading": "ЗАГРУЗКА...",
+			"threads": "потоков",
+			"help_text": "Доступные команды: home, about, projects, links, help, clear",
+			"navigating": "Переход на {{page}}...",
+			"not_found": "Команда '{{cmd}}' не найдена. Введите 'help' для списка команд."
+		}
 	},
 	"projects": {
 		"title": "МОИ ПРОЕКТЫ",
@@ -47,7 +55,7 @@
 	},
 	"links": {
 		"subtitle": "КОНТАКТЫ",
-		"title": "СВЯЗЬ",
+		"title": "ССЫЛКИ",
 		"connect": "СВЯЗАТЬСЯ",
 		"ping": "ПИНГ"
 	},

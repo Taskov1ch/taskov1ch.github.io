@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useDeviceDetect } from "../../shared/hooks/useDeviceDetect";
 import { FaBars, FaSignal } from "react-icons/fa6";
 import { LanguageSwitcher } from "../../features/i18n";
+import { MusicToggle } from "../../features/audio";
 import { Drawer } from "../../shared/ui/drawer";
 import { cn } from "../../shared/lib/utils";
 import { siteConfig } from "../../shared/constants/site.config";
@@ -84,6 +85,11 @@ export const MobileHeader = () => {
 						</motion.button>
 					))}
 				</nav>
+
+				<MusicToggle
+					showLabel
+					className="w-full h-14 border-t border-muted/20 hover:bg-white/5 transition-colors px-0"
+				/>
 
 				<LanguageSwitcher
 					showLabel

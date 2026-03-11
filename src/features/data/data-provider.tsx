@@ -4,6 +4,7 @@ import {
 	projects as fallbackProjects,
 	skills as fallbackSkills,
 	links as fallbackLinks,
+	commands as fallbackCommands,
 } from "../../shared/constants/data";
 import { siteConfig } from "../../shared/constants/site.config";
 
@@ -15,6 +16,7 @@ interface PortfolioData {
 	projects: Project[];
 	skills: Skill[];
 	links: LinkItem[];
+	commands: Record<string, string>;
 }
 
 interface DataContextValue extends PortfolioData {
@@ -27,6 +29,7 @@ const fallbackData: PortfolioData = {
 	projects: fallbackProjects,
 	skills: fallbackSkills,
 	links: fallbackLinks,
+	commands: fallbackCommands,
 };
 
 export const DataContext = createContext<DataContextValue>({
@@ -61,14 +64,19 @@ function writeCache(data: PortfolioData) {
 		const cached: CachedData = { data, timestamp: Date.now() };
 		localStorage.setItem(CACHE_KEY, JSON.stringify(cached));
 	} catch {
-		// quota exceeded — ignore
 	}
 }
 
 function isValidData(obj: unknown): obj is PortfolioData {
 	if (!obj || typeof obj !== "object") return false;
 	const o = obj as Record<string, unknown>;
-	return Array.isArray(o.projects) && Array.isArray(o.skills) && Array.isArray(o.links);
+	if (!Array.isArray(o.projects) || !Array.isArray(o.skills) || !Array.isArray(o.links)) return false;
+	if (o.commands === undefined) {
+		(o as Record<string, unknown>).commands = {};
+	} else if (typeof o.commands !== "object" || Array.isArray(o.commands)) {
+		return false;
+	}
+	return true;
 }
 
 export const DataProvider = ({ children }: { children: ReactNode }) => {
@@ -96,7 +104,6 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
 			console.warn("Failed to fetch Gist data, using fallback:", msg);
 			setError(msg);
 
-			// Если в кэше ничего нет, используем локальный fallback
 			const cached = readCache();
 			if (!cached) {
 				setData(fallbackData);
@@ -107,12 +114,10 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
 	}, []);
 
 	useEffect(() => {
-		// Если есть валидный кэш, не прогружаем заново сразу
 		const cached = readCache();
 		if (cached) {
 			setData(cached);
 			setLoading(false);
-			// Но обновляем в фоне
 			fetchData();
 		} else {
 			fetchData();

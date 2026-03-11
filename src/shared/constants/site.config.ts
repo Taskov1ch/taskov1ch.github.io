@@ -17,7 +17,7 @@ export const siteConfig = {
 	id: "04-05-08",
 
 	/** Год/текст копирайта */
-	copyright: "© 2025 TASKOV1CH",
+	copyright: "© 2025 TASKOV1CH. CREATED WITH AI.",
 
 	/** Заголовок вкладки браузера */
 	title: "TASKOV1CH",
@@ -57,4 +57,16 @@ export const siteConfig = {
 		{ code: "ru", flag: "🇷🇺", name: "Русский" },
 		{ code: "uk", flag: "🇺🇦", name: "Українська" },
 	],
+
+	/** Мини-терминал на главной (fastfetch-style) */
+	terminal: {
+		/** Изображение рядом с инфо (APNG / PNG / GIF) */
+		image: "/images/md.png",
+		/** Имя владельца (первая часть title-строки) */
+		ownerName: "taskov1ch (Асхат)",
+		/** Дата рождения для подсчёта uptime (ISO формат) */
+		birthDate: "2008-05-04",
+		/** Показывать замаскированный IP */
+		showIp: true,
+	},
 } as const;

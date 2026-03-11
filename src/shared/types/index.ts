@@ -22,4 +22,5 @@ export interface LinkItem {
 	label: string;
 	url: string;
 	category: string;
+	tip?: string;
 }

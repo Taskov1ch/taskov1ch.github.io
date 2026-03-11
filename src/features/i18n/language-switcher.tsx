@@ -52,7 +52,6 @@ export const LanguageSwitcher = ({ showLabel = false, className }: LanguageSwitc
 		);
 	}
 
-	// 3+ languages — modal picker
 	return (
 		<>
 			<button

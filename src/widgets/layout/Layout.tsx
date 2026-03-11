@@ -16,8 +16,8 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
 	return (
 		<div className="flex h-[100dvh] w-full bg-bg text-main font-sans overflow-hidden">
-			<MobileHeader />
 			<Sidebar />
+			<MobileHeader />
 
 			<main className="flex-1 flex flex-col relative overflow-hidden pt-16 md:pt-0">
 				<header className="hidden md:flex h-16 border-b border-muted/20 items-center justify-between px-8 bg-surface/30 backdrop-blur-md shrink-0 z-40">
@@ -36,7 +36,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 					{children}
 				</div>
 
-				<div className="pointer-events-none absolute inset-0 p-4 hidden md:block z-30">
+				<div className="pointer-events-none absolute inset-0 p-4 z-30 hidden md:block">
 					<div className="absolute top-20 left-4 w-4 h-[1px] bg-accent/50" />
 					<div className="absolute top-20 right-4 w-4 h-[1px] bg-accent/50" />
 					<div className="absolute bottom-4 left-4 w-4 h-[1px] bg-accent/50" />
