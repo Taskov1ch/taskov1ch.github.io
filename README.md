@@ -1,6 +1,6 @@
 <div align="center">
   <img src="public/images/taskov1ch.svg" width="120" height="120" alt="Logo" />
-  <h1>TASKOV1CH // WEBSITE</h1>
+  <h1>TASKOV1CH'S // WEBSITE</h1>
   <p>
     <strong>Cyberpunk Portfolio Terminal</strong>
     <br />
