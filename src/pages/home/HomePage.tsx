@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FaArrowRight, FaTerminal } from "react-icons/fa6";
 import { Button } from "../../shared/ui/button";
 import { siteConfig } from "../../shared/constants/site.config";
-import { SystemTerminal } from "../../widgets/system-terminal/SystemTerminal";
+import { WireframeCube } from "../../widgets/wireframe-cube/WireframeCube";
 
 export const HomePage = () => {
 	const navigate = useNavigate();
@@ -63,7 +63,7 @@ export const HomePage = () => {
 			</div>
 
 			<div className="relative z-10 flex-1 hidden lg:flex items-center justify-center self-stretch">
-				<SystemTerminal />
+				<WireframeCube />
 			</div>
 
 			<div className="absolute bottom-8 right-8 font-mono text-xs text-muted/40 text-right">
